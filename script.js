@@ -223,10 +223,29 @@ function initTheme() {
     }
 }
 
+// Header Scroll Logic
+function initHeaderScroll() {
+    const header = document.querySelector('header');
+    if (!header) return;
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 10) {
+            header.classList.add('border-brand-border/40', 'dark:border-dark-border/40');
+            header.classList.remove('border-transparent');
+        } else {
+            header.classList.remove('border-brand-border/40', 'dark:border-dark-border/40');
+            header.classList.add('border-transparent');
+        }
+    });
+}
+
 // Init
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize Theme
     initTheme();
+
+    // Initialize Header Scroll
+    initHeaderScroll();
 
     // Toggle dropdown
     document.getElementById('lang-btn').addEventListener('click', (e) => {
