@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InToday - A clearer rhythm for your day</title>
+    <meta name="description" content="Keep small things from getting lost in notes, reminders, and to-do lists. InToday helps you organize your day by time.">
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        serif: ['Newsreader', 'Georgia', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            bg: '#FDFDFD',
+                            text: '#1A1A18',
+                            muted: '#6B6A65',
+                            accent: '#8C877E',
+                            surface: '#FFFFFF',
+                            card: '#F7F5F2',
+                            border: '#E5E3DF',
+                            placeholder: '#F2F0ED',
+                        },
+                        dark: {
+                            bg: '#111110',      /* page */
+                            text: '#EDEAE3',    /* heading */
+                            muted: '#8C8880',   /* muted text */
+                            accent: '#A89070',  /* accent */
+                            surface: '#1A1A18', /* surface */
+                            card: '#161614',    /* alt */
+                            border: '#2A2A27',  /* bordercol */
+                            placeholder: '#232320', /* mockfill */
+                            mainText: '#D4D0C8' /* main content text */
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #FDFDFD;
+            color: #1A1A18;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .dark body {
+            background-color: #111110;
+            color: #D4D0C8;
+        }
+        ::selection {
+            background-color: #E5E3DF;
+            color: #1A1A18;
+        }
+        .phone-mockup-inner {
+            background: linear-gradient(180deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.0) 100%);
+        }
+        .dark .phone-mockup-inner {
+            background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.0) 100%);
+        }
+
+        /* Language specific spacing overrides */
+        html[lang="zh"] h1, html[lang="zh"] h2, html[lang="zh"] h3,
+        html[lang="ja"] h1, html[lang="ja"] h2, html[lang="ja"] h3 {
+            line-height: 1.27 !important;
+        }
+
+        /* Language switcher */
+        #lang-menu {
+            display: none;
+        }
+        #lang-menu.open {
+            display: block;
+        }
+        #lang-btn {
+            cursor: pointer;
+            user-select: none;
+        }
+
+        /* Dark Mode Switcher */
+        .dark-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid var(--tw-prose-body);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .dark-btn img {
+            width: 18px;
+            height: 18px;
+            opacity: 0.7;
+            transition: opacity 0.2s ease, filter 0.2s ease;
+        }
+        .dark .dark-btn img {
+            filter: invert(1);
+            opacity: 0.9;
+        }
+        .dark-btn:hover img {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col font-sans bg-brand-bg dark:bg-dark-bg text-brand-text dark:text-dark-text transition-colors duration-300">
+
+    <!-- ══ NAVBAR ══ -->
+    <nav class="w-full px-6 md:px-12 py-6 flex justify-between items-center max-w-7xl mx-auto z-10 relative">
+        <a href="#" class="flex items-center gap-2 group">
+            <img src="assets/logo.png" alt="InToday Logo" class="w-8 h-auto">
+            <span class="font-semibold text-[1.05rem] tracking-tight dark:text-dark-text">InToday</span>
+        </a>
+        <div class="flex items-center gap-3">
+            <!-- Dark Mode Toggle -->
+            <button id="theme-btn" class="p-2.5 rounded-full hover:bg-brand-card dark:hover:bg-dark-card transition-colors flex items-center justify-center cursor-pointer" aria-label="Toggle Dark Mode">
+                <img id="theme-icon" src="assets/moon.png" alt="Toggle Theme" class="w-4 h-4 opacity-80 hover:opacity-100 transition-opacity">
+            </button>
+
+            <!-- Language Switcher -->
+            <div class="relative" id="lang-dropdown">
+                <button id="lang-btn"
+                    class="flex items-center gap-1.5 px-3 py-2.5 rounded-full text-sm font-medium text-brand-text dark:text-dark-text hover:bg-brand-card dark:hover:bg-dark-card transition-colors"
+                    aria-haspopup="true" aria-expanded="false">
+                    <span id="lang-label">EN</span>
+                    <svg class="w-3.5 h-3.5 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <div id="lang-menu"
+                    class="absolute right-0 mt-2 w-32 bg-white dark:bg-dark-surface rounded-2xl shadow-lg border border-brand-border dark:border-dark-border overflow-hidden z-50">
+                    <button class="lang-option w-full text-left px-4 py-2.5 text-sm hover:bg-brand-card dark:hover:bg-dark-card dark:text-dark-text transition-colors flex items-center gap-2" data-lang="en">English</button>
+                    <button class="lang-option w-full text-left px-4 py-2.5 text-sm hover:bg-brand-card dark:hover:bg-dark-card dark:text-dark-text transition-colors flex items-center gap-2" data-lang="zh">中文</button>
+                    <button class="lang-option w-full text-left px-4 py-2.5 text-sm hover:bg-brand-card dark:hover:bg-dark-card dark:text-dark-text transition-colors flex items-center gap-2" data-lang="ms">Melayu</button>
+                    <button class="lang-option w-full text-left px-4 py-2.5 text-sm hover:bg-brand-card dark:hover:bg-dark-card dark:text-dark-text transition-colors flex items-center gap-2" data-lang="ja">日本語</button>
+                    <button class="lang-option w-full text-left px-4 py-2.5 text-sm hover:bg-brand-card dark:hover:bg-dark-card dark:text-dark-text transition-colors flex items-center gap-2" data-lang="th">ภาษาไทย</button>
+                </div>
+            </div>
+            <a href="#" data-i18n="nav_cta" class="bg-brand-text dark:bg-dark-text text-white dark:text-dark-bg px-5 py-2.5 rounded-full text-sm font-medium hover:bg-black dark:hover:bg-white transition-colors">
+                Start for free
+            </a>
+        </div>
+    </nav>
+
+    <main class="flex-1">
+
+        <!-- ══ HERO ══ -->
+        <section class="pt-24 pb-32 px-6 md:px-12 flex flex-col items-center text-center max-w-5xl mx-auto">
+            <h1 class="text-5xl md:text-7xl lg:text-[5rem] font-semibold tracking-tight text-brand-text dark:text-dark-text leading-[1.15] max-w-4xl" data-i18n="hero_title">
+                A clearer<br>rhythm for your day
+            </h1>
+            <p class="mt-8 text-lg md:text-xl text-brand-muted dark:text-dark-mainText max-w-xl font-normal leading-relaxed" data-i18n="hero_sub">
+                Keep small things from getting lost in notes, reminders, and to-do lists
+            </p>
+            <a href="#" data-i18n="hero_cta" class="mt-10 bg-brand-text dark:text-dark-bg text-white dark:bg-dark-text px-8 py-4 rounded-full text-base font-medium hover:bg-black transition-colors inline-block">
+                Start for free
+            </a>
+
+            <!-- Phone mockup -->
+            <div class="mt-24 w-full max-w-[320px] aspect-[1/2] rounded-[2.5rem] bg-brand-placeholder dark:bg-dark-placeholder border border-brand-border dark:border-dark-border shadow-[0_24px_60px_-15px_rgba(0,0,0,0.05)] relative overflow-hidden flex flex-col items-center p-2">
+                <div class="w-full h-full rounded-[2.25rem] border border-white/60 dark:border-dark-placeholder bg-brand-placeholder dark:bg-dark-placeholder phone-mockup-inner flex flex-col p-5 gap-4">
+                    <div class="w-1/3 h-2.5 bg-brand-border/60 dark:bg-dark-border rounded-full mt-6 mx-auto"></div>
+                    <div class="w-full h-20 bg-white/50 dark:bg-[#2A2A27]/40 rounded-2xl border border-white/40 dark:border-transparent mt-4"></div>
+                    <div class="w-full h-16 bg-white/40 dark:bg-[#2A2A27]/40 rounded-xl border border-white/30 dark:border-transparent"></div>
+                    <div class="w-full h-16 bg-white/40 dark:bg-[#2A2A27]/40 rounded-xl border border-white/30 dark:border-transparent"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══ FEATURE 1: Organize by time of day ══ -->
+        <section class="py-16 md:py-32 px-6 md:px-12 max-w-7xl mx-auto rounded-[3rem] dark:bg-dark-card mt-12">
+            <div class="flex flex-col md:grid md:grid-cols-2 gap-10 md:gap-24 items-center">
+                <div class="w-full max-w-md mx-auto md:mx-0 md:pr-8 text-center md:text-left">
+                    <span class="uppercase text-xs md:text-sm tracking-[0.15em] font-semibold text-[#ED1F1F] dark:text-dark-accent mb-4 md:mb-5 block" data-i18n="f1_label">
+                        Organize by time of day
+                    </span>
+                    <h2 class="text-3xl md:text-5xl font-semibold tracking-tight text-brand-text dark:text-dark-text mb-4 md:mb-6 leading-[1.15]" data-i18n="f1_title">
+                        Place things where they belong
+                    </h2>
+                    <p class="text-base md:text-xl text-brand-muted dark:text-dark-mainText leading-relaxed" data-i18n="f1_desc">
+                        No need to figure out the exact time, just place it into your day.
+                    </p>
+                </div>
+                <div class="w-full max-w-[320px] md:max-w-[400px] aspect-[4/5] mx-auto bg-brand-placeholder dark:bg-dark-placeholder rounded-[2rem] border border-brand-border dark:border-[6px] dark:border-[rgba(46,46,42,1)] shadow-sm flex flex-col overflow-hidden">
+                    <div class="h-14 border-b border-brand-border/40 dark:border-transparent flex items-center px-6">
+                        <div class="w-24 h-2 bg-brand-border/60 dark:bg-[rgba(46,46,42,1)] rounded-full"></div>
+                    </div>
+                    <div class="flex-1 p-6 flex flex-col gap-3">
+                        <div class="w-full h-14 bg-white/60 dark:bg-[#2A2A27]/40 rounded-xl border border-brand-border/30 dark:border-transparent"></div>
+                        <div class="w-full h-14 bg-white/60 dark:bg-[#2A2A27]/40 rounded-xl border border-brand-border/30 dark:border-transparent"></div>
+                        <div class="w-3/4 h-14 bg-white/60 dark:bg-[#2A2A27]/40 rounded-xl border border-brand-border/30 dark:border-transparent"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══ FEATURE 2: Adapt as you go ══ -->
+        <section class="py-16 md:py-32 px-6 md:px-12 max-w-7xl mx-auto dark:bg-dark-bg mt-12 rounded-[3rem]">
+            <div class="flex flex-col md:grid md:grid-cols-2 gap-10 md:gap-24 items-center">
+                <!-- Text Block (Always First on Mobile, Second on Desktop) -->
+                <div class="w-full max-w-md mx-auto md:mx-0 md:pl-8 text-center md:text-left order-first md:order-last">
+                    <span class="uppercase text-xs md:text-sm tracking-[0.15em] font-semibold text-[#ED1F1F] dark:text-dark-accent mb-4 md:mb-5 block" data-i18n="f2_label">
+                        Adapt as you go
+                    </span>
+                    <h2 class="text-3xl md:text-5xl font-semibold tracking-tight text-brand-text dark:text-dark-text mb-4 md:mb-6 leading-[1.15]" data-i18n="f2_title">
+                        Flexible by design
+                    </h2>
+                    <p class="text-base md:text-xl text-brand-muted dark:text-dark-mainText leading-relaxed" data-i18n="f2_desc">
+                        When your plans change, just move things and keep going.
+                    </p>
+                </div>
+                <!-- Image Block (Always Second on Mobile, First on Desktop) -->
+                <div class="w-full max-w-[320px] md:max-w-[400px] aspect-[4/5] mx-auto bg-brand-placeholder dark:bg-dark-placeholder rounded-[2rem] border border-brand-border dark:border-[6px] dark:border-[rgba(46,46,42,1)] shadow-sm flex flex-col overflow-hidden order-last md:order-first">
+                    <div class="h-14 border-b border-brand-border/40 dark:border-transparent flex items-center px-6">
+                        <div class="w-24 h-2 bg-brand-border/60 dark:bg-[rgba(46,46,42,1)] rounded-full"></div>
+                    </div>
+                    <div class="flex-1 p-6 flex flex-col gap-3">
+                        <div class="w-full h-24 bg-white/60 dark:bg-[#2A2A27]/40 rounded-xl border border-brand-border/30 dark:border-transparent mb-2"></div>
+                        <div class="w-full h-14 bg-white/40 dark:bg-[#2A2A27]/40 rounded-xl border border-brand-border/20 dark:border-transparent"></div>
+                        <div class="w-full h-14 bg-white/40 dark:bg-[#2A2A27]/40 rounded-xl border border-brand-border/20 dark:border-transparent"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══ FEATURE 3: Keep it simple ══ -->
+        <section class="py-16 md:py-32 px-6 md:px-12 max-w-7xl mx-auto rounded-[3rem] dark:bg-dark-card mt-12 mb-24">
+            <div class="flex flex-col md:grid md:grid-cols-2 gap-10 md:gap-24 items-center">
+                <div class="w-full max-w-md mx-auto md:mx-0 md:pr-8 text-center md:text-left">
+                    <span class="uppercase text-xs md:text-sm tracking-[0.15em] font-semibold text-[#ED1F1F] dark:text-dark-accent mb-4 md:mb-5 block" data-i18n="f3_label">
+                        Keep it simple
+                    </span>
+                    <h2 class="text-3xl md:text-5xl font-semibold tracking-tight text-brand-text dark:text-dark-text mb-4 md:mb-6 leading-[1.15]" data-i18n="f3_title">
+                        One page for your day
+                    </h2>
+                    <p class="text-base md:text-xl text-brand-muted dark:text-dark-mainText leading-relaxed" data-i18n="f3_desc">
+                        Your day stays in one place, easy to see, adjust, and move on.
+                    </p>
+                </div>
+                <div class="w-full max-w-[320px] md:max-w-[400px] aspect-[4/5] mx-auto bg-brand-placeholder dark:bg-dark-placeholder rounded-[2rem] border border-brand-border dark:border-[6px] dark:border-[rgba(46,46,42,1)] shadow-sm flex flex-col overflow-hidden">
+                    <div class="h-14 border-b border-brand-border/40 dark:border-transparent flex items-center px-6">
+                        <div class="w-24 h-2 bg-brand-border/60 dark:bg-[rgba(46,46,42,1)] rounded-full"></div>
+                    </div>
+                    <div class="flex-1 p-6 flex flex-col gap-3">
+                        <div class="w-full h-full bg-white/50 dark:bg-transparent rounded-xl border border-brand-border/30 dark:border-transparent flex flex-col gap-3 p-0">
+                            <div class="w-1/2 h-4 bg-brand-border/40 dark:bg-transparent rounded-md mb-2"></div>
+                            <div class="w-full h-16 bg-white/80 dark:bg-[#2A2A27]/40 rounded-xl"></div>
+                            <div class="w-full h-16 bg-white/80 dark:bg-[#2A2A27]/40 rounded-xl"></div>
+                            <div class="w-full h-16 bg-white/80 dark:bg-[#2A2A27]/40 rounded-xl"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══ USE CASE LIST ══ -->
+        <section class="py-32 px-6 md:px-12 max-w-7xl mx-auto border-t border-brand-border/50 dark:border-transparent">
+            <div class="grid md:grid-cols-3 gap-8 md:gap-12">
+
+                <div class="flex flex-col gap-5 p-8 md:p-10 rounded-[2rem] bg-brand-surface dark:bg-dark-surface border border-brand-border/60 dark:border-dark-border/50 shadow-[0_4px_20px_rgb(0,0,0,0.02)]">
+                    <div class="w-10 h-10 flex items-center justify-center mb-2">
+                        <img src="assets/document.png" alt="Document" class="w-6 h-auto dark:invert dark:brightness-0">
+                    </div>
+                    <h3 class="text-xl font-semibold tracking-tight text-brand-text dark:text-dark-text" data-i18n="uc1_title">
+                        For work follow-ups
+                    </h3>
+                    <p class="text-brand-muted dark:text-dark-mainText leading-relaxed text-base" data-i18n="uc1_desc">
+                        Keep handoffs and follow-ups in one clear place – instead of leaving them in notes or chat.
+                    </p>
+                </div>
+
+                <div class="flex flex-col gap-5 p-8 md:p-10 rounded-[2rem] bg-brand-surface dark:bg-dark-surface border border-brand-border/60 dark:border-dark-border/50 shadow-[0_4px_20px_rgb(0,0,0,0.02)]">
+                    <div class="w-10 h-10 flex items-center justify-center mb-2">
+                        <img src="assets/time01.png" alt="Time" class="w-6 h-auto dark:invert dark:brightness-0">
+                    </div>
+                    <h3 class="text-xl font-semibold tracking-tight text-brand-text dark:text-dark-text" data-i18n="uc2_title">
+                        For plans without exact times
+                    </h3>
+                    <p class="text-brand-muted dark:text-dark-mainText leading-relaxed text-base" data-i18n="uc2_desc">
+                        Buying groceries, going to a shop... you know you need to do, but don't have an exact time for yet.
+                    </p>
+                </div>
+
+                <div class="flex flex-col gap-5 p-8 md:p-10 rounded-[2rem] bg-brand-surface dark:bg-dark-surface border border-brand-border/60 dark:border-dark-border/50 shadow-[0_4px_20px_rgb(0,0,0,0.02)]">
+                    <div class="w-10 h-10 flex items-center justify-center mb-2">
+                        <img src="assets/edit.png" alt="Edit" class="w-6 h-auto dark:invert dark:brightness-0">
+                    </div>
+                    <h3 class="text-xl font-semibold tracking-tight text-brand-text dark:text-dark-text" data-i18n="uc3_title">
+                        For days that keep changing
+                    </h3>
+                    <p class="text-brand-muted dark:text-dark-mainText leading-relaxed text-base" data-i18n="uc3_desc">
+                        Trips, city walks, and busy days with changing plans and timing - keep things visible and easy to move.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ══ QUOTE ══ -->
+        <section class="py-32 md:py-48 px-6 flex flex-col items-center text-center max-w-4xl mx-auto">
+            <div class="flex items-center justify-center mb-12 opacity-80">
+                <img src="assets/logo.png" alt="InToday Logo" class="w-16 h-auto">
+            </div>
+            <blockquote class="font-serif text-4xl md:text-5xl lg:text-6xl leading-[1.2] tracking-tight text-brand-text dark:text-dark-text italic" data-i18n="quote">
+                "Your day isn't a list of chores.<br class="hidden md:block"> It's a rhythm of moments."
+            </blockquote>
+            <p class="mt-8 text-xs md:text-sm font-semibold tracking-[0.2em] uppercase text-brand-muted dark:text-[#8C8879]" data-i18n="quote_author">
+                The InToday Philosophy
+            </p>
+        </section>
+
+        <!-- ══ CTA ══ -->
+        <section class="py-24 px-6 md:px-12 max-w-7xl mx-auto">
+            <div class="w-full rounded-[2.5rem] py-20 px-8 md:px-24 flex flex-col md:flex-row items-center justify-between gap-12 border border-brand-border/40 dark:border-transparent dark:bg-dark-surface shadow-sm dark:shadow-none bg-gradient-to-b from-[#C8D1E8] to-[#E8D8B8] dark:from-[#1E1C18] dark:to-[#1E1C18]">
+                <h2 class="font-serif text-4xl md:text-[2.75rem] italic text-brand-text dark:text-dark-text tracking-tight text-center md:text-left leading-tight max-w-lg" data-i18n="cta_title">
+                    Bring more rhythm into your day
+                </h2>
+                <a href="#" data-i18n="cta_btn" class="bg-brand-text dark:bg-dark-text text-white dark:text-dark-bg px-8 py-4 rounded-full text-base font-medium hover:bg-black dark:hover:bg-white transition-colors shrink-0 whitespace-nowrap italic shadow-md">
+                    Start for free
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ══ FOOTER ══ -->
+    <footer class="py-12 md:py-16 border-t border-brand-border/50 dark:border-transparent flex flex-col items-center justify-center gap-6 pb-24 dark:bg-[#0E0E0D]">
+        <a href="#" class="flex items-center gap-2 group opacity-80 hover:opacity-100 transition-opacity">
+            <img src="assets/logo.png" alt="InToday Logo" class="w-7 h-auto">
+            <span class="font-semibold text-sm tracking-tight text-brand-text dark:text-dark-text">InToday</span>
+        </a>
+        <p class="text-xs text-brand-accent dark:text-dark-muted" data-i18n="footer_copy">
+            © 2026 InToday. All rights reserved.
+        </p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
