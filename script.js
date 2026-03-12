@@ -33,6 +33,12 @@ const translations = {
         footer_privacy: 'Privacy Policy',
         footer_terms: 'Terms of Service',
         footer_copy: '© 2026 InToday. All rights reserved.',
+        privacy_title: 'Privacy Policy',
+        privacy_intro: 'Your privacy is important to us. Here is how we handle your data.',
+        privacy_sec1_title: 'Information We Collect',
+        privacy_sec1_desc: 'InToday is designed to be local-first. We do not store your personal notes or schedules on our servers.',
+        privacy_sec2_title: 'How We Use Data',
+        privacy_sec2_desc: 'Any data collected is used solely to improve the app experience and is never shared with third parties.',
     },
     zh: {
         flag: '🇨🇳',
@@ -64,6 +70,12 @@ const translations = {
         footer_privacy: '隐私政策',
         footer_terms: '服务条款',
         footer_copy: '© 2026 InToday. 版权所有。',
+        privacy_title: '隐私政策',
+        privacy_intro: '我们非常重视您的隐私。以下是我们的数据处理方式。',
+        privacy_sec1_title: '收集的信息',
+        privacy_sec1_desc: 'InToday 采用本地优先设计。我们不会在服务器上存储您的个人笔记或日程表。',
+        privacy_sec2_title: '我们如何使用数据',
+        privacy_sec2_desc: '收集的任何数据仅用于改进应用体验，绝不会与第三方共享。',
     },
     ms: {
         flag: '🇲🇾',
@@ -95,6 +107,12 @@ const translations = {
         footer_privacy: 'Dasar Privasi',
         footer_terms: 'Syarat Perkhidmatan',
         footer_copy: '© 2026 InToday. Hak cipta terpelihara.',
+        privacy_title: 'Dasar Privasi',
+        privacy_intro: 'Privasi anda adalah penting bagi kami. Berikut ialah cara kami mengendalikan data anda.',
+        privacy_sec1_title: 'Maklumat yang Kami Kumpul',
+        privacy_sec1_desc: 'InToday direka bentuk mengutamakan simpanan tempatan. Kami tidak menyimpan nota peribadi atau jadual anda pada pelayan kami.',
+        privacy_sec2_title: 'Cara Kami Menggunakan Data',
+        privacy_sec2_desc: 'Sebarang data yang dikumpul digunakan semata-mata untuk menambah baik pengalaman aplikasi dan tidak pernah dikongsi dengan pihak ketiga.',
     },
     ja: {
         flag: '🇯🇵',
@@ -126,6 +144,12 @@ const translations = {
         footer_privacy: 'プライバシーポリシー',
         footer_terms: '利用規約',
         footer_copy: '© 2026 InToday. 全著作権所有。',
+        privacy_title: 'プライバシーポリシー',
+        privacy_intro: 'お客様のプライバシーは私たちにとって重要です。データの取り扱いについては以下の通りです。',
+        privacy_sec1_title: '収集する情報',
+        privacy_sec1_desc: 'InTodayはローカルファーストで設計されています。お客様の個人的なメモやスケジュールをサーバーに保存することはありません。',
+        privacy_sec2_title: 'データの利用方法',
+        privacy_sec2_desc: '収集されたデータはアプリ体験の向上のみに使用され、第三者と共有されることはありません。',
     },
     th: {
         flag: '🇹🇭',
@@ -157,14 +181,20 @@ const translations = {
         footer_privacy: 'นโยบายความเป็นส่วนตัว',
         footer_terms: 'เงื่อนไขการให้บริการ',
         footer_copy: '© 2026 InToday. สงวนลิขสิทธิ์ทั้งหมด',
+        privacy_title: 'นโยบายความเป็นส่วนตัว',
+        privacy_intro: 'ความเป็นส่วนตัวของคุณเป็นสิ่งสำคัญสำหรับเรา นี่คือวิธีที่เราจัดการข้อมูลของคุณ',
+        privacy_sec1_title: 'ข้อมูลที่เรารวบรวม',
+        privacy_sec1_desc: 'InToday ได้รับการออกแบบให้เน้นการประมวลผลในเครื่องก่อน เราไม่จัดเก็บโน้ตส่วนตัวหรือตารางเวลาของคุณไว้บนเซิร์ฟเวอร์ของเรา',
+        privacy_sec2_title: 'วิธีที่เราใช้ข้อมูล',
+        privacy_sec2_desc: 'ข้อมูลใดๆ ที่รวบรวมจะถูกใช้เพื่อปรับปรุงประสบการณ์การใช้งานแอปเท่านั้น และจะไม่ถูกแชร์กับบุคคลที่สาม',
     },
 };
 
 let currentLang = 'en';
 
 function applyLanguage(lang) {
+    if (!translations[lang]) return; // Check if translation exists
     const t = translations[lang];
-    if (!t) return;
 
     // Update all data-i18n elements
     document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -181,6 +211,7 @@ function applyLanguage(lang) {
     document.documentElement.lang = lang;
 
     currentLang = lang;
+    localStorage.setItem('intoday_lang', lang); // Save language preference
     closeLangMenu();
 }
 
@@ -277,7 +308,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Close on outside click
     document.addEventListener('click', () => closeLangMenu());
-
-    // Page defaults to English (as per static HTML)
-    // applyLanguage is called only on user interaction or if specific logic is needed
+ 
+    // Check saved language or default to English
+    const savedLang = localStorage.getItem('intoday_lang');
+    if (savedLang && translations[savedLang]) {
+        applyLanguage(savedLang);
+    }
 });

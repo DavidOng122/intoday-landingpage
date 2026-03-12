@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - InToday</title>
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        serif: ['Newsreader', 'Georgia', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            bg: '#FDFDFD',
+                            text: '#1A1A18',
+                            muted: '#6B6A65',
+                            accent: '#8C877E',
+                            surface: '#FFFFFF',
+                            card: '#F7F5F2',
+                            border: '#E5E3DF',
+                        },
+                        dark: {
+                            bg: '#111110',
+                            text: '#EDEAE3',
+                            muted: '#8C8880',
+                            accent: '#A89070',
+                            surface: '#1A1A18',
+                            card: '#161614',
+                            border: '#2A2A27',
+                            mainText: '#D4D0C8'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #FDFDFD;
+            color: #1A1A18;
+            -webkit-font-smoothing: antialiased;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .dark body {
+            background-color: #111110;
+            color: #D4D0C8;
+        }
+        
+        /* Language specific spacing overrides */
+        html[lang="zh"] h1, html[lang="zh"] h2, html[lang="zh"] h3,
+        html[lang="ja"] h1, html[lang="ja"] h2, html[lang="ja"] h3 {
+            line-height: 1.27 !important;
+            letter-spacing: 0.06em !important;
+        }
+        
+        #lang-menu { display: none; }
+        #lang-menu.open { display: block; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col font-sans bg-brand-bg dark:bg-dark-bg text-brand-text dark:text-dark-text transition-colors duration-300">
+
+    <!-- ══ NAVBAR ══ -->
+    <header class="sticky top-0 w-full z-50 bg-brand-bg/80 dark:bg-dark-bg/80 backdrop-blur-md border-b border-transparent">
+        <nav class="max-w-7xl mx-auto px-6 md:px-12 py-4 md:py-6 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2 group">
+                <img src="assets/logo.png" alt="InToday Logo" class="w-8 h-auto">
+                <span class="font-semibold text-[1.05rem] tracking-tight dark:text-dark-text">InToday</span>
+            </a>
+            <div class="flex items-center gap-3">
+                <button id="theme-btn" class="p-2.5 rounded-full hover:bg-brand-card dark:hover:bg-dark-card transition-colors flex items-center justify-center cursor-pointer" aria-label="Toggle Dark Mode">
+                    <img id="theme-icon" src="assets/moon.png" alt="Toggle Theme" class="w-4 h-4 opacity-80 hover:opacity-100 transition-opacity">
+                </button>
+
+                <div class="relative" id="lang-dropdown">
+                    <button id="lang-btn" class="flex items-center gap-1.5 px-3 py-2.5 rounded-full text-sm font-medium hover:bg-brand-card dark:hover:bg-dark-card transition-colors">
+                        <span id="lang-label">EN</span>
+                        <svg class="w-3.5 h-3.5 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div id="lang-menu" class="absolute right-0 mt-2 w-32 bg-white dark:bg-dark-surface rounded-2xl shadow-lg border border-brand-border dark:border-dark-border overflow-hidden z-50">
+                        <button class="lang-option w-full text-left px-4 py-2.5 text-sm hover:bg-brand-card dark:hover:bg-dark-card dark:text-dark-text transition-colors flex items-center gap-2" data-lang="en">English</button>
+                        <button class="lang-option w-full text-left px-4 py-2.5 text-sm hover:bg-brand-card dark:hover:bg-dark-card dark:text-dark-text transition-colors flex items-center gap-2" data-lang="zh">中文</button>
+                        <button class="lang-option w-full text-left px-4 py-2.5 text-sm hover:bg-brand-card dark:hover:bg-dark-card dark:text-dark-text transition-colors flex items-center gap-2" data-lang="ms">Melayu</button>
+                        <button class="lang-option w-full text-left px-4 py-2.5 text-sm hover:bg-brand-card dark:hover:bg-dark-card dark:text-dark-text transition-colors flex items-center gap-2" data-lang="ja">日本語</button>
+                        <button class="lang-option w-full text-left px-4 py-2.5 text-sm hover:bg-brand-card dark:hover:bg-dark-card dark:text-dark-text transition-colors flex items-center gap-2" data-lang="th">ภาษาไทย</button>
+                    </div>
+                </div>
+                <a href="index.html" data-i18n="nav_cta" class="bg-brand-text dark:bg-dark-text text-white dark:text-dark-bg px-5 py-2.5 rounded-full text-sm font-medium hover:bg-black dark:hover:bg-white transition-colors">
+                    Start for free
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="flex-1 max-w-4xl mx-auto px-6 py-24">
+        <h1 class="text-4xl md:text-5xl font-semibold tracking-tight mb-8" data-i18n="privacy_title">Privacy Policy</h1>
+        <p class="text-lg text-brand-muted dark:text-dark-mainText mb-12" data-i18n="privacy_intro">Your privacy is important to us. Here is how we handle your data.</p>
+        
+        <div class="space-y-12">
+            <section>
+                <h2 class="text-2xl font-semibold mb-4" data-i18n="privacy_sec1_title">Information We Collect</h2>
+                <p class="text-brand-muted dark:text-dark-mainText leading-relaxed" data-i18n="privacy_sec1_desc">InToday is designed to be local-first. We do not store your personal notes or schedules on our servers.</p>
+            </section>
+            
+            <section>
+                <h2 class="text-2xl font-semibold mb-4" data-i18n="privacy_sec2_title">How We Use Data</h2>
+                <p class="text-brand-muted dark:text-dark-mainText leading-relaxed" data-i18n="privacy_sec2_desc">Any data collected is used solely to improve the app experience and is never shared with third parties.</p>
+            </section>
+        </div>
+    </main>
+
+    <!-- ══ FOOTER ══ -->
+    <footer class="py-12 md:py-16 border-t border-brand-border/50 dark:border-transparent flex flex-col items-center justify-center gap-8 pb-24 dark:bg-[#0E0E0D]">
+        <a href="index.html" class="flex items-center gap-2 group opacity-80 hover:opacity-100 transition-opacity">
+            <img src="assets/logo.png" alt="InToday Logo" class="w-7 h-auto">
+            <span class="font-semibold text-sm tracking-tight text-brand-text dark:text-dark-text">InToday</span>
+        </a>
+        <div class="flex flex-wrap justify-center gap-x-8 gap-y-3 text-xs font-medium text-brand-muted dark:text-dark-muted">
+            <a href="#" data-i18n="footer_help" class="hover:text-brand-text dark:hover:text-dark-text transition-colors">Help / Feedback</a>
+            <a href="privacy.html" data-i18n="footer_privacy" class="hover:text-brand-text dark:hover:text-dark-text transition-colors">Privacy Policy</a>
+            <a href="#" data-i18n="footer_terms" class="hover:text-brand-text dark:hover:text-dark-text transition-colors">Terms of Service</a>
+        </div>
+        <p class="text-[10px] text-brand-accent dark:text-dark-muted opacity-60" data-i18n="footer_copy">
+            © 2026 InToday. All rights reserved.
+        </p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
