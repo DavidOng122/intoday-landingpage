@@ -25,7 +25,7 @@ const translations = {
         uc2_desc: 'Things to submit, materials to read, messages to reply, tasks for later... no exact time needed, just place them in the right part of your day.',
         uc3_title: 'For days that keep shifting',
         uc3_desc: 'Groceries, trips, city walks, or busy multi-tasking days – things can move easily, and your plans stay clear.',
-        quote: '“No longer bound by cluttered to-do lists and rigid time settings”',
+        quote: '“No longer bound by cluttered lists and exact schedules”',
         quote_attr: 'The InToday Philosophy',
         cta_title: 'Starting today, give things a place first!',
         cta_btn: 'Start for free',
