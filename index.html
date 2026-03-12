@@ -74,6 +74,14 @@
             line-height: 1.27 !important;
             letter-spacing: 0.06em !important;
         }
+        html[lang="ja"] h2 {
+            font-size: 1.75rem !important; /* Smaller than 3xl (1.875rem) */
+        }
+        @media (min-width: 768px) {
+            html[lang="ja"] h2 {
+                font-size: 2.75rem !important; /* Smaller than 5xl (3rem) */
+            }
+        }
         html[lang="zh"] p, html[lang="ja"] p {
             letter-spacing: 0.03em !important;
         }
