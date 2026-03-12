@@ -27,7 +27,7 @@ const translations = {
         uc3_desc: 'Groceries, trips, city walks, or busy multi-tasking days – things can move easily, and your plans stay clear.',
         quote: '“No longer bound by cluttered lists and exact schedules”',
         quote_attr: 'The InToday Philosophy',
-        cta_title: 'Starting today, give things a place first!',
+        cta_title: 'Starting today, give things a place.',
         cta_btn: 'Start for free',
         footer_copy: '© 2026 InToday. All rights reserved.',
     },
