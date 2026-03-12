@@ -8,7 +8,7 @@ const translations = {
         label: 'EN',
         nav_cta: 'Start for free',
         hero_title: 'Give things<br>a place first',
-        hero_sub: 'Stop letting small things get lost in notes, reminders, and to-do lists',
+        hero_sub: 'Keep small things from getting lost in notes, reminders, and to-do lists',
         hero_cta: 'Start for free',
         f1_label: 'Organize by time periods',
         f1_title: 'No need to squeeze into a calendar, no more fear of forgetting',
