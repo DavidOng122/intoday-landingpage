@@ -29,6 +29,9 @@ const translations = {
         quote_attr: 'The InToday Philosophy',
         cta_title: 'Starting today, give things a place.',
         cta_btn: 'Start for free',
+        footer_help: 'Help / Feedback',
+        footer_privacy: 'Privacy Policy',
+        footer_terms: 'Terms of Service',
         footer_copy: '© 2026 InToday. All rights reserved.',
     },
     zh: {
@@ -57,6 +60,9 @@ const translations = {
         quote_attr: 'InToday 的理念',
         cta_title: '从今天开始 让事情先有个位置！',
         cta_btn: '免费开始',
+        footer_help: '帮助与反馈',
+        footer_privacy: '隐私政策',
+        footer_terms: '服务条款',
         footer_copy: '© 2026 InToday. 版权所有。',
     },
     ms: {
@@ -85,6 +91,9 @@ const translations = {
         quote_attr: 'Falsafah InToday',
         cta_title: 'Bermula hari ini, beri setiap perkara tempat terlebih dahulu！',
         cta_btn: 'Mulakan percuma',
+        footer_help: 'Bantuan / Maklum Balas',
+        footer_privacy: 'Dasar Privasi',
+        footer_terms: 'Syarat Perkhidmatan',
         footer_copy: '© 2026 InToday. Hak cipta terpelihara.',
     },
     ja: {
@@ -113,6 +122,9 @@ const translations = {
         quote_attr: 'InToday のフィロソフィー',
         cta_title: '今日から、やることに居場所を。',
         cta_btn: '無料で始める',
+        footer_help: 'ヘルプ / フィードバック',
+        footer_privacy: 'プライバシーポリシー',
+        footer_terms: '利用規約',
         footer_copy: '© 2026 InToday. 全著作権所有。',
     },
     th: {
@@ -141,6 +153,9 @@ const translations = {
         quote_attr: 'ปรัชญาของ InToday',
         cta_title: 'เริ่มตั้งแต่วันนี้ ให้ทุกเรื่องมีที่ของมันก่อน！',
         cta_btn: 'เริ่มต้นฟรี',
+        footer_help: 'ช่วยเหลือ / ข้อเสนอแนะ',
+        footer_privacy: 'นโยบายความเป็นส่วนตัว',
+        footer_terms: 'เงื่อนไขการให้บริการ',
         footer_copy: '© 2026 InToday. สงวนลิขสิทธิ์ทั้งหมด',
     },
 };
