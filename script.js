@@ -263,10 +263,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Close on outside click
     document.addEventListener('click', () => closeLangMenu());
 
-    // Detect browser language and auto-apply
-    const browserLang = navigator.language.slice(0, 2).toLowerCase();
-    const supportedLangs = ['en', 'zh', 'ms', 'ja', 'th'];
-    if (supportedLangs.includes(browserLang)) {
-        applyLanguage(browserLang);
-    }
+    // Page defaults to English (as per static HTML)
+    // applyLanguage is called only on user interaction or if specific logic is needed
 });
