@@ -19,9 +19,9 @@
                     },
                     colors: {
                         brand: {
-                            bg: '#FDFDFD',
-                            text: '#1A1A18',
-                            muted: '#6B6A65',
+                            bg: '#FCFBFA',
+                            text: '#1A1A1A',
+                            muted: '#7A7874',
                             accent: '#8C877E',
                             surface: '#FFFFFF',
                             card: '#F7F5F2',
@@ -37,6 +37,20 @@
                             border: '#2A2A27',
                             mainText: '#D4D0C8'
                         }
+                    },
+                    animation: {
+                        'fade-up': 'fadeUp 0.6s ease-out forwards',
+                        'fade-up-delay-1': 'fadeUp 0.6s ease-out 0.15s forwards',
+                        'fade-up-delay-2': 'fadeUp 0.6s ease-out 0.3s forwards',
+                        'settle': 'settle 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.6s forwards',
+                        'float': 'float 4s ease-in-out infinite',
+                        'reveal-note': 'fadeIn 0.8s ease-out 1.2s forwards',
+                    },
+                    keyframes: {
+                        fadeUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
                     }
                 }
             }
@@ -44,14 +58,26 @@
     </script>
     <style>
         body {
-            background-color: #FDFDFD;
-            color: #1A1A18;
+            background-color: #FCFBFA;
+            color: #1A1A1A;
             -webkit-font-smoothing: antialiased;
             transition: background-color 0.3s ease, color 0.3s ease;
+            overflow-x: hidden;
         }
         .dark body {
             background-color: #111110;
             color: #D4D0C8;
+        }
+        .design-grid {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+        }
+        .dark .design-grid {
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
         }
         
         /* Language specific spacing overrides */
@@ -116,14 +142,14 @@
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col font-sans bg-brand-bg dark:bg-dark-bg text-brand-text dark:text-dark-text transition-colors duration-300">
+<body class="min-h-screen flex flex-col font-sans bg-brand-bg dark:bg-dark-bg text-brand-text dark:text-dark-text transition-colors duration-300 design-grid">
 
     <!-- ══ NAVBAR ══ -->
     <header class="sticky top-0 w-full z-50 bg-brand-bg/80 dark:bg-dark-bg/80 backdrop-blur-md border-b border-transparent">
         <nav class="max-w-7xl mx-auto px-6 md:px-12 py-4 md:py-6 flex justify-between items-center">
             <a href="index.html" class="flex items-center gap-2 group">
-                <img src="assets/logo.png" alt="IntoDay Logo" class="w-8 h-auto">
-                <span class="logo-brand font-semibold text-[1.05rem] tracking-tight dark:text-dark-text">IntoDay</span>
+                <img src="assets/logoreal.png" alt="IntoDay Logo" class="w-7 h-auto">
+                <span class="logo-brand font-semibold text-xl tracking-tight dark:text-dark-text">IntoDay</span>
             </a>
             <div class="flex items-center gap-3">
                 <button id="theme-btn" class="p-2.5 rounded-full hover:bg-brand-card dark:hover:bg-dark-card transition-colors flex items-center justify-center cursor-pointer" aria-label="Toggle Dark Mode">
@@ -152,19 +178,19 @@
 
     <main class="flex-1 max-w-3xl mx-auto px-6 py-24">
         <div class="terms-content">
-            <h1 class="text-4xl md:text-5xl font-semibold tracking-tight mb-4" data-i18n="ts_title">Terms of Service of IntoDay</h1>
+            <h1 class="text-4xl md:text-5xl font-semibold tracking-tight mb-4 opacity-0 animate-fade-up" data-i18n="ts_title">Terms of Service of IntoDay</h1>
             <p class="effective-date" data-i18n="ts_effective">Effective Date: @2026/3/12</p>
             
-            <p data-i18n="ts_intro">These Terms of Service (“Terms”) govern your access to and use of IntoDay (“IntoDay,” “we,” “us,” or “our”).</p>
-            <p data-i18n="ts_agree">By accessing or using IntoDay, you agree to these Terms. If you do not agree, please do not use IntoDay.</p>
+            <p class="opacity-0 animate-fade-up-delay-2" data-i18n="ts_intro">These Terms of Service (“Terms”) govern your access to and use of IntoDay (“IntoDay,” “we,” “us,” or “our”).</p>
+            <p class="opacity-0 animate-fade-up-delay-2" data-i18n="ts_agree">By accessing or using IntoDay, you agree to these Terms. If you do not agree, please do not use IntoDay.</p>
 
-            <h2 data-i18n="ts_s1_title">1. About IntoDay</h2>
+            <h2 class="opacity-0 animate-fade-up" data-i18n="ts_s1_title">1. About IntoDay</h2>
             <p data-i18n="ts_s1_desc">IntoDay is a tool for organizing tasks, reminders, follow-ups, and small plans into time blocks throughout the day. IntoDay is currently provided as an early-stage product / beta service. Some features may change, be updated, or be removed over time.</p>
 
-            <h2 data-i18n="ts_s2_title">2. Eligibility</h2>
+            <h2 class="opacity-0 animate-fade-up" data-i18n="ts_s2_title">2. Eligibility</h2>
             <p data-i18n="ts_s2_desc">You may use IntoDay only if you can legally enter into a binding agreement under the laws that apply to you.</p>
 
-            <h2 data-i18n="ts_s3_title">3. Your Account</h2>
+            <h2 class="opacity-0 animate-fade-up" data-i18n="ts_s3_title">3. Your Account</h2>
             <p data-i18n="ts_s3_intro">You may sign in to IntoDay using Google authentication. You are responsible for:</p>
             <ul data-i18n="ts_s3_list">
                 <li>maintaining the security of your account</li>
@@ -173,10 +199,10 @@
             </ul>
             <p data-i18n="ts_s3_contact">If you believe your account has been accessed without authorization, please contact us at: <a href="mailto:contact.intoday@gmail.com" class="underline">contact.intoday@gmail.com</a></p>
 
-            <h2 data-i18n="ts_s4_title">4. Your Content</h2>
+            <h2 class="opacity-0 animate-fade-up" data-i18n="ts_s4_title">4. Your Content</h2>
             <p data-i18n="ts_s4_desc">You may add content to IntoDay, including tasks, reminders, notes, links, locations, file-related references, and other text. You retain ownership of the content you submit to IntoDay. You grant us a limited right to store, process, and display your content only as necessary to operate and provide the service. You are responsible for the content you add and for ensuring that you have the right to use and submit it.</p>
 
-            <h2 data-i18n="ts_s5_title">5. Acceptable Use</h2>
+            <h2 class="opacity-0 animate-fade-up" data-i18n="ts_s5_title">5. Acceptable Use</h2>
             <p data-i18n="ts_s5_intro">You agree not to:</p>
             <ul data-i18n="ts_s5_list">
                 <li>use IntoDay for unlawful purposes</li>
@@ -187,28 +213,28 @@
             </ul>
             <p data-i18n="ts_s5_footer">We may suspend or terminate access if we reasonably believe you have violated these Terms.</p>
 
-            <h2 data-i18n="ts_s6_title">6. Service Availability</h2>
+            <h2 class="opacity-0 animate-fade-up" data-i18n="ts_s6_title">6. Service Availability</h2>
             <p data-i18n="ts_s6_desc">IntoDay is provided on an “as is” and “as available” basis. We may update, change, suspend, or discontinue parts of the service at any time, especially during the beta stage. We do not guarantee that IntoDay will always be available, error-free, or uninterrupted.</p>
 
-            <h2 data-i18n="ts_s7_title">7. Beta Status</h2>
+            <h2 class="opacity-0 animate-fade-up" data-i18n="ts_s7_title">7. Beta Status</h2>
             <p data-i18n="ts_s7_desc">Because IntoDay is in an early stage, features may change frequently. You understand that some features may be incomplete, bugs or interruptions may occur, and product behavior may change over time. We appreciate feedback, but we are not obligated to implement any suggestions.</p>
 
-            <h2 data-i18n="ts_s8_title">8. Privacy</h2>
+            <h2 class="opacity-0 animate-fade-up" data-i18n="ts_s8_title">8. Privacy</h2>
             <p data-i18n="ts_s8_desc">Your use of IntoDay is also governed by our Privacy Policy. Please review the Privacy Policy to understand how we collect, use, and handle your information.</p>
 
-            <h2 data-i18n="ts_s9_title">9. Termination</h2>
+            <h2 class="opacity-0 animate-fade-up" data-i18n="ts_s9_title">9. Termination</h2>
             <p data-i18n="ts_s9_desc">You may stop using IntoDay at any time. We may suspend or terminate your access to IntoDay at any time if you violate these Terms, if we need to protect the service, users, or our systems, or if we decide to discontinue the beta or service.</p>
 
-            <h2 data-i18n="ts_s10_title">10. Disclaimers</h2>
+            <h2 class="opacity-0 animate-fade-up" data-i18n="ts_s10_title">10. Disclaimers</h2>
             <p data-i18n="ts_s10_desc">IntoDay is a productivity tool only. It does not provide legal, medical, financial, or professional advice. We are not responsible for missed tasks, lost data, scheduling outcomes, or decisions made based on the use of IntoDay.</p>
 
-            <h2 data-i18n="ts_s11_title">11. Limitation of Liability</h2>
+            <h2 class="opacity-0 animate-fade-up" data-i18n="ts_s11_title">11. Limitation of Liability</h2>
             <p data-i18n="ts_s11_desc">To the maximum extent permitted by law, IntoDay and its operators will not be liable for any indirect, incidental, special, consequential, or punitive damages, or for any loss of data, profits, or business opportunities resulting from your use of or inability to use the service.</p>
 
-            <h2 data-i18n="ts_s12_title">12. Changes to These Terms</h2>
+            <h2 class="opacity-0 animate-fade-up" data-i18n="ts_s12_title">12. Changes to These Terms</h2>
             <p data-i18n="ts_s12_desc">We may update these Terms from time to time. If we make material changes, we will update the Effective Date above. Your continued use of IntoDay after the updated Terms take effect means you agree to the revised Terms.</p>
 
-            <h2 data-i18n="ts_s13_title">13. Contact</h2>
+            <h2 class="opacity-0 animate-fade-up" data-i18n="ts_s13_title">13. Contact</h2>
             <p data-i18n="ts_s13_desc">If you have questions about these Terms, you can contact us at: <a href="mailto:contact.intoday@gmail.com" class="underline">contact.intoday@gmail.com</a></p>
         </div>
     </main>
@@ -216,8 +242,8 @@
     <!-- ══ FOOTER ══ -->
     <footer class="py-12 md:py-16 border-t border-brand-border/50 dark:border-transparent flex flex-col items-center justify-center gap-8 pb-24 dark:bg-[#0E0E0D]">
         <a href="index.html" class="flex items-center gap-2 group opacity-80 hover:opacity-100 transition-opacity">
-            <img src="assets/logo.png" alt="IntoDay Logo" class="w-7 h-auto">
-            <span class="logo-brand font-semibold text-sm tracking-tight text-brand-text dark:text-dark-text">IntoDay</span>
+            <img src="assets/logoreal.png" alt="IntoDay Logo" class="w-7 h-auto">
+            <span class="logo-brand font-semibold text-2xl tracking-tight text-brand-text dark:text-dark-text">IntoDay</span>
         </a>
         <div class="flex flex-wrap justify-center gap-x-8 gap-y-3 text-xs font-medium text-brand-muted dark:text-dark-muted">
             <a href="help.html" data-i18n="footer_help" class="hover:text-brand-text dark:hover:text-dark-text transition-colors">Help / Feedback</a>
@@ -230,5 +256,16 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        function replayNavbarLogo(event) {
+            if (event) event.preventDefault();
+            const topLayer = document.getElementById('navbar-logo-top');
+            if (!topLayer) return;
+            topLayer.classList.remove('animate-settle');
+            void topLayer.offsetWidth; // trigger reflow
+            topLayer.classList.add('animate-settle');
+        }
+        window.addEventListener('load', () => setTimeout(() => replayNavbarLogo(), 150));
+    </script>
 </body>
 </html>

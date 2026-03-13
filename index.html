@@ -20,9 +20,9 @@
                     },
                     colors: {
                         brand: {
-                            bg: '#FDFDFD',
-                            text: '#1A1A18',
-                            muted: '#6B6A65',
+                            bg: '#FCFBFA',
+                            text: '#1A1A1A',
+                            muted: '#7A7874',
                             accent: '#8C877E',
                             surface: '#FFFFFF',
                             card: '#F7F5F2',
@@ -40,6 +40,20 @@
                             placeholder: '#232320', /* mockfill */
                             mainText: '#D4D0C8' /* main content text */
                         }
+                    },
+                    animation: {
+                        'fade-up': 'fadeUp 0.6s ease-out forwards',
+                        'fade-up-delay-1': 'fadeUp 0.6s ease-out 0.15s forwards',
+                        'fade-up-delay-2': 'fadeUp 0.6s ease-out 0.3s forwards',
+                        'settle': 'settle 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.6s forwards',
+                        'float': 'float 4s ease-in-out infinite',
+                        'reveal-note': 'fadeIn 0.8s ease-out 1.2s forwards',
+                    },
+                    keyframes: {
+                        fadeUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
                     }
                 }
             }
@@ -47,15 +61,27 @@
     </script>
     <style>
         body {
-            background-color: #FDFDFD;
-            color: #1A1A18;
+            background-color: #FCFBFA;
+            color: #1A1A1A;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             transition: background-color 0.3s ease, color 0.3s ease;
+            overflow-x: hidden;
         }
         .dark body {
             background-color: #111110;
             color: #D4D0C8;
+        }
+        .design-grid {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+        }
+        .dark .design-grid {
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
         }
         ::selection {
             background-color: #E5E3DF;
@@ -135,14 +161,14 @@
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col font-sans bg-brand-bg dark:bg-dark-bg text-brand-text dark:text-dark-text transition-colors duration-300">
+<body class="min-h-screen flex flex-col font-sans bg-brand-bg dark:bg-dark-bg text-brand-text dark:text-dark-text transition-colors duration-300 design-grid">
 
     <!-- ══ NAVBAR ══ -->
     <header class="sticky top-0 w-full z-50 bg-brand-bg/80 dark:bg-dark-bg/80 backdrop-blur-md border-b border-transparent transition-all duration-300">
         <nav class="max-w-7xl mx-auto px-6 md:px-12 py-4 md:py-6 flex justify-between items-center">
             <a href="#" class="flex items-center gap-2 group">
-                <img src="assets/logo.png" alt="IntoDay Logo" class="w-8 h-auto">
-                <span class="logo-brand font-semibold text-[1.05rem] tracking-tight dark:text-dark-text">IntoDay</span>
+                <img src="assets/logoreal.png" alt="IntoDay Logo" class="w-7 h-auto">
+                <span class="logo-brand font-semibold text-xl tracking-tight dark:text-dark-text">IntoDay</span>
             </a>
             <div class="flex items-center gap-3">
                 <!-- Dark Mode Toggle -->
@@ -178,13 +204,13 @@
 
         <!-- ══ HERO ══ -->
         <section class="pt-24 pb-32 px-6 md:px-12 flex flex-col items-center text-center max-w-5xl mx-auto">
-            <h1 class="text-5xl md:text-7xl lg:text-[5rem] font-semibold tracking-tight text-brand-text dark:text-dark-text leading-[1.15] max-w-4xl" data-i18n="hero_title">
+            <h1 class="text-5xl md:text-7xl lg:text-[5rem] font-semibold tracking-tight text-brand-text dark:text-dark-text leading-[1.15] opacity-0" data-reveal="animate-fade-up" data-i18n="hero_title">
                 A clearer<br>rhythm for your day
             </h1>
-            <p class="mt-8 text-lg md:text-xl text-brand-muted dark:text-dark-mainText max-w-xl font-normal leading-relaxed" data-i18n="hero_sub">
+            <p class="mt-8 text-lg md:text-xl text-brand-muted dark:text-dark-mainText max-w-xl font-normal leading-relaxed opacity-0" data-reveal="animate-fade-up-delay-1" data-i18n="hero_sub">
                 Keep small things from getting lost in notes, reminders, and to-do lists
             </p>
-            <a href="#" data-i18n="hero_cta" class="mt-10 bg-brand-text dark:text-dark-bg text-white dark:bg-dark-text px-8 py-4 rounded-full text-base font-medium hover:bg-black transition-colors inline-block">
+            <a href="#" data-i18n="hero_cta" class="mt-10 bg-brand-text dark:text-dark-bg text-white dark:bg-dark-text px-8 py-4 rounded-full text-base font-medium hover:bg-black transition-colors inline-block opacity-0" data-reveal="animate-fade-up-delay-2">
                 Start for free
             </a>
 
@@ -203,13 +229,13 @@
         <section class="py-16 md:py-32 px-6 md:px-12 max-w-7xl mx-auto rounded-[3rem] dark:bg-dark-card mt-12">
             <div class="flex flex-col md:grid md:grid-cols-2 gap-10 md:gap-24 items-center">
                 <div class="w-full max-w-md mx-auto md:mx-0 md:pr-8 text-center md:text-left">
-                    <span class="uppercase text-xs md:text-sm tracking-[0.15em] font-semibold text-[#ED1F1F] dark:text-dark-accent mb-4 md:mb-5 block" data-i18n="f1_label">
+                    <span class="uppercase text-xs md:text-sm tracking-[0.15em] font-semibold text-[#ED1F1F] dark:text-dark-accent mb-4 md:mb-5 block opacity-0" data-reveal="animate-fade-up" data-i18n="f1_label">
                         Organize by time of day
                     </span>
-                    <h2 class="text-3xl md:text-5xl font-semibold tracking-tight text-brand-text dark:text-dark-text mb-4 md:mb-6 leading-[1.15]" data-i18n="f1_title">
+                    <h2 class="text-3xl md:text-5xl font-semibold tracking-tight text-brand-text dark:text-dark-text mb-4 md:mb-6 leading-[1.15] opacity-0" data-reveal="animate-fade-up-delay-1" data-i18n="f1_title">
                         Place things where they belong
                     </h2>
-                    <p class="text-base md:text-xl text-brand-muted dark:text-dark-mainText leading-relaxed" data-i18n="f1_desc">
+                    <p class="text-base md:text-xl text-brand-muted dark:text-dark-mainText leading-relaxed opacity-0" data-reveal="animate-fade-up-delay-2" data-i18n="f1_desc">
                         No need to figure out the exact time, just place it into your day.
                     </p>
                 </div>
@@ -231,13 +257,13 @@
             <div class="flex flex-col md:grid md:grid-cols-2 gap-10 md:gap-24 items-center">
                 <!-- Text Block (Always First on Mobile, Second on Desktop) -->
                 <div class="w-full max-w-md mx-auto md:mx-0 md:pl-8 text-center md:text-left order-first md:order-last">
-                    <span class="uppercase text-xs md:text-sm tracking-[0.15em] font-semibold text-[#ED1F1F] dark:text-dark-accent mb-4 md:mb-5 block" data-i18n="f2_label">
+                    <span class="uppercase text-xs md:text-sm tracking-[0.15em] font-semibold text-[#ED1F1F] dark:text-dark-accent mb-4 md:mb-5 block opacity-0" data-reveal="animate-fade-up" data-i18n="f2_label">
                         Adapt as you go
                     </span>
-                    <h2 class="text-3xl md:text-5xl font-semibold tracking-tight text-brand-text dark:text-dark-text mb-4 md:mb-6 leading-[1.15]" data-i18n="f2_title">
+                    <h2 class="text-3xl md:text-5xl font-semibold tracking-tight text-brand-text dark:text-dark-text mb-4 md:mb-6 leading-[1.15] opacity-0" data-reveal="animate-fade-up-delay-1" data-i18n="f2_title">
                         Flexible by design
                     </h2>
-                    <p class="text-base md:text-xl text-brand-muted dark:text-dark-mainText leading-relaxed" data-i18n="f2_desc">
+                    <p class="text-base md:text-xl text-brand-muted dark:text-dark-mainText leading-relaxed opacity-0" data-reveal="animate-fade-up-delay-2" data-i18n="f2_desc">
                         When your plans change, just move things and keep going.
                     </p>
                 </div>
@@ -259,13 +285,13 @@
         <section class="py-16 md:py-32 px-6 md:px-12 max-w-7xl mx-auto rounded-[3rem] dark:bg-dark-card mt-12 mb-24">
             <div class="flex flex-col md:grid md:grid-cols-2 gap-10 md:gap-24 items-center">
                 <div class="w-full max-w-md mx-auto md:mx-0 md:pr-8 text-center md:text-left">
-                    <span class="uppercase text-xs md:text-sm tracking-[0.15em] font-semibold text-[#ED1F1F] dark:text-dark-accent mb-4 md:mb-5 block" data-i18n="f3_label">
+                    <span class="uppercase text-xs md:text-sm tracking-[0.15em] font-semibold text-[#ED1F1F] dark:text-dark-accent mb-4 md:mb-5 block opacity-0" data-reveal="animate-fade-up" data-i18n="f3_label">
                         Keep it simple
                     </span>
-                    <h2 class="text-3xl md:text-5xl font-semibold tracking-tight text-brand-text dark:text-dark-text mb-4 md:mb-6 leading-[1.15]" data-i18n="f3_title">
+                    <h2 class="text-3xl md:text-5xl font-semibold tracking-tight text-brand-text dark:text-dark-text mb-4 md:mb-6 leading-[1.15] opacity-0" data-reveal="animate-fade-up-delay-1" data-i18n="f3_title">
                         One page for your day
                     </h2>
-                    <p class="text-base md:text-xl text-brand-muted dark:text-dark-mainText leading-relaxed" data-i18n="f3_desc">
+                    <p class="text-base md:text-xl text-brand-muted dark:text-dark-mainText leading-relaxed opacity-0" data-reveal="animate-fade-up-delay-2" data-i18n="f3_desc">
                         Your day stays in one place, easy to see, adjust, and move on.
                     </p>
                 </div>
@@ -295,10 +321,10 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold tracking-tight text-brand-text dark:text-dark-text" data-i18n="uc1_title">
+                    <h3 class="text-xl font-semibold tracking-tight text-brand-text dark:text-dark-text opacity-0" data-reveal="animate-fade-up" data-i18n="uc1_title">
                         For work follow-ups
                     </h3>
-                    <p class="text-brand-muted dark:text-dark-mainText leading-relaxed text-base" data-i18n="uc1_desc">
+                    <p class="text-brand-muted dark:text-dark-mainText leading-relaxed text-base opacity-0" data-reveal="animate-fade-up-delay-1" data-i18n="uc1_desc">
                         Keep handoffs and follow-ups in one clear place – instead of leaving them in notes or chat.
                     </p>
                 </div>
@@ -309,10 +335,10 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold tracking-tight text-brand-text dark:text-dark-text" data-i18n="uc2_title">
+                    <h3 class="text-xl font-semibold tracking-tight text-brand-text dark:text-dark-text opacity-0" data-reveal="animate-fade-up" data-i18n="uc2_title">
                         For plans without exact times
                     </h3>
-                    <p class="text-brand-muted dark:text-dark-mainText leading-relaxed text-base" data-i18n="uc2_desc">
+                    <p class="text-brand-muted dark:text-dark-mainText leading-relaxed text-base opacity-0" data-reveal="animate-fade-up-delay-1" data-i18n="uc2_desc">
                         Buying groceries, going to a shop... you know you need to do, but don't have an exact time for yet.
                     </p>
                 </div>
@@ -323,10 +349,10 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold tracking-tight text-brand-text dark:text-dark-text" data-i18n="uc3_title">
+                    <h3 class="text-xl font-semibold tracking-tight text-brand-text dark:text-dark-text opacity-0" data-reveal="animate-fade-up" data-i18n="uc3_title">
                         For days that keep changing
                     </h3>
-                    <p class="text-brand-muted dark:text-dark-mainText leading-relaxed text-base" data-i18n="uc3_desc">
+                    <p class="text-brand-muted dark:text-dark-mainText leading-relaxed text-base opacity-0" data-reveal="animate-fade-up-delay-1" data-i18n="uc3_desc">
                         Trips, city walks, and busy days with changing plans and timing - keep things visible and easy to move.
                     </p>
                 </div>
@@ -337,12 +363,12 @@
         <!-- ══ QUOTE ══ -->
         <section class="py-48 md:py-64 px-6 flex flex-col items-center text-center max-w-4xl mx-auto">
             <div class="flex items-center justify-center mb-12 opacity-80">
-                <img src="assets/logo.png" alt="IntoDay Logo" class="w-16 h-auto">
+                <img src="assets/stonereal.png" alt="IntoDay Icon" class="w-32 h-auto">
             </div>
-            <blockquote class="font-serif text-4xl md:text-5xl lg:text-6xl leading-[1.2] tracking-tight text-brand-text dark:text-dark-text italic" data-i18n="quote">
+            <blockquote class="font-serif text-4xl md:text-5xl lg:text-6xl leading-[1.2] tracking-tight text-brand-text dark:text-dark-text italic opacity-0" data-reveal="animate-fade-up" data-i18n="quote">
                 "Your day isn't a list of chores.<br class="hidden md:block"> It's a rhythm of moments."
             </blockquote>
-            <p class="mt-8 text-xs md:text-sm font-semibold tracking-[0.2em] uppercase text-brand-muted dark:text-[#8C8879]" data-i18n="quote_author">
+            <p class="mt-8 text-xs md:text-sm font-semibold tracking-[0.2em] uppercase text-brand-muted dark:text-[#8C8879] opacity-0" data-reveal="animate-fade-up-delay-1" data-i18n="quote_author">
                 The IntoDay Philosophy
             </p>
         </section>
@@ -350,10 +376,10 @@
         <!-- ══ CTA ══ -->
         <section class="py-24 px-6 md:px-12 max-w-7xl mx-auto">
             <div class="w-full rounded-[2.5rem] py-20 px-8 md:px-24 flex flex-col md:flex-row items-center justify-between gap-12 border border-brand-border/40 dark:border-transparent dark:bg-dark-surface shadow-sm dark:shadow-none bg-gradient-to-b from-[#C8D1E8] to-[#E8D8B8] dark:from-[#1E1C18] dark:to-[#1E1C18]">
-                <h2 class="font-serif text-4xl md:text-[2.75rem] italic text-brand-text dark:text-dark-text tracking-tight text-center md:text-left leading-tight max-w-lg" data-i18n="cta_title">
+                <h2 class="font-serif text-4xl md:text-[2.75rem] italic text-brand-text dark:text-dark-text tracking-tight text-center md:text-left leading-tight max-w-lg opacity-0" data-reveal="animate-fade-up" data-i18n="cta_title">
                     Bring more rhythm into your day
                 </h2>
-                <a href="#" data-i18n="cta_btn" class="bg-brand-text dark:bg-dark-text text-white dark:text-dark-bg px-8 py-4 rounded-full text-base font-medium hover:bg-black dark:hover:bg-white transition-colors shrink-0 whitespace-nowrap italic shadow-md">
+                <a href="#" data-i18n="cta_btn" class="bg-brand-text dark:bg-dark-text text-white dark:text-dark-bg px-8 py-4 rounded-full text-base font-medium hover:bg-black dark:hover:bg-white transition-colors shrink-0 whitespace-nowrap italic shadow-md opacity-0" data-reveal="animate-fade-up-delay-1">
                     Start for free
                 </a>
             </div>
@@ -364,8 +390,8 @@
     <!-- ══ FOOTER ══ -->
     <footer class="py-12 md:py-16 border-t border-brand-border/50 dark:border-transparent flex flex-col items-center justify-center gap-8 pb-24 dark:bg-[#0E0E0D]">
         <a href="#" class="flex items-center gap-2 group opacity-80 hover:opacity-100 transition-opacity">
-            <img src="assets/logo.png" alt="IntoDay Logo" class="w-7 h-auto">
-            <span class="logo-brand font-semibold text-sm tracking-tight text-brand-text dark:text-dark-text">IntoDay</span>
+            <img src="assets/logoreal.png" alt="IntoDay Logo" class="w-7 h-auto">
+            <span class="logo-brand font-semibold text-2xl tracking-tight text-brand-text dark:text-dark-text">IntoDay</span>
         </a>
         <div class="flex flex-wrap justify-center gap-x-8 gap-y-3 text-xs font-medium text-brand-muted dark:text-dark-muted">
             <a href="help.html" data-i18n="footer_help" class="hover:text-brand-text dark:hover:text-dark-text transition-colors">Help / Feedback</a>
@@ -378,5 +404,16 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        function replayNavbarLogo(event) {
+            if (event) event.preventDefault();
+            const topLayer = document.getElementById('navbar-logo-top');
+            if (!topLayer) return;
+            topLayer.classList.remove('animate-settle');
+            void topLayer.offsetWidth; // trigger reflow
+            topLayer.classList.add('animate-settle');
+        }
+        window.addEventListener('load', () => setTimeout(() => replayNavbarLogo(), 150));
+    </script>
 </body>
 </html>

@@ -19,9 +19,9 @@
                     },
                     colors: {
                         brand: {
-                            bg: '#FDFDFD',
-                            text: '#1A1A18',
-                            muted: '#6B6A65',
+                            bg: '#FCFBFA',
+                            text: '#1A1A1A',
+                            muted: '#7A7874',
                             accent: '#8C877E',
                             surface: '#FFFFFF',
                             card: '#F7F5F2',
@@ -37,6 +37,20 @@
                             border: '#2A2A27',
                             mainText: '#D4D0C8'
                         }
+                    },
+                    animation: {
+                        'fade-up': 'fadeUp 0.6s ease-out forwards',
+                        'fade-up-delay-1': 'fadeUp 0.6s ease-out 0.15s forwards',
+                        'fade-up-delay-2': 'fadeUp 0.6s ease-out 0.3s forwards',
+                        'settle': 'settle 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.6s forwards',
+                        'float': 'float 4s ease-in-out infinite',
+                        'reveal-note': 'fadeIn 0.8s ease-out 1.2s forwards',
+                    },
+                    keyframes: {
+                        fadeUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
                     }
                 }
             }
@@ -44,12 +58,24 @@
     </script>
     <style>
         body {
-            background-color: #FDFDFD;
-            color: #1A1A18;
+            background-color: #FCFBFA;
+            color: #1A1A1A;
             -webkit-font-smoothing: antialiased;
             transition: background-color 0.3s ease, color 0.3s ease;
+            overflow-x: hidden;
         }
         .dark body { background-color: #111110; color: #D4D0C8; }
+        .design-grid {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+        }
+        .dark .design-grid {
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+        }
 
         html[lang="zh"] h1, html[lang="zh"] h2, html[lang="zh"] h3,
         html[lang="ja"] h1, html[lang="ja"] h2, html[lang="ja"] h3 {
@@ -312,14 +338,14 @@
         .dark .card-cta-btn:hover { background: #EDEAE3; color: #1A1A18; border-color: #EDEAE3; }
     </style>
 </head>
-<body class="min-h-screen flex flex-col font-sans bg-brand-bg dark:bg-dark-bg text-brand-text dark:text-dark-text transition-colors duration-300">
+<body class="min-h-screen flex flex-col font-sans bg-brand-bg dark:bg-dark-bg text-brand-text dark:text-dark-text transition-colors duration-300 design-grid">
 
     <!-- ══ NAVBAR ══ -->
     <header class="sticky top-0 w-full z-50 bg-brand-bg/80 dark:bg-dark-bg/80 backdrop-blur-md border-b border-transparent">
         <nav class="max-w-7xl mx-auto px-6 md:px-12 py-4 md:py-6 flex justify-between items-center">
             <a href="index.html" class="flex items-center gap-2 group">
-                <img src="assets/logo.png" alt="IntoDay Logo" class="w-8 h-auto">
-                <span class="logo-brand font-semibold text-[1.05rem] tracking-tight dark:text-dark-text">IntoDay</span>
+                <img src="assets/logoreal.png" alt="IntoDay Logo" class="w-7 h-auto">
+                <span class="logo-brand font-semibold text-xl tracking-tight dark:text-dark-text">IntoDay</span>
             </a>
             <div class="flex items-center gap-3">
                 <button id="theme-btn" class="p-2.5 rounded-full hover:bg-brand-card dark:hover:bg-dark-card transition-colors flex items-center justify-center cursor-pointer" aria-label="Toggle Dark Mode">
@@ -348,9 +374,9 @@
     <main class="flex-1 max-w-7xl mx-auto px-6 py-24 w-full">
         <!-- Hero Section -->
         <section class="text-center mb-24">
-            <span class="text-xs font-semibold tracking-widest text-brand-accent uppercase mb-6 block" data-i18n="help_hero_label">Support & Resources</span>
-            <h1 class="text-4xl md:text-6xl font-semibold tracking-tight mb-6" data-i18n="help_hero_title">Help & Feedback</h1>
-            <p class="text-lg md:text-xl text-brand-muted dark:text-dark-mainText max-w-2xl mx-auto leading-relaxed" data-i18n="help_hero_desc">Questions, bugs, or ideas — we'd love to hear from you. We build IntoDay based on how you plan your life.</p>
+            <span class="text-xs font-semibold tracking-widest text-brand-accent uppercase mb-6 block opacity-0 animate-fade-up" data-i18n="help_hero_label">Support & Resources</span>
+            <h1 class="text-4xl md:text-6xl font-semibold tracking-tight mb-6 opacity-0 animate-fade-up-delay-1" data-i18n="help_hero_title">Help & Feedback</h1>
+            <p class="text-lg md:text-xl text-brand-muted dark:text-dark-mainText max-w-2xl mx-auto leading-relaxed opacity-0 animate-fade-up-delay-2" data-i18n="help_hero_desc">Questions, bugs, or ideas — we'd love to hear from you. We build IntoDay based on how you plan your life.</p>
         </section>
 
         <!-- Support Grid -->
@@ -360,7 +386,7 @@
                 <div class="w-12 h-12 bg-white dark:bg-dark-surface rounded-full flex items-center justify-center mb-8 shadow-sm">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brand-accent"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
                 </div>
-                <h3 class="text-2xl font-semibold mb-4" data-i18n="help_card1_title">Share feedback</h3>
+                <h3 class="text-2xl font-semibold mb-4 opacity-0" data-reveal="animate-fade-up" data-i18n="help_card1_title">Share feedback</h3>
                 <p class="text-brand-muted dark:text-dark-mainText mb-12 flex-grow leading-relaxed" data-i18n="help_card1_desc">Tell us what feels useful, confusing, or missing. Your insights shape the future of the app.</p>
                 <button onclick="openModal('feedback')" class="card-cta-btn" data-i18n="help_card1_cta">Send feedback</button>
             </div>
@@ -370,7 +396,7 @@
                 <div class="w-12 h-12 bg-white dark:bg-dark-surface rounded-full flex items-center justify-center mb-8 shadow-sm">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brand-accent"><path d="M8 2l1.5 1.5M16 2l-1.5 1.5M18 13.5A5.5 5.5 0 1 1 12.5 8H13l-1.5 1.5M13 19v-4M9 16l3 3 3-3"/></svg>
                 </div>
-                <h3 class="text-2xl font-semibold mb-4" data-i18n="help_card2_title">Report a bug</h3>
+                <h3 class="text-2xl font-semibold mb-4 opacity-0" data-reveal="animate-fade-up-delay-1" data-i18n="help_card2_title">Report a bug</h3>
                 <p class="text-brand-muted dark:text-dark-mainText mb-12 flex-grow leading-relaxed" data-i18n="help_card2_desc">Something not working as expected? Let us know so we can fix it and smooth out your experience.</p>
                 <button onclick="openModal('bug')" class="card-cta-btn" data-i18n="help_card2_cta">Report a bug</button>
             </div>
@@ -380,14 +406,14 @@
                 <div class="w-12 h-12 bg-white dark:bg-dark-surface rounded-full flex items-center justify-center mb-8 shadow-sm">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brand-accent"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
                 </div>
-                <h3 class="text-2xl font-semibold mb-4" data-i18n="help_card3_title">Ask for help</h3>
+                <h3 class="text-2xl font-semibold mb-4 opacity-0" data-reveal="animate-fade-up-delay-2" data-i18n="help_card3_title">Ask for help</h3>
                 <p class="text-brand-muted dark:text-dark-mainText mb-12 flex-grow leading-relaxed" data-i18n="help_card3_desc">Need help using IntoDay or understanding how a specific feature works? We're here for you.</p>
                 <button onclick="openModal('help')" class="card-cta-btn" data-i18n="help_card3_cta">Get help</button>
             </div>
         </div>
 
         <section class="max-w-3xl mx-auto mb-32">
-            <h2 class="text-3xl md:text-4xl font-semibold text-center mb-16" data-i18n="faq_title">Frequently asked</h2>
+            <h2 class="text-3xl md:text-4xl font-semibold text-center mb-16 opacity-0" data-reveal="animate-fade-up" data-i18n="faq_title">Frequently asked</h2>
             <div class="space-y-4">
                 <details class="group bg-brand-card dark:bg-dark-card rounded-2xl overflow-hidden border border-transparent hover:border-brand-border/30 dark:hover:border-dark-border/30 transition-all">
                     <summary class="flex justify-between items-center px-8 py-6 cursor-pointer list-none">
@@ -446,8 +472,8 @@
     <!-- ══ FOOTER ══ -->
     <footer class="py-12 md:py-16 border-t border-brand-border/50 dark:border-transparent flex flex-col items-center justify-center gap-8 pb-24 dark:bg-[#0E0E0D]">
         <a href="index.html" class="flex items-center gap-2 group opacity-80 hover:opacity-100 transition-opacity">
-            <img src="assets/logo.png" alt="IntoDay Logo" class="w-7 h-auto">
-            <span class="logo-brand font-semibold text-sm tracking-tight text-brand-text dark:text-dark-text">IntoDay</span>
+            <img src="assets/logoreal.png" alt="IntoDay Logo" class="w-7 h-auto">
+            <span class="logo-brand font-semibold text-2xl tracking-tight text-brand-text dark:text-dark-text">IntoDay</span>
         </a>
         <div class="flex flex-wrap justify-center gap-x-8 gap-y-3 text-xs font-medium text-brand-muted dark:text-dark-muted">
             <a href="help.html" data-i18n="footer_help" class="hover:text-brand-text dark:hover:text-dark-text transition-colors">Help / Feedback</a>
@@ -800,6 +826,17 @@
             if (err) err.classList.remove('show');
         });
     });
+    </script>
+    <script>
+        function replayNavbarLogo(event) {
+            if (event) event.preventDefault();
+            const topLayer = document.getElementById('navbar-logo-top');
+            if (!topLayer) return;
+            topLayer.classList.remove('animate-settle');
+            void topLayer.offsetWidth; // trigger reflow
+            topLayer.classList.add('animate-settle');
+        }
+        window.addEventListener('load', () => setTimeout(() => replayNavbarLogo(), 150));
     </script>
 </body>
 </html>

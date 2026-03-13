@@ -1038,6 +1038,35 @@ function initHeaderScroll() {
     });
 }
 
+// Scroll Reveal Logic
+function initScrollReveal() {
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
+
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                const revealClass = el.getAttribute('data-reveal');
+                if (revealClass) {
+                    // Split by spaces to support multiple classes (though usually just one)
+                    revealClass.split(' ').forEach(cls => {
+                        if (cls) el.classList.add(cls);
+                    });
+                }
+                revealObserver.unobserve(el);
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('[data-reveal]').forEach(el => {
+        revealObserver.observe(el);
+    });
+}
+
 // Init
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize Theme
@@ -1045,6 +1074,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize Header Scroll
     initHeaderScroll();
+
+    // Initialize Scroll Reveal
+    initScrollReveal();
 
     // Toggle dropdown
     document.getElementById('lang-btn').addEventListener('click', (e) => {
