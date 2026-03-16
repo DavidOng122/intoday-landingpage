@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +10,9 @@
     <script src="https://cdn.tailwindcss.com/3.4.17"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&display=swap"
+        rel="stylesheet">
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -66,45 +69,79 @@
             transition: background-color 0.3s ease, color 0.3s ease;
             overflow-x: hidden;
         }
-        .dark body { background-color: #111110; color: #D4D0C8; }
+
+        .dark body {
+            background-color: #111110;
+            color: #D4D0C8;
+        }
+
         .design-grid {
             background-size: 40px 40px;
-            background-image: 
+            background-image:
                 linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
                 linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
         }
+
         .dark .design-grid {
-            background-image: 
+            background-image:
                 linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
                 linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
         }
 
-        html[lang="zh"] h1, html[lang="zh"] h2, html[lang="zh"] h3,
-        html[lang="ja"] h1, html[lang="ja"] h2, html[lang="ja"] h3 {
+        html[lang="zh"] h1,
+        html[lang="zh"] h2,
+        html[lang="zh"] h3,
+        html[lang="ja"] h1,
+        html[lang="ja"] h2,
+        html[lang="ja"] h3 {
             line-height: 1.27 !important;
             letter-spacing: 0.06em !important;
         }
 
-        #lang-menu { display: none; }
-        #lang-menu.open { display: block; }
+        #lang-menu {
+            display: none;
+        }
 
-        .help-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .help-card:hover { transform: translateY(-4px); }
+        #lang-menu.open {
+            display: block;
+        }
 
-        details summary::-webkit-details-marker { display: none; }
-        details[open] .summary-icon { transform: rotate(45deg); }
+        .help-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .help-card:hover {
+            transform: translateY(-4px);
+        }
+
+        details summary::-webkit-details-marker {
+            display: none;
+        }
+
+        details[open] .summary-icon {
+            transform: rotate(45deg);
+        }
 
         /* ── Modal Overlay ── */
         .modal-overlay {
-            position: fixed; inset: 0; z-index: 1000;
-            display: flex; align-items: center; justify-content: center;
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             background: rgba(20, 20, 18, 0.4);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
-            opacity: 0; pointer-events: none;
+            opacity: 0;
+            pointer-events: none;
             transition: opacity 0.4s ease;
         }
-        .modal-overlay.open { opacity: 1; pointer-events: all; }
+
+        .modal-overlay.open {
+            opacity: 1;
+            pointer-events: all;
+        }
 
         .modal-sheet {
             background: #FDFDFD;
@@ -115,13 +152,20 @@
             display: flex;
             flex-direction: column;
             overflow: hidden;
-            box-shadow: 0 32px 80px rgba(0,0,0,0.12);
+            box-shadow: 0 32px 80px rgba(0, 0, 0, 0.12);
             transform: translateY(24px) scale(0.98);
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
             position: relative;
         }
-        .dark .modal-sheet { background: #1A1A18; color: #EDEAE3; }
-        .modal-overlay.open .modal-sheet { transform: translateY(0) scale(1); }
+
+        .dark .modal-sheet {
+            background: #1A1A18;
+            color: #EDEAE3;
+        }
+
+        .modal-overlay.open .modal-sheet {
+            transform: translateY(0) scale(1);
+        }
 
         .logo-brand {
             font-family: 'Avenir', 'Avenir Next', 'Trebuchet MS', sans-serif;
@@ -129,6 +173,7 @@
             paint-order: stroke fill;
             letter-spacing: 1px;
         }
+
         .dark .logo-brand {
             -webkit-text-stroke: 0.2px #EDEAE3;
         }
@@ -147,6 +192,7 @@
             flex-shrink: 0;
             position: relative;
         }
+
         .modal-body {
             padding: 0 40px 40px;
             overflow-y: auto;
@@ -154,18 +200,21 @@
             /* Webkit-specific to hide scrollbar while allowing scrolling */
             -webkit-overflow-scrolling: touch;
         }
-        
+
         /* Subtle scrollbar */
         .modal-body::-webkit-scrollbar {
             width: 4px;
         }
+
         .modal-body::-webkit-scrollbar-track {
             background: transparent;
         }
+
         .modal-body::-webkit-scrollbar-thumb {
             background: #E5E3DF;
             border-radius: 10px;
         }
+
         .dark .modal-body::-webkit-scrollbar-thumb {
             background: #3A3A37;
         }
@@ -176,6 +225,7 @@
             background: #FDFDFD;
             border-top: 1px solid rgba(229, 227, 223, 0.5);
         }
+
         .dark .modal-footer {
             background: #1A1A18;
             border-top-color: rgba(42, 42, 39, 0.5);
@@ -183,58 +233,116 @@
 
         /* Mobile overrides */
         @media (max-width: 600px) {
-            .modal-overlay { align-items: flex-end; }
+            .modal-overlay {
+                align-items: flex-end;
+            }
+
             .modal-sheet {
                 width: 100%;
                 border-radius: 28px 28px 0 0;
                 max-height: 94vh;
                 transform: translateY(100%);
             }
-            .modal-header { padding: 32px 24px 16px; }
-            .modal-body { padding: 0 24px 32px; }
-            .modal-footer { padding: 16px 24px 40px; }
+
+            .modal-header {
+                padding: 32px 24px 16px;
+            }
+
+            .modal-body {
+                padding: 0 24px 32px;
+            }
+
+            .modal-footer {
+                padding: 16px 24px 40px;
+            }
         }
 
         /* ── Form Fields ── */
         .form-field {
-            display: flex; flex-direction: column; gap: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
         }
+
         .form-label {
-            font-size: 0.82rem; font-weight: 600;
-            color: #1A1A18; letter-spacing: 0.01em;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #1A1A18;
+            letter-spacing: 0.01em;
         }
-        .dark .form-label { color: #EDEAE3; }
+
+        .dark .form-label {
+            color: #EDEAE3;
+        }
+
         .form-label span.opt {
-            font-weight: 400; color: #8C877E; margin-left: 4px;
+            font-weight: 400;
+            color: #8C877E;
+            margin-left: 4px;
         }
-        .form-input, .form-textarea {
-            width: 100%; padding: 14px 16px;
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 14px 16px;
             background: #F7F5F2;
             border: 1.5px solid transparent;
             border-radius: 14px;
             font-family: 'Inter', sans-serif;
-            font-size: 0.92rem; color: #1A1A18;
+            font-size: 0.92rem;
+            color: #1A1A18;
             outline: none;
             transition: all 0.2s ease;
             resize: none;
         }
-        .dark .form-input, .dark .form-textarea {
-            background: #111110; color: #EDEAE3; border-color: transparent;
+
+        .dark .form-input,
+        .dark .form-textarea {
+            background: #111110;
+            color: #EDEAE3;
+            border-color: transparent;
         }
-        .form-input::placeholder, .form-textarea::placeholder { color: #A09E99; }
-        .dark .form-input::placeholder, .dark .form-textarea::placeholder { color: #5C5B57; }
-        .form-input:focus, .form-textarea:focus {
-            background: #FFFFFF; border-color: #E5E3DF; box-shadow: 0 0 0 1px #1A1A18;
+
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: #A09E99;
         }
-        .dark .form-input:focus, .dark .form-textarea:focus {
-            background: #1A1A18; border-color: #2A2A27; box-shadow: 0 0 0 1px #EDEAE3;
+
+        .dark .form-input::placeholder,
+        .dark .form-textarea::placeholder {
+            color: #5C5B57;
         }
-        .form-input.error, .form-textarea.error { border-color: #ED1F1F !important; box-shadow: none !important; }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            background: #FFFFFF;
+            border-color: #E5E3DF;
+            box-shadow: 0 0 0 1px #1A1A18;
+        }
+
+        .dark .form-input:focus,
+        .dark .form-textarea:focus {
+            background: #1A1A18;
+            border-color: #2A2A27;
+            box-shadow: 0 0 0 1px #EDEAE3;
+        }
+
+        .form-input.error,
+        .form-textarea.error {
+            border-color: #ED1F1F !important;
+            box-shadow: none !important;
+        }
 
         .field-error {
-            font-size: 0.78rem; color: #ED1F1F; display: none; margin-top: 2px;
+            font-size: 0.78rem;
+            color: #ED1F1F;
+            display: none;
+            margin-top: 2px;
         }
-        .field-error.show { display: block; }
+
+        .field-error.show {
+            display: block;
+        }
 
         /* ── Upload Area ── */
         .upload-area {
@@ -246,127 +354,282 @@
             transition: all 0.2s;
             position: relative;
         }
-        .dark .upload-area { border-color: #3A3A37; }
-        .upload-area:hover { border-color: #1A1A18; background: #F7F5F2; }
-        .dark .upload-area:hover { border-color: #EDEAE3; background: #111110; }
-        .upload-area.has-file { border-color: #1A1A18; border-style: solid; background: #F7F5F2; }
-        .dark .upload-area.has-file { border-color: #EDEAE3; background: #111110; }
-        .upload-area input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+
+        .dark .upload-area {
+            border-color: #3A3A37;
+        }
+
+        .upload-area:hover {
+            border-color: #1A1A18;
+            background: #F7F5F2;
+        }
+
+        .dark .upload-area:hover {
+            border-color: #EDEAE3;
+            background: #111110;
+        }
+
+        .upload-area.has-file {
+            border-color: #1A1A18;
+            border-style: solid;
+            background: #F7F5F2;
+        }
+
+        .dark .upload-area.has-file {
+            border-color: #EDEAE3;
+            background: #111110;
+        }
+
+        .upload-area input[type="file"] {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            cursor: pointer;
+        }
 
         /* ── Submit Button ── */
         .btn-submit {
-            width: 100%; padding: 16px 24px;
-            background: #1A1A18; color: #FFFFFF;
-            border: none; border-radius: 14px;
+            width: 100%;
+            padding: 16px 24px;
+            background: #1A1A18;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 14px;
             font-family: 'Inter', sans-serif;
-            font-size: 0.95rem; font-weight: 600;
-            cursor: pointer; letter-spacing: 0.01em;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            letter-spacing: 0.01em;
             transition: all 0.2s ease;
-            display: flex; align-items: center; justify-content: center; gap: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
-        .dark .btn-submit { background: #EDEAE3; color: #1A1A18; }
-        .btn-submit:hover { opacity: 0.9; transform: translateY(-1px); }
-        .btn-submit:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+
+        .dark .btn-submit {
+            background: #EDEAE3;
+            color: #1A1A18;
+        }
+
+        .btn-submit:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            transform: none;
+        }
 
         /* ── Success & Error States ── */
         .modal-result {
-            display: none; height: 100%; flex-direction: column;
-            align-items: center; text-align: center; gap: 16px;
+            display: none;
+            height: 100%;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 16px;
             padding: 40px 0;
         }
-        .modal-result.show { display: flex; }
+
+        .modal-result.show {
+            display: flex;
+        }
 
         .result-icon {
-            width: 64px; height: 64px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.8rem; margin-bottom: 8px;
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 8px;
         }
-        .result-icon.success { background: #F0FAF0; color: #2D8A2D; }
-        .dark .result-icon.success { background: rgba(45, 138, 45, 0.1); }
+
+        .result-icon.success {
+            background: #F0FAF0;
+            color: #2D8A2D;
+        }
+
+        .dark .result-icon.success {
+            background: rgba(45, 138, 45, 0.1);
+        }
 
         .spinner {
-            width: 18px; height: 18px;
-            border: 2px solid rgba(255,255,255,0.4);
+            width: 18px;
+            height: 18px;
+            border: 2px solid rgba(255, 255, 255, 0.4);
             border-top-color: #FFFFFF;
             border-radius: 50%;
             animation: spin 0.7s linear infinite;
         }
-        .dark .spinner { border-color: rgba(26,26,24,0.3); border-top-color: #1A1A18; }
-        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .dark .spinner {
+            border-color: rgba(26, 26, 24, 0.3);
+            border-top-color: #1A1A18;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
 
         /* ── Close Button ── */
         .modal-close-btn {
-            position: absolute; top: 32px; right: 32px;
-            width: 40px; height: 40px; border-radius: 50%;
+            position: absolute;
+            top: 32px;
+            right: 32px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
             background: #F7F5F2;
-            border: none; cursor: pointer;
-            display: flex; align-items: center; justify-content: center;
-            color: #1A1A18; transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1A1A18;
+            transition: all 0.2s;
             z-index: 10;
         }
-        .dark .modal-close-btn { background: #2A2A27; color: #EDEAE3; }
-        .modal-close-btn:hover { background: #E5E3DF; transform: rotate(90deg); }
-        .dark .modal-close-btn:hover { background: #3A3A37; }
+
+        .dark .modal-close-btn {
+            background: #2A2A27;
+            color: #EDEAE3;
+        }
+
+        .modal-close-btn:hover {
+            background: #E5E3DF;
+            transform: rotate(90deg);
+        }
+
+        .dark .modal-close-btn:hover {
+            background: #3A3A37;
+        }
+
         @media (max-width: 600px) {
-            .modal-close-btn { top: 24px; right: 24px; width: 36px; height: 36px; }
+            .modal-close-btn {
+                top: 24px;
+                right: 24px;
+                width: 36px;
+                height: 36px;
+            }
         }
 
         /* ── Handle bar (mobile) ── */
         .sheet-handle {
-            width: 40px; height: 5px;
-            background: #D8D6D0; border-radius: 3px;
+            width: 40px;
+            height: 5px;
+            background: #D8D6D0;
+            border-radius: 3px;
             margin: 12px auto 0;
             display: none;
             flex-shrink: 0;
         }
-        .dark .sheet-handle { background: #3A3A37; }
-        @media (max-width: 600px) { .sheet-handle { display: block; } }
+
+        .dark .sheet-handle {
+            background: #3A3A37;
+        }
+
+        @media (max-width: 600px) {
+            .sheet-handle {
+                display: block;
+            }
+        }
 
         /* Prevent body scroll when modal open */
-        body.modal-open { overflow: hidden; }
+        body.modal-open {
+            overflow: hidden;
+        }
 
         /* ── Card CTA button ── */
         .card-cta-btn {
-            width: 100%; padding: 16px 24px;
-            background: #FFFFFF; border-radius: 99px;
-            text-align: center; font-weight: 500;
+            width: 100%;
+            padding: 16px 24px;
+            background: #FFFFFF;
+            border-radius: 99px;
+            text-align: center;
+            font-weight: 500;
             border: 1px solid #E5E3DF;
-            cursor: pointer; font-family: 'Inter', sans-serif;
-            font-size: 0.92rem; color: #1A1A18;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.92rem;
+            color: #1A1A18;
             transition: all 0.2s ease;
         }
-        .dark .card-cta-btn { background: #1A1A18; border-color: #2A2A27; color: #EDEAE3; }
-        .card-cta-btn:hover { background: #1A1A18; color: #FFFFFF; border-color: #1A1A18; }
-        .dark .card-cta-btn:hover { background: #EDEAE3; color: #1A1A18; border-color: #EDEAE3; }
+
+        .dark .card-cta-btn {
+            background: #1A1A18;
+            border-color: #2A2A27;
+            color: #EDEAE3;
+        }
+
+        .card-cta-btn:hover {
+            background: #1A1A18;
+            color: #FFFFFF;
+            border-color: #1A1A18;
+        }
+
+        .dark .card-cta-btn:hover {
+            background: #EDEAE3;
+            color: #1A1A18;
+            border-color: #EDEAE3;
+        }
     </style>
 </head>
-<body class="min-h-screen flex flex-col font-sans bg-brand-bg dark:bg-dark-bg text-brand-text dark:text-dark-text transition-colors duration-300 design-grid">
+
+<body
+    class="min-h-screen flex flex-col font-sans bg-brand-bg dark:bg-dark-bg text-brand-text dark:text-dark-text transition-colors duration-300 design-grid">
 
     <!-- ══ NAVBAR ══ -->
-    <header class="sticky top-0 w-full z-50 bg-brand-bg/80 dark:bg-dark-bg/80 backdrop-blur-md border-b border-transparent">
+    <header
+        class="sticky top-0 w-full z-50 bg-brand-bg/80 dark:bg-dark-bg/80 backdrop-blur-md border-b border-transparent">
         <nav class="max-w-7xl mx-auto px-6 md:px-12 py-4 md:py-6 flex justify-between items-center">
             <a href="index.html" class="flex items-center gap-2 group">
                 <img src="assets/logoreal.png" alt="IntoDay Logo" class="w-7 h-auto">
                 <span class="logo-brand font-semibold text-xl tracking-tight dark:text-dark-text">IntoDay</span>
             </a>
             <div class="flex items-center gap-3">
-                <button id="theme-btn" class="p-2.5 rounded-full hover:bg-brand-card dark:hover:bg-dark-card transition-colors flex items-center justify-center cursor-pointer" aria-label="Toggle Dark Mode">
-                    <img id="theme-icon" src="assets/moon.png" alt="Toggle Theme" class="w-4 h-4 opacity-80 hover:opacity-100 transition-opacity">
+                <button id="theme-btn"
+                    class="p-2.5 rounded-full hover:bg-brand-card dark:hover:bg-dark-card transition-colors flex items-center justify-center cursor-pointer"
+                    aria-label="Toggle Dark Mode">
+                    <img id="theme-icon" src="assets/moon.png" alt="Toggle Theme"
+                        class="w-4 h-4 opacity-80 hover:opacity-100 transition-opacity">
                 </button>
                 <div class="relative" id="lang-dropdown">
-                    <button id="lang-btn" class="flex items-center gap-1.5 px-3 py-2.5 rounded-full text-sm font-medium hover:bg-brand-card dark:hover:bg-dark-card transition-colors">
+                    <button id="lang-btn"
+                        class="flex items-center gap-1.5 px-3 py-2.5 rounded-full text-sm font-medium hover:bg-brand-card dark:hover:bg-dark-card transition-colors">
                         <span id="lang-label">EN</span>
-                        <svg class="w-3.5 h-3.5 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+                        <svg class="w-3.5 h-3.5 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                d="M19 9l-7 7-7-7" />
+                        </svg>
                     </button>
-                    <div id="lang-menu" class="absolute right-0 mt-2 w-32 bg-white dark:bg-dark-surface rounded-2xl shadow-lg border border-brand-border dark:border-dark-border overflow-hidden z-50">
-                        <button class="lang-option w-full text-left px-4 py-2.5 text-sm hover:bg-brand-card dark:hover:bg-dark-card dark:text-dark-text transition-colors" data-lang="en">English</button>
-                        <button class="lang-option w-full text-left px-4 py-2.5 text-sm hover:bg-brand-card dark:hover:bg-dark-card dark:text-dark-text transition-colors" data-lang="zh">中文</button>
-                        <button class="lang-option w-full text-left px-4 py-2.5 text-sm hover:bg-brand-card dark:hover:bg-dark-card dark:text-dark-text transition-colors" data-lang="ms">Melayu</button>
-                        <button class="lang-option w-full text-left px-4 py-2.5 text-sm hover:bg-brand-card dark:hover:bg-dark-card dark:text-dark-text transition-colors" data-lang="ja">日本語</button>
-                        <button class="lang-option w-full text-left px-4 py-2.5 text-sm hover:bg-brand-card dark:hover:bg-dark-card dark:text-dark-text transition-colors" data-lang="th">ภาษาไทย</button>
+                    <div id="lang-menu"
+                        class="absolute right-0 mt-2 w-32 bg-white dark:bg-dark-surface rounded-2xl shadow-lg border border-brand-border dark:border-dark-border overflow-hidden z-50">
+                        <button
+                            class="lang-option w-full text-left px-4 py-2.5 text-sm hover:bg-brand-card dark:hover:bg-dark-card dark:text-dark-text transition-colors"
+                            data-lang="en">English</button>
+                        <button
+                            class="lang-option w-full text-left px-4 py-2.5 text-sm hover:bg-brand-card dark:hover:bg-dark-card dark:text-dark-text transition-colors"
+                            data-lang="zh">中文</button>
+                        <button
+                            class="lang-option w-full text-left px-4 py-2.5 text-sm hover:bg-brand-card dark:hover:bg-dark-card dark:text-dark-text transition-colors"
+                            data-lang="ms">Melayu</button>
+                        <button
+                            class="lang-option w-full text-left px-4 py-2.5 text-sm hover:bg-brand-card dark:hover:bg-dark-card dark:text-dark-text transition-colors"
+                            data-lang="ja">日本語</button>
+                        <button
+                            class="lang-option w-full text-left px-4 py-2.5 text-sm hover:bg-brand-card dark:hover:bg-dark-card dark:text-dark-text transition-colors"
+                            data-lang="th">ภาษาไทย</button>
                     </div>
                 </div>
-                <a href="index.html" data-i18n="nav_cta" class="bg-brand-text dark:bg-dark-text text-white dark:text-dark-bg px-5 py-2.5 rounded-full text-sm font-medium hover:bg-black dark:hover:bg-white transition-colors">
+                <a href="index.html" data-i18n="nav_cta"
+                    class="bg-brand-text dark:bg-dark-text text-white dark:text-dark-bg px-5 py-2.5 rounded-full text-sm font-medium hover:bg-black dark:hover:bg-white transition-colors">
                     Start for free
                 </a>
             </div>
@@ -376,124 +639,231 @@
     <main class="flex-1 max-w-7xl mx-auto px-6 py-24 w-full">
         <!-- Hero Section -->
         <section class="text-center mb-24">
-            <span class="text-xs font-semibold tracking-widest text-brand-accent uppercase mb-6 block opacity-0 animate-fade-up" data-i18n="help_hero_label">Support & Resources</span>
-            <h1 class="text-4xl md:text-6xl font-semibold tracking-tight mb-6 opacity-0 animate-fade-up-delay-1" data-i18n="help_hero_title">Help & Feedback</h1>
-            <p class="text-lg md:text-xl text-brand-muted dark:text-dark-mainText max-w-2xl mx-auto leading-relaxed opacity-0 animate-fade-up-delay-2" data-i18n="help_hero_desc">Questions, bugs, or ideas — we'd love to hear from you. We build IntoDay based on how you plan your life.</p>
+            <span
+                class="text-xs font-semibold tracking-widest text-brand-accent uppercase mb-6 block opacity-0 animate-fade-up"
+                data-i18n="help_hero_label">Support & Resources</span>
+            <h1 class="text-4xl md:text-6xl font-semibold tracking-tight mb-6 opacity-0 animate-fade-up-delay-1"
+                data-i18n="help_hero_title">Help & Feedback</h1>
+            <p class="text-lg md:text-xl text-brand-muted dark:text-dark-mainText max-w-2xl mx-auto leading-relaxed opacity-0 animate-fade-up-delay-2"
+                data-i18n="help_hero_desc">Questions, bugs, or ideas — we'd love to hear from you. We build IntoDay
+                based on how you plan your life.</p>
         </section>
 
         <!-- Support Grid -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-32">
             <!-- Feedback Card -->
-            <div class="help-card bg-brand-card dark:bg-dark-card rounded-[2rem] p-10 flex flex-col h-full border border-brand-border/30 dark:border-dark-border/30">
-                <div class="w-12 h-12 bg-white dark:bg-dark-surface rounded-full flex items-center justify-center mb-8 shadow-sm">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brand-accent"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            <div
+                class="help-card bg-brand-card dark:bg-dark-card rounded-[2rem] p-10 flex flex-col h-full border border-brand-border/30 dark:border-dark-border/30">
+                <div
+                    class="w-12 h-12 bg-white dark:bg-dark-surface rounded-full flex items-center justify-center mb-8 shadow-sm">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" class="text-brand-accent">
+                        <path
+                            d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                    </svg>
                 </div>
-                <h3 class="text-2xl font-semibold mb-4 opacity-0" data-reveal="animate-fade-up" data-i18n="help_card1_title">Share feedback</h3>
-                <p class="text-brand-muted dark:text-dark-mainText mb-12 flex-grow leading-relaxed" data-i18n="help_card1_desc">Tell us what feels useful, confusing, or missing. Your insights shape the future of the app.</p>
-                <button onclick="openModal('feedback')" class="card-cta-btn" data-i18n="help_card1_cta">Send feedback</button>
+                <h3 class="text-2xl font-semibold mb-4 opacity-0" data-reveal="animate-fade-up"
+                    data-i18n="help_card1_title">Share feedback</h3>
+                <p class="text-brand-muted dark:text-dark-mainText mb-12 flex-grow leading-relaxed"
+                    data-i18n="help_card1_desc">Tell us what feels useful, confusing, or missing. Your insights shape
+                    the future of the app.</p>
+                <button onclick="openModal('feedback')" class="card-cta-btn" data-i18n="help_card1_cta">Send
+                    feedback</button>
             </div>
 
             <!-- Bug Card -->
-            <div class="help-card bg-brand-card dark:bg-dark-card rounded-[2rem] p-10 flex flex-col h-full border border-brand-border/30 dark:border-dark-border/30">
-                <div class="w-12 h-12 bg-white dark:bg-dark-surface rounded-full flex items-center justify-center mb-8 shadow-sm">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brand-accent"><path d="M8 2l1.5 1.5M16 2l-1.5 1.5M18 13.5A5.5 5.5 0 1 1 12.5 8H13l-1.5 1.5M13 19v-4M9 16l3 3 3-3"/></svg>
+            <div
+                class="help-card bg-brand-card dark:bg-dark-card rounded-[2rem] p-10 flex flex-col h-full border border-brand-border/30 dark:border-dark-border/30">
+                <div
+                    class="w-12 h-12 bg-white dark:bg-dark-surface rounded-full flex items-center justify-center mb-8 shadow-sm">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                        stroke-linecap="round" stroke-linejoin="round" class="text-brand-accent">
+
+                        <path d="M8 6h8" />
+                        <rect x="7" y="6" width="10" height="12" rx="5" />
+                        <path d="M12 2v4" />
+                        <path d="M4 10h3" />
+                        <path d="M17 10h3" />
+                        <path d="M4 14h3" />
+                        <path d="M17 14h3" />
+
+                    </svg>
                 </div>
-                <h3 class="text-2xl font-semibold mb-4 opacity-0" data-reveal="animate-fade-up-delay-1" data-i18n="help_card2_title">Report a bug</h3>
-                <p class="text-brand-muted dark:text-dark-mainText mb-12 flex-grow leading-relaxed" data-i18n="help_card2_desc">Something not working as expected? Let us know so we can fix it and smooth out your experience.</p>
+                <h3 class="text-2xl font-semibold mb-4 opacity-0" data-reveal="animate-fade-up-delay-1"
+                    data-i18n="help_card2_title">Report a bug</h3>
+                <p class="text-brand-muted dark:text-dark-mainText mb-12 flex-grow leading-relaxed"
+                    data-i18n="help_card2_desc">Something not working as expected? Let us know so we can fix it and
+                    smooth out your experience.</p>
                 <button onclick="openModal('bug')" class="card-cta-btn" data-i18n="help_card2_cta">Report a bug</button>
             </div>
 
             <!-- Help Card -->
-            <div class="help-card bg-brand-card dark:bg-dark-card rounded-[2rem] p-10 flex flex-col h-full border border-brand-border/30 dark:border-dark-border/30">
-                <div class="w-12 h-12 bg-white dark:bg-dark-surface rounded-full flex items-center justify-center mb-8 shadow-sm">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brand-accent"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            <div
+                class="help-card bg-brand-card dark:bg-dark-card rounded-[2rem] p-10 flex flex-col h-full border border-brand-border/30 dark:border-dark-border/30">
+                <div
+                    class="w-12 h-12 bg-white dark:bg-dark-surface rounded-full flex items-center justify-center mb-8 shadow-sm">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" class="text-brand-accent">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                        <line x1="12" y1="17" x2="12.01" y2="17" />
+                    </svg>
                 </div>
-                <h3 class="text-2xl font-semibold mb-4 opacity-0" data-reveal="animate-fade-up-delay-2" data-i18n="help_card3_title">Ask for help</h3>
-                <p class="text-brand-muted dark:text-dark-mainText mb-12 flex-grow leading-relaxed" data-i18n="help_card3_desc">Need help using IntoDay or understanding how a specific feature works? We're here for you.</p>
+                <h3 class="text-2xl font-semibold mb-4 opacity-0" data-reveal="animate-fade-up-delay-2"
+                    data-i18n="help_card3_title">Ask for help</h3>
+                <p class="text-brand-muted dark:text-dark-mainText mb-12 flex-grow leading-relaxed"
+                    data-i18n="help_card3_desc">Need help using IntoDay or understanding how a specific feature works?
+                    We're here for you.</p>
                 <button onclick="openModal('help')" class="card-cta-btn" data-i18n="help_card3_cta">Get help</button>
             </div>
         </div>
 
         <section class="max-w-3xl mx-auto mb-32">
-            <h2 class="text-3xl md:text-4xl font-semibold text-center mb-16 opacity-0" data-reveal="animate-fade-up" data-i18n="faq_title">Frequently asked</h2>
+            <h2 class="text-3xl md:text-4xl font-semibold text-center mb-16 opacity-0" data-reveal="animate-fade-up"
+                data-i18n="faq_title">Frequently asked</h2>
             <div class="space-y-4">
-                <details class="group bg-brand-card dark:bg-dark-card rounded-2xl overflow-hidden border border-transparent hover:border-brand-border/30 dark:hover:border-dark-border/30 transition-all">
+                <details
+                    class="group bg-brand-card dark:bg-dark-card rounded-2xl overflow-hidden border border-transparent hover:border-brand-border/30 dark:hover:border-dark-border/30 transition-all">
                     <summary class="flex justify-between items-center px-8 py-6 cursor-pointer list-none">
-                        <span class="font-serif text-xl md:text-2xl font-medium" data-i18n="faq_q1">What is IntoDay?</span>
+                        <span class="font-serif text-xl md:text-2xl font-medium" data-i18n="faq_q1">What is
+                            IntoDay?</span>
                         <div class="summary-icon transition-transform duration-300">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="5" x2="12" y2="19" />
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                            </svg>
                         </div>
                     </summary>
-                    <div class="px-8 pb-8 text-brand-muted dark:text-dark-mainText leading-relaxed" data-i18n="faq_a1">IntoDay is a lightweight day planner for the things you need to do today — without needing to assign exact times.</div>
+                    <div class="px-8 pb-8 text-brand-muted dark:text-dark-mainText leading-relaxed" data-i18n="faq_a1">
+                        IntoDay is a lightweight day planner for the things you need to do today — without needing to
+                        assign exact times.</div>
                 </details>
-                <details class="group bg-brand-card dark:bg-dark-card rounded-2xl overflow-hidden border border-transparent hover:border-brand-border/30 dark:hover:border-dark-border/30 transition-all">
+                <details
+                    class="group bg-brand-card dark:bg-dark-card rounded-2xl overflow-hidden border border-transparent hover:border-brand-border/30 dark:hover:border-dark-border/30 transition-all">
                     <summary class="flex justify-between items-center px-8 py-6 cursor-pointer list-none">
-                        <span class="font-serif text-xl md:text-2xl font-medium" data-i18n="faq_q2">How is this different from a calendar?</span>
-                        <div class="summary-icon transition-transform duration-300"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+                        <span class="font-serif text-xl md:text-2xl font-medium" data-i18n="faq_q2">How is this
+                            different from a calendar?</span>
+                        <div class="summary-icon transition-transform duration-300"><svg width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="5" x2="12" y2="19" />
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                            </svg></div>
                     </summary>
-                    <div class="px-8 pb-8 text-brand-muted dark:text-dark-mainText leading-relaxed" data-i18n="faq_a2">Calendars are for exact events. IntoDay is for the things you want to place into your day without turning them into calendar entries.</div>
+                    <div class="px-8 pb-8 text-brand-muted dark:text-dark-mainText leading-relaxed" data-i18n="faq_a2">
+                        Calendars are for exact events. IntoDay is for the things you want to place into your day
+                        without turning them into calendar entries.</div>
                 </details>
-                <details class="group bg-brand-card dark:bg-dark-card rounded-2xl overflow-hidden border border-transparent hover:border-brand-border/30 dark:hover:border-dark-border/30 transition-all">
+                <details
+                    class="group bg-brand-card dark:bg-dark-card rounded-2xl overflow-hidden border border-transparent hover:border-brand-border/30 dark:hover:border-dark-border/30 transition-all">
                     <summary class="flex justify-between items-center px-8 py-6 cursor-pointer list-none">
-                        <span class="font-serif text-xl md:text-2xl font-medium" data-i18n="faq_q3">Do I need to set exact times?</span>
-                        <div class="summary-icon transition-transform duration-300"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+                        <span class="font-serif text-xl md:text-2xl font-medium" data-i18n="faq_q3">Do I need to set
+                            exact times?</span>
+                        <div class="summary-icon transition-transform duration-300"><svg width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="5" x2="12" y2="19" />
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                            </svg></div>
                     </summary>
-                    <div class="px-8 pb-8 text-brand-muted dark:text-dark-mainText leading-relaxed" data-i18n="faq_a3">No. IntoDay is built around time periods like morning, afternoon, and evening — so you can stay organized without planning everything to the minute.</div>
+                    <div class="px-8 pb-8 text-brand-muted dark:text-dark-mainText leading-relaxed" data-i18n="faq_a3">
+                        No. IntoDay is built around time periods like morning, afternoon, and evening — so you can stay
+                        organized without planning everything to the minute.</div>
                 </details>
-                <details class="group bg-brand-card dark:bg-dark-card rounded-2xl overflow-hidden border border-transparent hover:border-brand-border/30 dark:hover:border-dark-border/30 transition-all">
+                <details
+                    class="group bg-brand-card dark:bg-dark-card rounded-2xl overflow-hidden border border-transparent hover:border-brand-border/30 dark:hover:border-dark-border/30 transition-all">
                     <summary class="flex justify-between items-center px-8 py-6 cursor-pointer list-none">
-                        <span class="font-serif text-xl md:text-2xl font-medium" data-i18n="faq_q4">Can I move things later?</span>
-                        <div class="summary-icon transition-transform duration-300"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+                        <span class="font-serif text-xl md:text-2xl font-medium" data-i18n="faq_q4">Can I move things
+                            later?</span>
+                        <div class="summary-icon transition-transform duration-300"><svg width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="5" x2="12" y2="19" />
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                            </svg></div>
                     </summary>
-                    <div class="px-8 pb-8 text-brand-muted dark:text-dark-mainText leading-relaxed" data-i18n="faq_a4">Yes. If plans change, you can move items to a later time period or another day without starting over.</div>
+                    <div class="px-8 pb-8 text-brand-muted dark:text-dark-mainText leading-relaxed" data-i18n="faq_a4">
+                        Yes. If plans change, you can move items to a later time period or another day without starting
+                        over.</div>
                 </details>
-                <details class="group bg-brand-card dark:bg-dark-card rounded-2xl overflow-hidden border border-transparent hover:border-brand-border/30 dark:hover:border-dark-border/30 transition-all">
+                <details
+                    class="group bg-brand-card dark:bg-dark-card rounded-2xl overflow-hidden border border-transparent hover:border-brand-border/30 dark:hover:border-dark-border/30 transition-all">
                     <summary class="flex justify-between items-center px-8 py-6 cursor-pointer list-none">
-                        <span class="font-serif text-xl md:text-2xl font-medium" data-i18n="faq_q5">Is this a to-do list app?</span>
-                        <div class="summary-icon transition-transform duration-300"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+                        <span class="font-serif text-xl md:text-2xl font-medium" data-i18n="faq_q5">Is this a to-do list
+                            app?</span>
+                        <div class="summary-icon transition-transform duration-300"><svg width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="5" x2="12" y2="19" />
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                            </svg></div>
                     </summary>
-                    <div class="px-8 pb-8 text-brand-muted dark:text-dark-mainText leading-relaxed" data-i18n="faq_a5">Not exactly. IntoDay gives your to-dos a place in the day, so they feel more organized than a simple list.</div>
+                    <div class="px-8 pb-8 text-brand-muted dark:text-dark-mainText leading-relaxed" data-i18n="faq_a5">
+                        Not exactly. IntoDay gives your to-dos a place in the day, so they feel more organized than a
+                        simple list.</div>
                 </details>
-                <details class="group bg-brand-card dark:bg-dark-card rounded-2xl overflow-hidden border border-transparent hover:border-brand-border/30 dark:hover:border-dark-border/30 transition-all">
+                <details
+                    class="group bg-brand-card dark:bg-dark-card rounded-2xl overflow-hidden border border-transparent hover:border-brand-border/30 dark:hover:border-dark-border/30 transition-all">
                     <summary class="flex justify-between items-center px-8 py-6 cursor-pointer list-none">
-                        <span class="font-serif text-xl md:text-2xl font-medium" data-i18n="faq_q6">Who is IntoDay for?</span>
-                        <div class="summary-icon transition-transform duration-300"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+                        <span class="font-serif text-xl md:text-2xl font-medium" data-i18n="faq_q6">Who is IntoDay
+                            for?</span>
+                        <div class="summary-icon transition-transform duration-300"><svg width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="5" x2="12" y2="19" />
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                            </svg></div>
                     </summary>
-                    <div class="px-8 pb-8 text-brand-muted dark:text-dark-mainText leading-relaxed" data-i18n="faq_a6">It’s for anyone managing follow-ups, reminders, errands, and small plans that don’t need exact times.</div>
+                    <div class="px-8 pb-8 text-brand-muted dark:text-dark-mainText leading-relaxed" data-i18n="faq_a6">
+                        It’s for anyone managing follow-ups, reminders, errands, and small plans that don’t need exact
+                        times.</div>
                 </details>
             </div>
         </section>
 
         <!-- Contact Section -->
         <section class="text-center py-24 border-t border-brand-border/30 dark:border-dark-border/30">
-            <p class="text-xs font-semibold tracking-widest text-brand-accent uppercase mb-4" data-i18n="help_contact_label">Still need assistance?</p>
-            <a href="mailto:contact.intoday@gmail.com" class="font-serif text-3xl md:text-5xl text-brand-text dark:text-dark-text hover:text-brand-accent dark:hover:text-dark-accent transition-colors">contact.intoday@gmail.com</a>
+            <p class="text-xs font-semibold tracking-widest text-brand-accent uppercase mb-4"
+                data-i18n="help_contact_label">Still need assistance?</p>
+            <a href="mailto:contact.intoday@gmail.com"
+                class="font-serif text-3xl md:text-5xl text-brand-text dark:text-dark-text hover:text-brand-accent dark:hover:text-dark-accent transition-colors">contact.intoday@gmail.com</a>
         </section>
     </main>
 
     <!-- ══ FOOTER ══ -->
-    <footer class="py-16 md:py-20 border-t border-brand-border/50 dark:border-transparent flex flex-col items-center justify-center gap-12 pb-32 dark:bg-[#0E0E0D]">
+    <footer
+        class="py-16 md:py-20 border-t border-brand-border/50 dark:border-transparent flex flex-col items-center justify-center gap-12 pb-32 dark:bg-[#0E0E0D]">
         <a href="index.html" class="flex items-center gap-3 group opacity-80 hover:opacity-100 transition-opacity">
             <img src="assets/logoreal.png" alt="IntoDay Logo" class="w-9 h-auto">
-            <span class="logo-brand font-semibold text-[1.75rem] tracking-tight text-brand-text dark:text-dark-text">IntoDay</span>
+            <span
+                class="logo-brand font-semibold text-[1.75rem] tracking-tight text-brand-text dark:text-dark-text">IntoDay</span>
         </a>
-        <div class="flex flex-wrap justify-center gap-x-10 gap-y-4 text-sm font-medium text-brand-muted dark:text-dark-muted">
-            <a href="help.html" data-i18n="footer_help" class="hover:text-brand-text dark:hover:text-dark-text transition-colors">Help / Feedback</a>
-            <a href="privacy.html" data-i18n="footer_privacy" class="hover:text-brand-text dark:hover:text-dark-text transition-colors">Privacy Policy</a>
-            <a href="terms.html" data-i18n="footer_terms" class="hover:text-brand-text dark:hover:text-dark-text transition-colors">Terms of Service</a>
+        <div
+            class="flex flex-wrap justify-center gap-x-10 gap-y-4 text-sm font-medium text-brand-muted dark:text-dark-muted">
+            <a href="help.html" data-i18n="footer_help"
+                class="hover:text-brand-text dark:hover:text-dark-text transition-colors">Help / Feedback</a>
+            <a href="privacy.html" data-i18n="footer_privacy"
+                class="hover:text-brand-text dark:hover:text-dark-text transition-colors">Privacy Policy</a>
+            <a href="terms.html" data-i18n="footer_terms"
+                class="hover:text-brand-text dark:hover:text-dark-text transition-colors">Terms of Service</a>
         </div>
         <div class="flex items-center gap-10">
-            <a href="https://www.instagram.com/intoday.official?igsh=dGJiNTFwNGI3ZXZ4&utm_source=qr" target="_blank" class="opacity-60 hover:opacity-100 transition-opacity">
+            <a href="https://www.instagram.com/intoday.official?igsh=dGJiNTFwNGI3ZXZ4&utm_source=qr" target="_blank"
+                class="opacity-60 hover:opacity-100 transition-opacity">
                 <img src="assets/ig.png" alt="Instagram" class="w-[37px] h-[37px] dark:invert">
             </a>
-            <a href="https://x.com/intoday225493?s=21" target="_blank" class="opacity-60 hover:opacity-100 transition-opacity">
+            <a href="https://x.com/intoday225493?s=21" target="_blank"
+                class="opacity-60 hover:opacity-100 transition-opacity">
                 <img src="assets/x.png" alt="X" class="w-[32px] h-[32px] dark:invert">
             </a>
-            <a href="https://www.tiktok.com/@intoday.official?_r=1&_t=ZS-94eOq8624ds" target="_blank" class="opacity-60 hover:opacity-100 transition-opacity">
+            <a href="https://www.tiktok.com/@intoday.official?_r=1&_t=ZS-94eOq8624ds" target="_blank"
+                class="opacity-60 hover:opacity-100 transition-opacity">
                 <img src="assets/tiktok.png" alt="TikTok" class="w-[37px] h-[37px] dark:invert">
             </a>
         </div>
-        <p class="text-[10px] text-brand-accent dark:text-dark-muted opacity-60" data-i18n="footer_copy">© 2026 IntoDay. All rights reserved.</p>
+        <p class="text-[10px] text-brand-accent dark:text-dark-muted opacity-60" data-i18n="footer_copy">© 2026 IntoDay.
+            All rights reserved.</p>
     </footer>
 
 
@@ -504,46 +874,74 @@
         <div class="modal-sheet" onclick="event.stopPropagation()">
             <div class="sheet-handle"></div>
             <button class="modal-close-btn" onclick="closeModal('feedback')" aria-label="Close">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
             </button>
 
             <form id="form-feedback" novalidate onsubmit="return false" class="h-full flex flex-col">
                 <div id="feedback-form-view" class="h-full flex flex-col overflow-hidden">
                     <div class="modal-header">
-                        <p class="text-[11px] font-semibold tracking-[0.1em] text-[#8C877E] uppercase mb-1.5" data-i18n="modal_feedback_label">Share feedback</p>
-                        <h2 class="text-2xl font-semibold tracking-tight" data-i18n="modal_feedback_title">What's on your mind?</h2>
-                        <p class="text-[0.92rem] text-brand-muted dark:text-dark-muted mt-1 leading-relaxed" data-i18n="modal_feedback_sub">Your thoughts help us shape IntoDay's future.</p>
+                        <p class="text-[11px] font-semibold tracking-[0.1em] text-[#8C877E] uppercase mb-1.5"
+                            data-i18n="modal_feedback_label">Share feedback</p>
+                        <h2 class="text-2xl font-semibold tracking-tight" data-i18n="modal_feedback_title">What's on
+                            your mind?</h2>
+                        <p class="text-[0.92rem] text-brand-muted dark:text-dark-muted mt-1 leading-relaxed"
+                            data-i18n="modal_feedback_sub">Your thoughts help us shape IntoDay's future.</p>
                     </div>
 
                     <div class="modal-body">
                         <div class="flex flex-col gap-6 pt-2">
                             <div class="form-field">
-                                <label class="form-label" for="feedback-message"><span data-i18n="modal_feedback_q1">What would you like to share?</span> <span style="color:#ED1F1F">*</span></label>
-                                <textarea id="feedback-message" name="message" class="form-textarea" rows="4" placeholder="Tell us what feels useful, confusing, or missing…" data-i18n-placeholder="modal_feedback_p1"></textarea>
-                                <span class="field-error" id="feedback-message-err" data-i18n="modal_feedback_e1">Please share something with us.</span>
+                                <label class="form-label" for="feedback-message"><span
+                                        data-i18n="modal_feedback_q1">What would you like to share?</span> <span
+                                        style="color:#ED1F1F">*</span></label>
+                                <textarea id="feedback-message" name="message" class="form-textarea" rows="4"
+                                    placeholder="Tell us what feels useful, confusing, or missing…"
+                                    data-i18n-placeholder="modal_feedback_p1"></textarea>
+                                <span class="field-error" id="feedback-message-err" data-i18n="modal_feedback_e1">Please
+                                    share something with us.</span>
                             </div>
                             <div class="form-field">
-                                <label class="form-label" for="feedback-context"><span data-i18n="modal_feedback_q2">What were you trying to do?</span> <span class="opt" data-i18n="modal_optional">Optional</span></label>
-                                <input id="feedback-context" name="context" type="text" class="form-input" placeholder="e.g. Setting up my morning routine" data-i18n-placeholder="modal_feedback_p2">
+                                <label class="form-label" for="feedback-context"><span
+                                        data-i18n="modal_feedback_q2">What were you trying to do?</span> <span
+                                        class="opt" data-i18n="modal_optional">Optional</span></label>
+                                <input id="feedback-context" name="context" type="text" class="form-input"
+                                    placeholder="e.g. Setting up my morning routine"
+                                    data-i18n-placeholder="modal_feedback_p2">
                             </div>
                             <div class="form-field">
-                                <label class="form-label" for="feedback-email"><span data-i18n="modal_feedback_q3">Your email</span> <span class="opt" data-i18n="modal_optional">Optional</span></label>
-                                <input id="feedback-email" name="email" type="email" class="form-input" placeholder="so we can follow up" data-i18n-placeholder="modal_feedback_p3">
-                                <span class="field-error" id="feedback-email-err" data-i18n="modal_feedback_e3">Please enter a valid email.</span>
+                                <label class="form-label" for="feedback-email"><span data-i18n="modal_feedback_q3">Your
+                                        email</span> <span class="opt"
+                                        data-i18n="modal_optional">Optional</span></label>
+                                <input id="feedback-email" name="email" type="email" class="form-input"
+                                    placeholder="so we can follow up" data-i18n-placeholder="modal_feedback_p3">
+                                <span class="field-error" id="feedback-email-err" data-i18n="modal_feedback_e3">Please
+                                    enter a valid email.</span>
                             </div>
                             <div class="form-field">
-                                <label class="form-label"><span data-i18n="modal_feedback_q4">Screenshot</span> <span class="opt" data-i18n="modal_optional">Optional</span></label>
+                                <label class="form-label"><span data-i18n="modal_feedback_q4">Screenshot</span> <span
+                                        class="opt" data-i18n="modal_optional">Optional</span></label>
                                 <div class="upload-area" id="feedback-upload-area">
-                                    <input type="file" id="feedback-screenshot" name="screenshot" accept="image/*" onchange="handleFileSelect('feedback')">
-                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" class="mx-auto mb-2 text-brand-accent opacity-60"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-                                    <p class="text-sm text-brand-muted dark:text-dark-muted" id="feedback-file-label" data-i18n="modal_feedback_p4">Attach a screenshot</p>
+                                    <input type="file" id="feedback-screenshot" name="screenshot" accept="image/*"
+                                        onchange="handleFileSelect('feedback')">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="1.2" class="mx-auto mb-2 text-brand-accent opacity-60">
+                                        <rect x="3" y="3" width="18" height="18" rx="3" />
+                                        <circle cx="8.5" cy="8.5" r="1.5" />
+                                        <path d="M21 15l-5-5L5 21" />
+                                    </svg>
+                                    <p class="text-sm text-brand-muted dark:text-dark-muted" id="feedback-file-label"
+                                        data-i18n="modal_feedback_p4">Attach a screenshot</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="modal-footer">
-                        <div id="feedback-form-error" class="hidden text-sm text-[#ED1F1F] mb-4 text-center" data-i18n="modal_form_error">Something went wrong.</div>
+                        <div id="feedback-form-error" class="hidden text-sm text-[#ED1F1F] mb-4 text-center"
+                            data-i18n="modal_form_error">Something went wrong.</div>
                         <button type="submit" class="btn-submit" id="feedback-submit-btn">
                             <span id="feedback-btn-text" data-i18n="modal_feedback_btn">Send feedback</span>
                             <span id="feedback-spinner" class="spinner hidden"></span>
@@ -554,8 +952,11 @@
 
             <div id="feedback-success-view" class="modal-result">
                 <span class="result-icon success">✦</span>
-                <h3 class="text-xl font-semibold px-8 leading-tight" data-i18n="modal_feedback_s_title">Thanks — this helps us improve IntoDay.</h3>
-                <p class="text-sm text-brand-muted dark:text-dark-muted px-12 leading-relaxed" data-i18n="modal_feedback_s_desc">We read every message. If you left your email, we'll follow up soon.</p>
+                <h3 class="text-xl font-semibold px-8 leading-tight" data-i18n="modal_feedback_s_title">Thanks — this
+                    helps us improve IntoDay.</h3>
+                <p class="text-sm text-brand-muted dark:text-dark-muted px-12 leading-relaxed"
+                    data-i18n="modal_feedback_s_desc">We read every message. If you left your email, we'll follow up
+                    soon.</p>
                 <div class="modal-footer w-full mt-auto border-t-0">
                     <button onclick="closeModal('feedback')" class="btn-submit" data-i18n="modal_done">Done</button>
                 </div>
@@ -571,50 +972,78 @@
         <div class="modal-sheet" onclick="event.stopPropagation()">
             <div class="sheet-handle"></div>
             <button class="modal-close-btn" onclick="closeModal('bug')" aria-label="Close">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
             </button>
 
             <form id="form-bug" novalidate onsubmit="return false" class="h-full flex flex-col">
                 <div id="bug-form-view" class="h-full flex flex-col overflow-hidden">
                     <div class="modal-header">
-                        <p class="text-[11px] font-semibold tracking-[0.1em] text-[#8C877E] uppercase mb-1.5" data-i18n="modal_bug_label">Report a bug</p>
-                        <h2 class="text-2xl font-semibold tracking-tight" data-i18n="modal_bug_title">What went wrong?</h2>
-                        <p class="text-[0.92rem] text-brand-muted dark:text-dark-muted mt-1 leading-relaxed" data-i18n="modal_bug_sub">The more detail you share, the faster we can fix it.</p>
+                        <p class="text-[11px] font-semibold tracking-[0.1em] text-[#8C877E] uppercase mb-1.5"
+                            data-i18n="modal_bug_label">Report a bug</p>
+                        <h2 class="text-2xl font-semibold tracking-tight" data-i18n="modal_bug_title">What went wrong?
+                        </h2>
+                        <p class="text-[0.92rem] text-brand-muted dark:text-dark-muted mt-1 leading-relaxed"
+                            data-i18n="modal_bug_sub">The more detail you share, the faster we can fix it.</p>
                     </div>
 
                     <div class="modal-body">
                         <div class="flex flex-col gap-6 pt-2">
                             <div class="form-field">
-                                <label class="form-label" for="bug-what"><span data-i18n="modal_bug_q1">What happened?</span> <span style="color:#ED1F1F">*</span></label>
-                                <textarea id="bug-what" name="what_happened" class="form-textarea" rows="3" placeholder="Describe the issue…" data-i18n-placeholder="modal_bug_p1"></textarea>
-                                <span class="field-error" id="bug-what-err" data-i18n="modal_bug_e1">Please describe what happened.</span>
+                                <label class="form-label" for="bug-what"><span data-i18n="modal_bug_q1">What
+                                        happened?</span> <span style="color:#ED1F1F">*</span></label>
+                                <textarea id="bug-what" name="what_happened" class="form-textarea" rows="3"
+                                    placeholder="Describe the issue…" data-i18n-placeholder="modal_bug_p1"></textarea>
+                                <span class="field-error" id="bug-what-err" data-i18n="modal_bug_e1">Please describe
+                                    what happened.</span>
                             </div>
                             <div class="form-field">
-                                <label class="form-label" for="bug-expected"><span data-i18n="modal_bug_q2">What did you expect?</span> <span style="color:#ED1F1F">*</span></label>
-                                <textarea id="bug-expected" name="expected" class="form-textarea" rows="2" placeholder="What should have happened…" data-i18n-placeholder="modal_bug_p2"></textarea>
-                                <span class="field-error" id="bug-expected-err" data-i18n="modal_bug_e2">Please describe what you expected.</span>
+                                <label class="form-label" for="bug-expected"><span data-i18n="modal_bug_q2">What did you
+                                        expect?</span> <span style="color:#ED1F1F">*</span></label>
+                                <textarea id="bug-expected" name="expected" class="form-textarea" rows="2"
+                                    placeholder="What should have happened…"
+                                    data-i18n-placeholder="modal_bug_p2"></textarea>
+                                <span class="field-error" id="bug-expected-err" data-i18n="modal_bug_e2">Please describe
+                                    what you expected.</span>
                             </div>
                             <div class="form-field">
-                                <label class="form-label" for="bug-device"><span data-i18n="modal_bug_q3">Device / browser</span> <span class="opt" data-i18n="modal_optional">Optional</span></label>
-                                <input id="bug-device" name="device" type="text" class="form-input" placeholder="e.g. iPhone, Chrome" data-i18n-placeholder="modal_bug_p3">
+                                <label class="form-label" for="bug-device"><span data-i18n="modal_bug_q3">Device /
+                                        browser</span> <span class="opt"
+                                        data-i18n="modal_optional">Optional</span></label>
+                                <input id="bug-device" name="device" type="text" class="form-input"
+                                    placeholder="e.g. iPhone, Chrome" data-i18n-placeholder="modal_bug_p3">
                             </div>
                             <div class="form-field">
-                                <label class="form-label" for="bug-email"><span data-i18n="modal_bug_q4">Your email</span> <span class="opt" data-i18n="modal_optional">Optional</span></label>
-                                <input id="bug-email" name="email" type="email" class="form-input" placeholder="so we can update you" data-i18n-placeholder="modal_bug_p4">
+                                <label class="form-label" for="bug-email"><span data-i18n="modal_bug_q4">Your
+                                        email</span> <span class="opt"
+                                        data-i18n="modal_optional">Optional</span></label>
+                                <input id="bug-email" name="email" type="email" class="form-input"
+                                    placeholder="so we can update you" data-i18n-placeholder="modal_bug_p4">
                             </div>
                             <div class="form-field">
-                                <label class="form-label"><span data-i18n="modal_bug_q5">Screenshot</span> <span class="opt" data-i18n="modal_optional">Optional</span></label>
+                                <label class="form-label"><span data-i18n="modal_bug_q5">Screenshot</span> <span
+                                        class="opt" data-i18n="modal_optional">Optional</span></label>
                                 <div class="upload-area" id="bug-upload-area">
-                                    <input type="file" id="bug-screenshot" name="screenshot" accept="image/*" onchange="handleFileSelect('bug')">
-                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" class="mx-auto mb-2 text-brand-accent opacity-60"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-                                    <p class="text-sm text-brand-muted dark:text-dark-muted" id="bug-file-label" data-i18n="modal_bug_p5">Attach a screenshot</p>
+                                    <input type="file" id="bug-screenshot" name="screenshot" accept="image/*"
+                                        onchange="handleFileSelect('bug')">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="1.2" class="mx-auto mb-2 text-brand-accent opacity-60">
+                                        <rect x="3" y="3" width="18" height="18" rx="3" />
+                                        <circle cx="8.5" cy="8.5" r="1.5" />
+                                        <path d="M21 15l-5-5L5 21" />
+                                    </svg>
+                                    <p class="text-sm text-brand-muted dark:text-dark-muted" id="bug-file-label"
+                                        data-i18n="modal_bug_p5">Attach a screenshot</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="modal-footer">
-                        <div id="bug-form-error" class="hidden text-sm text-[#ED1F1F] mb-4 text-center" data-i18n="modal_form_error">Something went wrong.</div>
+                        <div id="bug-form-error" class="hidden text-sm text-[#ED1F1F] mb-4 text-center"
+                            data-i18n="modal_form_error">Something went wrong.</div>
                         <button type="submit" class="btn-submit" id="bug-submit-btn">
                             <span id="bug-btn-text" data-i18n="modal_bug_btn">Report a bug</span>
                             <span id="bug-spinner" class="spinner hidden"></span>
@@ -625,8 +1054,11 @@
 
             <div id="bug-success-view" class="modal-result">
                 <span class="result-icon success">✦</span>
-                <h3 class="text-xl font-semibold px-8 leading-tight" data-i18n="modal_bug_s_title">Got it — we'll take a look.</h3>
-                <p class="text-sm text-brand-muted dark:text-dark-muted px-12 leading-relaxed" data-i18n="modal_bug_s_desc">Thanks for taking the time to report this. It genuinely helps us improve IntoDay.</p>
+                <h3 class="text-xl font-semibold px-8 leading-tight" data-i18n="modal_bug_s_title">Got it — we'll take a
+                    look.</h3>
+                <p class="text-sm text-brand-muted dark:text-dark-muted px-12 leading-relaxed"
+                    data-i18n="modal_bug_s_desc">Thanks for taking the time to report this. It genuinely helps us
+                    improve IntoDay.</p>
                 <div class="modal-footer w-full mt-auto border-t-0">
                     <button onclick="closeModal('bug')" class="btn-submit" data-i18n="modal_done">Done</button>
                 </div>
@@ -642,42 +1074,64 @@
         <div class="modal-sheet" onclick="event.stopPropagation()">
             <div class="sheet-handle"></div>
             <button class="modal-close-btn" onclick="closeModal('help')" aria-label="Close">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
             </button>
 
             <form id="form-help" novalidate onsubmit="return false" class="h-full flex flex-col">
                 <div id="help-form-view" class="h-full flex flex-col overflow-hidden">
                     <div class="modal-header">
-                        <p class="text-[11px] font-semibold tracking-[0.1em] text-[#8C877E] uppercase mb-1.5" data-i18n="modal_help_label">Ask for help</p>
-                        <h2 class="text-2xl font-semibold tracking-tight" data-i18n="modal_help_title">How can we help?</h2>
-                        <p class="text-[0.92rem] text-brand-muted dark:text-dark-muted mt-1 leading-relaxed" data-i18n="modal_help_sub">We reply personally to every request. Talk soon.</p>
+                        <p class="text-[11px] font-semibold tracking-[0.1em] text-[#8C877E] uppercase mb-1.5"
+                            data-i18n="modal_help_label">Ask for help</p>
+                        <h2 class="text-2xl font-semibold tracking-tight" data-i18n="modal_help_title">How can we help?
+                        </h2>
+                        <p class="text-[0.92rem] text-brand-muted dark:text-dark-muted mt-1 leading-relaxed"
+                            data-i18n="modal_help_sub">We reply personally to every request. Talk soon.</p>
                     </div>
 
                     <div class="modal-body">
                         <div class="flex flex-col gap-6 pt-2">
                             <div class="form-field">
-                                <label class="form-label" for="help-question"><span data-i18n="modal_help_q1">What do you need help with?</span> <span style="color:#ED1F1F">*</span></label>
-                                <textarea id="help-question" name="question" class="form-textarea" rows="4" placeholder="Describe your question…" data-i18n-placeholder="modal_help_p1"></textarea>
-                                <span class="field-error" id="help-question-err" data-i18n="modal_help_e1">Please tell us what you need help with.</span>
+                                <label class="form-label" for="help-question"><span data-i18n="modal_help_q1">What do
+                                        you need help with?</span> <span style="color:#ED1F1F">*</span></label>
+                                <textarea id="help-question" name="question" class="form-textarea" rows="4"
+                                    placeholder="Describe your question…"
+                                    data-i18n-placeholder="modal_help_p1"></textarea>
+                                <span class="field-error" id="help-question-err" data-i18n="modal_help_e1">Please tell
+                                    us what you need help with.</span>
                             </div>
                             <div class="form-field">
-                                <label class="form-label" for="help-email"><span data-i18n="modal_help_q2">Your email</span> <span style="color:#ED1F1F">*</span></label>
-                                <input id="help-email" name="email" type="email" class="form-input" placeholder="your@email.com" data-i18n-placeholder="modal_help_p2">
-                                <span class="field-error" id="help-email-err" data-i18n="modal_help_e2">Please enter a valid email.</span>
+                                <label class="form-label" for="help-email"><span data-i18n="modal_help_q2">Your
+                                        email</span> <span style="color:#ED1F1F">*</span></label>
+                                <input id="help-email" name="email" type="email" class="form-input"
+                                    placeholder="your@email.com" data-i18n-placeholder="modal_help_p2">
+                                <span class="field-error" id="help-email-err" data-i18n="modal_help_e2">Please enter a
+                                    valid email.</span>
                             </div>
                             <div class="form-field">
-                                <label class="form-label"><span data-i18n="modal_help_q3">Screenshot</span> <span class="opt" data-i18n="modal_optional">Optional</span></label>
+                                <label class="form-label"><span data-i18n="modal_help_q3">Screenshot</span> <span
+                                        class="opt" data-i18n="modal_optional">Optional</span></label>
                                 <div class="upload-area" id="help-upload-area">
-                                    <input type="file" id="help-screenshot" name="screenshot" accept="image/*" onchange="handleFileSelect('help')">
-                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" class="mx-auto mb-2 text-brand-accent opacity-60"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-                                    <p class="text-sm text-brand-muted dark:text-dark-muted" id="help-file-label" data-i18n="modal_help_p3">Attach a screenshot</p>
+                                    <input type="file" id="help-screenshot" name="screenshot" accept="image/*"
+                                        onchange="handleFileSelect('help')">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="1.2" class="mx-auto mb-2 text-brand-accent opacity-60">
+                                        <rect x="3" y="3" width="18" height="18" rx="3" />
+                                        <circle cx="8.5" cy="8.5" r="1.5" />
+                                        <path d="M21 15l-5-5L5 21" />
+                                    </svg>
+                                    <p class="text-sm text-brand-muted dark:text-dark-muted" id="help-file-label"
+                                        data-i18n="modal_help_p3">Attach a screenshot</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="modal-footer">
-                        <div id="help-form-error" class="hidden text-sm text-[#ED1F1F] mb-4 text-center" data-i18n="modal_form_error">Something went wrong.</div>
+                        <div id="help-form-error" class="hidden text-sm text-[#ED1F1F] mb-4 text-center"
+                            data-i18n="modal_form_error">Something went wrong.</div>
                         <button type="submit" class="btn-submit" id="help-submit-btn">
                             <span id="help-btn-text" data-i18n="modal_help_btn">Get help</span>
                             <span id="help-spinner" class="spinner hidden"></span>
@@ -688,8 +1142,11 @@
 
             <div id="help-success-view" class="modal-result">
                 <span class="result-icon success">✦</span>
-                <h3 class="text-xl font-semibold px-8 leading-tight" data-i18n="modal_help_s_title">Thanks for reaching out.</h3>
-                <p class="text-sm text-brand-muted dark:text-dark-muted px-12 leading-relaxed" data-i18n="modal_help_s_desc">We'll reply to your email as soon as we can — usually within a day or two.</p>
+                <h3 class="text-xl font-semibold px-8 leading-tight" data-i18n="modal_help_s_title">Thanks for reaching
+                    out.</h3>
+                <p class="text-sm text-brand-muted dark:text-dark-muted px-12 leading-relaxed"
+                    data-i18n="modal_help_s_desc">We'll reply to your email as soon as we can — usually within a day or
+                    two.</p>
                 <div class="modal-footer w-full mt-auto border-t-0">
                     <button onclick="closeModal('help')" class="btn-submit" data-i18n="modal_done">Done</button>
                 </div>
@@ -700,158 +1157,158 @@
 
     <script src="script.js"></script>
     <script>
-    function openModal(type) {
-        const overlay = document.getElementById('modal-' + type);
-        overlay.classList.add('open');
-        document.body.classList.add('modal-open');
-        setTimeout(() => {
-            const first = overlay.querySelector('textarea, input');
-            if (first) first.focus();
-        }, 400);
-    }
-
-    function closeModal(type) {
-        const overlay = document.getElementById('modal-' + type);
-        overlay.classList.remove('open');
-        document.body.classList.remove('modal-open');
-        setTimeout(() => resetModal(type), 400);
-    }
-
-    function resetModal(type) {
-        const form = document.getElementById('form-' + type);
-        if (form) form.reset();
-        document.querySelectorAll('#modal-' + type + ' .form-input, #modal-' + type + ' .form-textarea').forEach(el => el.classList.remove('error'));
-        document.querySelectorAll('#modal-' + type + ' .field-error').forEach(el => el.classList.remove('show'));
-        const formErr = document.getElementById(type + '-form-error');
-        if (formErr) formErr.classList.add('hidden');
-        const fileLabel = document.getElementById(type + '-file-label');
-        const uploadArea = document.getElementById(type + '-upload-area');
-        if (fileLabel) fileLabel.textContent = 'Attach a screenshot';
-        if (uploadArea) uploadArea.classList.remove('has-file');
-        const btnText = document.getElementById(type + '-btn-text');
-        const spinner = document.getElementById(type + '-spinner');
-        const submitBtn = document.getElementById(type + '-submit-btn');
-        if (btnText) btnText.classList.remove('hidden');
-        if (spinner) spinner.classList.add('hidden');
-        if (submitBtn) submitBtn.disabled = false;
-        const formView = document.getElementById(type + '-form-view');
-        const successView = document.getElementById(type + '-success-view');
-        if (formView) formView.style.display = '';
-        if (successView) successView.classList.remove('show');
-    }
-
-    document.querySelectorAll('.modal-overlay').forEach(overlay => {
-        overlay.addEventListener('click', () => {
-            if (overlay.classList.contains('open')) {
-                closeModal(overlay.id.replace('modal-', ''));
-            }
-        });
-    });
-
-    document.addEventListener('keydown', e => {
-        if (e.key === 'Escape') {
-            const open = document.querySelector('.modal-overlay.open');
-            if (open) closeModal(open.id.replace('modal-', ''));
+        function openModal(type) {
+            const overlay = document.getElementById('modal-' + type);
+            overlay.classList.add('open');
+            document.body.classList.add('modal-open');
+            setTimeout(() => {
+                const first = overlay.querySelector('textarea, input');
+                if (first) first.focus();
+            }, 400);
         }
-    });
 
-    function handleFileSelect(prefix) {
-        const input = document.getElementById(prefix + '-screenshot');
-        const label = document.getElementById(prefix + '-file-label');
-        const area  = document.getElementById(prefix + '-upload-area');
-        if (input.files && input.files[0]) {
-            const file = input.files[0];
-            if (file.size > 5 * 1024 * 1024) { label.textContent = 'File too large (max 5 MB)'; area.classList.remove('has-file'); input.value = ''; return; }
-            label.textContent = '📎 ' + file.name;
-            area.classList.add('has-file');
+        function closeModal(type) {
+            const overlay = document.getElementById('modal-' + type);
+            overlay.classList.remove('open');
+            document.body.classList.remove('modal-open');
+            setTimeout(() => resetModal(type), 400);
         }
-    }
 
-    function isValidEmail(email) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email); }
-    function showFieldError(fieldId, errId, show) {
-        const field = document.getElementById(fieldId);
-        const err = document.getElementById(errId);
-        if (show) { field.classList.add('error'); err.classList.add('show'); }
-        else { field.classList.remove('error'); err.classList.remove('show'); }
-        return !show;
-    }
+        function resetModal(type) {
+            const form = document.getElementById('form-' + type);
+            if (form) form.reset();
+            document.querySelectorAll('#modal-' + type + ' .form-input, #modal-' + type + ' .form-textarea').forEach(el => el.classList.remove('error'));
+            document.querySelectorAll('#modal-' + type + ' .field-error').forEach(el => el.classList.remove('show'));
+            const formErr = document.getElementById(type + '-form-error');
+            if (formErr) formErr.classList.add('hidden');
+            const fileLabel = document.getElementById(type + '-file-label');
+            const uploadArea = document.getElementById(type + '-upload-area');
+            if (fileLabel) fileLabel.textContent = 'Attach a screenshot';
+            if (uploadArea) uploadArea.classList.remove('has-file');
+            const btnText = document.getElementById(type + '-btn-text');
+            const spinner = document.getElementById(type + '-spinner');
+            const submitBtn = document.getElementById(type + '-submit-btn');
+            if (btnText) btnText.classList.remove('hidden');
+            if (spinner) spinner.classList.add('hidden');
+            if (submitBtn) submitBtn.disabled = false;
+            const formView = document.getElementById(type + '-form-view');
+            const successView = document.getElementById(type + '-success-view');
+            if (formView) formView.style.display = '';
+            if (successView) successView.classList.remove('show');
+        }
 
-    async function submitForm(formData, type) {
-        const btnText = document.getElementById(type + '-btn-text');
-        const spinner = document.getElementById(type + '-spinner');
-        const submitBtn = document.getElementById(type + '-submit-btn');
-        const formErr = document.getElementById(type + '-form-error');
-        btnText.classList.add('hidden'); spinner.classList.remove('hidden'); submitBtn.disabled = true; formErr.classList.add('hidden');
-
-        try {
-            const payload = new FormData();
-            for (const [key, value] of Object.entries(formData.fields)) payload.append(key, value);
-            payload.append('_subject', formData.subject);
-            payload.append('_captcha', 'false');
-            const fileInput = document.getElementById(type + '-screenshot');
-            if (fileInput && fileInput.files && fileInput.files[0]) payload.append('screenshot', fileInput.files[0]);
-
-            const res = await fetch('https://formsubmit.co/ajax/contact.intoday@gmail.com', {
-                method: 'POST', headers: { Accept: 'application/json' }, body: payload,
-            });
-
-            let data;
-            try {
-                data = await res.json();
-            } catch (e) {
-                // If parsing fails but res.ok is false, we'll throw below.
-            }
-
-            if (res.ok && data && String(data.success) === "true") {
-                document.getElementById(type + '-form-view').style.display = 'none';
-                document.getElementById(type + '-success-view').classList.add('show');
-            } else {
-                if (data && data.message) {
-                    console.error("FormSubmit Error:", data.message);
-                    formErr.textContent = data.message;
+        document.querySelectorAll('.modal-overlay').forEach(overlay => {
+            overlay.addEventListener('click', () => {
+                if (overlay.classList.contains('open')) {
+                    closeModal(overlay.id.replace('modal-', ''));
                 }
-                throw new Error(data ? data.message : 'Unknown error');
-            }
-        } catch (err) {
-            btnText.classList.remove('hidden'); spinner.classList.add('hidden');
-            submitBtn.disabled = false; formErr.classList.remove('hidden');
-        }
-    }
-
-    document.getElementById('form-feedback').addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const msg = document.getElementById('feedback-message').value.trim();
-        const email = document.getElementById('feedback-email').value.trim();
-        let valid = showFieldError('feedback-message', 'feedback-message-err', !msg);
-        if (email) valid = showFieldError('feedback-email', 'feedback-email-err', !isValidEmail(email)) && valid;
-        if (valid) await submitForm({ subject: '[InToday Feedback]', fields: { 'Type': 'Feedback', 'Message': msg, 'Context': document.getElementById('feedback-context').value.trim() || '—', 'Email': email || '—' }}, 'feedback');
-    });
-
-    document.getElementById('form-bug').addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const what = document.getElementById('bug-what').value.trim();
-        const expected = document.getElementById('bug-expected').value.trim();
-        const email = document.getElementById('bug-email').value.trim();
-        let valid = showFieldError('bug-what', 'bug-what-err', !what) && showFieldError('bug-expected', 'bug-expected-err', !expected);
-        if (email) valid = showFieldError('bug-email', 'bug-email-err', !isValidEmail(email)) && valid;
-        if (valid) await submitForm({ subject: '[InToday Bug]', fields: { 'Type': 'Bug', 'What': what, 'Expected': expected, 'Device': document.getElementById('bug-device').value.trim() || '—', 'Email': email || '—' }}, 'bug');
-    });
-
-    document.getElementById('form-help').addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const question = document.getElementById('help-question').value.trim();
-        const email = document.getElementById('help-email').value.trim();
-        let valid = showFieldError('help-question', 'help-question-err', !question) && showFieldError('help-email', 'help-email-err', !email || !isValidEmail(email));
-        if (valid) await submitForm({ subject: '[InToday Help]', fields: { 'Type': 'Help', 'Question': question, 'Email': email }}, 'help');
-    });
-
-    document.querySelectorAll('.form-input, .form-textarea').forEach(el => {
-        el.addEventListener('input', () => {
-            el.classList.remove('error');
-            const err = el.closest('.form-field').querySelector('.field-error');
-            if (err) err.classList.remove('show');
+            });
         });
-    });
+
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') {
+                const open = document.querySelector('.modal-overlay.open');
+                if (open) closeModal(open.id.replace('modal-', ''));
+            }
+        });
+
+        function handleFileSelect(prefix) {
+            const input = document.getElementById(prefix + '-screenshot');
+            const label = document.getElementById(prefix + '-file-label');
+            const area = document.getElementById(prefix + '-upload-area');
+            if (input.files && input.files[0]) {
+                const file = input.files[0];
+                if (file.size > 5 * 1024 * 1024) { label.textContent = 'File too large (max 5 MB)'; area.classList.remove('has-file'); input.value = ''; return; }
+                label.textContent = '📎 ' + file.name;
+                area.classList.add('has-file');
+            }
+        }
+
+        function isValidEmail(email) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email); }
+        function showFieldError(fieldId, errId, show) {
+            const field = document.getElementById(fieldId);
+            const err = document.getElementById(errId);
+            if (show) { field.classList.add('error'); err.classList.add('show'); }
+            else { field.classList.remove('error'); err.classList.remove('show'); }
+            return !show;
+        }
+
+        async function submitForm(formData, type) {
+            const btnText = document.getElementById(type + '-btn-text');
+            const spinner = document.getElementById(type + '-spinner');
+            const submitBtn = document.getElementById(type + '-submit-btn');
+            const formErr = document.getElementById(type + '-form-error');
+            btnText.classList.add('hidden'); spinner.classList.remove('hidden'); submitBtn.disabled = true; formErr.classList.add('hidden');
+
+            try {
+                const payload = new FormData();
+                for (const [key, value] of Object.entries(formData.fields)) payload.append(key, value);
+                payload.append('_subject', formData.subject);
+                payload.append('_captcha', 'false');
+                const fileInput = document.getElementById(type + '-screenshot');
+                if (fileInput && fileInput.files && fileInput.files[0]) payload.append('screenshot', fileInput.files[0]);
+
+                const res = await fetch('https://formsubmit.co/ajax/contact.intoday@gmail.com', {
+                    method: 'POST', headers: { Accept: 'application/json' }, body: payload,
+                });
+
+                let data;
+                try {
+                    data = await res.json();
+                } catch (e) {
+                    // If parsing fails but res.ok is false, we'll throw below.
+                }
+
+                if (res.ok && data && String(data.success) === "true") {
+                    document.getElementById(type + '-form-view').style.display = 'none';
+                    document.getElementById(type + '-success-view').classList.add('show');
+                } else {
+                    if (data && data.message) {
+                        console.error("FormSubmit Error:", data.message);
+                        formErr.textContent = data.message;
+                    }
+                    throw new Error(data ? data.message : 'Unknown error');
+                }
+            } catch (err) {
+                btnText.classList.remove('hidden'); spinner.classList.add('hidden');
+                submitBtn.disabled = false; formErr.classList.remove('hidden');
+            }
+        }
+
+        document.getElementById('form-feedback').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const msg = document.getElementById('feedback-message').value.trim();
+            const email = document.getElementById('feedback-email').value.trim();
+            let valid = showFieldError('feedback-message', 'feedback-message-err', !msg);
+            if (email) valid = showFieldError('feedback-email', 'feedback-email-err', !isValidEmail(email)) && valid;
+            if (valid) await submitForm({ subject: '[InToday Feedback]', fields: { 'Type': 'Feedback', 'Message': msg, 'Context': document.getElementById('feedback-context').value.trim() || '—', 'Email': email || '—' } }, 'feedback');
+        });
+
+        document.getElementById('form-bug').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const what = document.getElementById('bug-what').value.trim();
+            const expected = document.getElementById('bug-expected').value.trim();
+            const email = document.getElementById('bug-email').value.trim();
+            let valid = showFieldError('bug-what', 'bug-what-err', !what) && showFieldError('bug-expected', 'bug-expected-err', !expected);
+            if (email) valid = showFieldError('bug-email', 'bug-email-err', !isValidEmail(email)) && valid;
+            if (valid) await submitForm({ subject: '[InToday Bug]', fields: { 'Type': 'Bug', 'What': what, 'Expected': expected, 'Device': document.getElementById('bug-device').value.trim() || '—', 'Email': email || '—' } }, 'bug');
+        });
+
+        document.getElementById('form-help').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const question = document.getElementById('help-question').value.trim();
+            const email = document.getElementById('help-email').value.trim();
+            let valid = showFieldError('help-question', 'help-question-err', !question) && showFieldError('help-email', 'help-email-err', !email || !isValidEmail(email));
+            if (valid) await submitForm({ subject: '[InToday Help]', fields: { 'Type': 'Help', 'Question': question, 'Email': email } }, 'help');
+        });
+
+        document.querySelectorAll('.form-input, .form-textarea').forEach(el => {
+            el.addEventListener('input', () => {
+                el.classList.remove('error');
+                const err = el.closest('.form-field').querySelector('.field-error');
+                if (err) err.classList.remove('show');
+            });
+        });
     </script>
     <script>
         function replayNavbarLogo(event) {
@@ -865,4 +1322,5 @@
         window.addEventListener('load', () => setTimeout(() => replayNavbarLogo(), 150));
     </script>
 </body>
+
 </html>
