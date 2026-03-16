@@ -793,10 +793,23 @@
                 method: 'POST', headers: { Accept: 'application/json' }, body: payload,
             });
 
-            if (res.ok) {
+            let data;
+            try {
+                data = await res.json();
+            } catch (e) {
+                // If parsing fails but res.ok is false, we'll throw below.
+            }
+
+            if (res.ok && data && String(data.success) === "true") {
                 document.getElementById(type + '-form-view').style.display = 'none';
                 document.getElementById(type + '-success-view').classList.add('show');
-            } else throw new Error();
+            } else {
+                if (data && data.message) {
+                    console.error("FormSubmit Error:", data.message);
+                    formErr.textContent = data.message;
+                }
+                throw new Error(data ? data.message : 'Unknown error');
+            }
         } catch (err) {
             btnText.classList.remove('hidden'); spinner.classList.add('hidden');
             submitBtn.disabled = false; formErr.classList.remove('hidden');
