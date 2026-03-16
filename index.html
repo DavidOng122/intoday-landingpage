@@ -214,8 +214,8 @@
                 Start for free
             </a>
 
-            <!-- Phone mockup -->
-            <div class="mt-24 w-full max-w-[320px] aspect-[1/2] rounded-[2.5rem] bg-brand-placeholder dark:bg-dark-placeholder border border-brand-border dark:border-dark-border shadow-[0_24px_60px_-15px_rgba(0,0,0,0.05)] relative overflow-hidden flex flex-col items-center p-2">
+            <!-- Phone mockup (Mobile only) -->
+            <div class="mt-16 w-full max-w-[320px] aspect-[1/2] rounded-xl bg-brand-placeholder dark:bg-dark-placeholder border border-brand-border dark:border-dark-border shadow-[0_24px_60px_-15px_rgba(0,0,0,0.05)] relative overflow-hidden flex flex-col items-center p-2 md:hidden">
                 <div class="w-full h-full rounded-[2.25rem] border border-white/60 dark:border-dark-placeholder bg-brand-placeholder dark:bg-dark-placeholder phone-mockup-inner flex flex-col p-5 gap-4">
                     <div class="w-1/3 h-2.5 bg-brand-border/60 dark:bg-dark-border rounded-full mt-6 mx-auto"></div>
                     <div class="w-full h-20 bg-white/50 dark:bg-[#2A2A27]/40 rounded-2xl border border-white/40 dark:border-transparent mt-4"></div>
@@ -223,10 +223,15 @@
                     <div class="w-full h-16 bg-white/40 dark:bg-[#2A2A27]/40 rounded-xl border border-white/30 dark:border-transparent"></div>
                 </div>
             </div>
+
+            <!-- Video (Desktop only) -->
+            <div class="mt-16 w-full max-w-5xl hidden md:block rounded-lg overflow-hidden border border-brand-border dark:border-dark-border shadow-[0_24px_60px_-15px_rgba(0,0,0,0.05)] bg-black">
+                <video src="assets/computerlandingpage.mp4" autoplay muted loop playsinline class="w-full h-auto block"></video>
+            </div>
         </section>
 
         <!-- ══ FEATURE 1: Organize by time of day ══ -->
-        <section class="py-16 md:py-32 px-6 md:px-12 max-w-7xl mx-auto rounded-[3rem] dark:bg-dark-card mt-12">
+        <section class="py-16 md:py-32 px-6 md:px-12 max-w-7xl mx-auto rounded-2xl dark:bg-dark-card mt-12">
             <div class="flex flex-col md:grid md:grid-cols-2 gap-10 md:gap-24 items-center">
                 <div class="w-full max-w-md md:pr-8 text-left">
                     <span class="uppercase text-xs md:text-sm tracking-[0.15em] font-semibold text-[#ED1F1F] dark:text-dark-accent mb-4 md:mb-5 block opacity-0" data-reveal="animate-fade-up" data-i18n="f1_label">
@@ -239,21 +244,14 @@
                         No need to figure out the exact time, just place it into your day.
                     </p>
                 </div>
-                <div class="w-full max-w-[320px] md:max-w-[400px] aspect-[4/5] mx-auto bg-brand-placeholder dark:bg-dark-placeholder rounded-[2rem] border border-brand-border dark:border-[6px] dark:border-[rgba(46,46,42,1)] shadow-sm flex flex-col overflow-hidden">
-                    <div class="h-14 border-b border-brand-border/40 dark:border-transparent flex items-center px-6">
-                        <div class="w-24 h-2 bg-brand-border/60 dark:bg-[rgba(46,46,42,1)] rounded-full"></div>
-                    </div>
-                    <div class="flex-1 p-6 flex flex-col gap-3">
-                        <div class="w-full h-14 bg-white/60 dark:bg-[#2A2A27]/40 rounded-xl border border-brand-border/30 dark:border-transparent"></div>
-                        <div class="w-full h-14 bg-white/60 dark:bg-[#2A2A27]/40 rounded-xl border border-brand-border/30 dark:border-transparent"></div>
-                        <div class="w-3/4 h-14 bg-white/60 dark:bg-[#2A2A27]/40 rounded-xl border border-brand-border/30 dark:border-transparent"></div>
-                    </div>
+                <div class="w-full max-w-[400px] md:max-w-[650px] mx-auto rounded-xl border border-brand-border dark:border-[6px] dark:border-[rgba(46,46,42,1)] shadow-sm overflow-hidden bg-brand-placeholder dark:bg-dark-placeholder">
+                    <video src="assets/add.mp4" autoplay muted loop playsinline class="w-full h-auto object-contain block"></video>
                 </div>
             </div>
         </section>
 
         <!-- ══ FEATURE 2: Adapt as you go ══ -->
-        <section class="py-16 md:py-32 px-6 md:px-12 max-w-7xl mx-auto dark:bg-dark-bg mt-12 rounded-[3rem]">
+        <section class="py-16 md:py-32 px-6 md:px-12 max-w-7xl mx-auto dark:bg-dark-bg mt-12 rounded-2xl">
             <div class="flex flex-col md:grid md:grid-cols-2 gap-10 md:gap-24 items-center">
                 <!-- Text Block (Always First on Mobile, Second on Desktop) -->
                 <div class="w-full max-w-md md:pl-8 text-left order-first md:order-last">
@@ -268,21 +266,15 @@
                     </p>
                 </div>
                 <!-- Image Block (Always Second on Mobile, First on Desktop) -->
-                <div class="w-full max-w-[320px] md:max-w-[400px] aspect-[4/5] mx-auto bg-brand-placeholder dark:bg-dark-placeholder rounded-[2rem] border border-brand-border dark:border-[6px] dark:border-[rgba(46,46,42,1)] shadow-sm flex flex-col overflow-hidden order-last md:order-first">
-                    <div class="h-14 border-b border-brand-border/40 dark:border-transparent flex items-center px-6">
-                        <div class="w-24 h-2 bg-brand-border/60 dark:bg-[rgba(46,46,42,1)] rounded-full"></div>
-                    </div>
-                    <div class="flex-1 p-6 flex flex-col gap-3">
-                        <div class="w-full h-24 bg-white/60 dark:bg-[#2A2A27]/40 rounded-xl border border-brand-border/30 dark:border-transparent mb-2"></div>
-                        <div class="w-full h-14 bg-white/40 dark:bg-[#2A2A27]/40 rounded-xl border border-brand-border/20 dark:border-transparent"></div>
-                        <div class="w-full h-14 bg-white/40 dark:bg-[#2A2A27]/40 rounded-xl border border-brand-border/20 dark:border-transparent"></div>
-                    </div>
+                <div class="w-full max-w-[320px] md:max-w-[450px] mx-auto flex flex-col overflow-hidden order-last md:order-first">
+                    <img src="assets/instantacess.png" alt="Instant Access" class="w-full h-auto object-contain md:hidden">
+                    <img src="assets/instantacesscomputer.png" alt="Instant Access" class="w-full h-auto object-contain hidden md:block">
                 </div>
             </div>
         </section>
 
         <!-- ══ FEATURE 3: Keep it simple ══ -->
-        <section class="py-16 md:py-32 px-6 md:px-12 max-w-7xl mx-auto rounded-[3rem] dark:bg-dark-card mt-12 mb-24">
+        <section class="py-16 md:py-32 px-6 md:px-12 max-w-7xl mx-auto rounded-2xl dark:bg-dark-card mt-12 mb-24">
             <div class="flex flex-col md:grid md:grid-cols-2 gap-10 md:gap-24 items-center">
                 <div class="w-full max-w-md md:pr-8 text-left">
                     <span class="uppercase text-xs md:text-sm tracking-[0.15em] font-semibold text-[#ED1F1F] dark:text-dark-accent mb-4 md:mb-5 block opacity-0" data-reveal="animate-fade-up" data-i18n="f3_label">
@@ -295,18 +287,8 @@
                         Your day stays in one place, easy to see, adjust, and move on.
                     </p>
                 </div>
-                <div class="w-full max-w-[320px] md:max-w-[400px] aspect-[4/5] mx-auto bg-brand-placeholder dark:bg-dark-placeholder rounded-[2rem] border border-brand-border dark:border-[6px] dark:border-[rgba(46,46,42,1)] shadow-sm flex flex-col overflow-hidden">
-                    <div class="h-14 border-b border-brand-border/40 dark:border-transparent flex items-center px-6">
-                        <div class="w-24 h-2 bg-brand-border/60 dark:bg-[rgba(46,46,42,1)] rounded-full"></div>
-                    </div>
-                    <div class="flex-1 p-6 flex flex-col gap-3">
-                        <div class="w-full h-full bg-white/50 dark:bg-transparent rounded-xl border border-brand-border/30 dark:border-transparent flex flex-col gap-3 p-0">
-                            <div class="w-1/2 h-4 bg-brand-border/40 dark:bg-transparent rounded-md mb-2"></div>
-                            <div class="w-full h-16 bg-white/80 dark:bg-[#2A2A27]/40 rounded-xl"></div>
-                            <div class="w-full h-16 bg-white/80 dark:bg-[#2A2A27]/40 rounded-xl"></div>
-                            <div class="w-full h-16 bg-white/80 dark:bg-[#2A2A27]/40 rounded-xl"></div>
-                        </div>
-                    </div>
+                <div class="w-full max-w-[400px] md:max-w-[650px] mx-auto rounded-xl border border-brand-border dark:border-[6px] dark:border-[rgba(46,46,42,1)] shadow-sm overflow-hidden bg-brand-placeholder dark:bg-dark-placeholder">
+                    <video src="assets/last.mp4" autoplay muted loop playsinline class="w-full h-auto object-contain block"></video>
                 </div>
             </div>
         </section>
@@ -315,7 +297,7 @@
         <section class="py-32 px-6 md:px-12 max-w-7xl mx-auto border-t border-brand-border/50 dark:border-transparent">
             <div class="grid md:grid-cols-3 gap-8 md:gap-12">
 
-                <div class="flex flex-col gap-5 p-8 md:p-10 rounded-[2rem] bg-brand-surface dark:bg-dark-surface border border-brand-border/60 dark:border-dark-border/50 shadow-[0_4px_20px_rgb(0,0,0,0.02)]">
+                <div class="flex flex-col gap-5 p-8 md:p-10 rounded-2xl bg-brand-surface dark:bg-dark-surface border border-brand-border/60 dark:border-dark-border/50 shadow-[0_4px_20px_rgb(0,0,0,0.02)]">
                     <div class="w-12 h-12 flex items-center justify-center mb-2">
                         <svg class="w-7 h-7 text-[#ED1F1F]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
@@ -329,7 +311,7 @@
                     </p>
                 </div>
 
-                <div class="flex flex-col gap-5 p-8 md:p-10 rounded-[2rem] bg-brand-surface dark:bg-dark-surface border border-brand-border/60 dark:border-dark-border/50 shadow-[0_4px_20px_rgb(0,0,0,0.02)]">
+                <div class="flex flex-col gap-5 p-8 md:p-10 rounded-xl bg-brand-surface dark:bg-dark-surface border border-brand-border/60 dark:border-dark-border/50 shadow-[0_4px_20px_rgb(0,0,0,0.02)]">
                     <div class="w-12 h-12 flex items-center justify-center mb-2">
                         <svg class="w-7 h-7 text-[#ED1F1F]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
@@ -343,7 +325,7 @@
                     </p>
                 </div>
 
-                <div class="flex flex-col gap-5 p-8 md:p-10 rounded-[2rem] bg-brand-surface dark:bg-dark-surface border border-brand-border/60 dark:border-dark-border/50 shadow-[0_4px_20px_rgb(0,0,0,0.02)]">
+                <div class="flex flex-col gap-5 p-8 md:p-10 rounded-xl bg-brand-surface dark:bg-dark-surface border border-brand-border/60 dark:border-dark-border/50 shadow-[0_4px_20px_rgb(0,0,0,0.02)]">
                     <div class="w-12 h-12 flex items-center justify-center mb-2">
                         <svg class="w-7 h-7 text-[#ED1F1F]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
@@ -375,7 +357,7 @@
 
         <!-- ══ CTA ══ -->
         <section class="py-24 px-6 md:px-12 max-w-7xl mx-auto">
-            <div class="w-full rounded-[2.5rem] py-20 px-8 md:px-24 flex flex-col md:flex-row items-center justify-between gap-12 border border-brand-border/40 dark:border-transparent dark:bg-dark-surface shadow-sm dark:shadow-none bg-gradient-to-b from-[#C8D1E8] to-[#E8D8B8] dark:from-[#1E1C18] dark:to-[#1E1C18]">
+            <div class="w-full rounded-2xl py-20 px-8 md:px-24 flex flex-col md:flex-row items-center justify-between gap-12 border border-brand-border/40 dark:border-transparent dark:bg-dark-surface shadow-sm dark:shadow-none bg-gradient-to-b from-[#C8D1E8] to-[#E8D8B8] dark:from-[#1E1C18] dark:to-[#1E1C18]">
                 <h2 class="font-serif text-4xl md:text-[2.75rem] italic text-brand-text dark:text-dark-text tracking-tight text-center md:text-left leading-tight max-w-lg opacity-0" data-reveal="animate-fade-up" data-i18n="cta_title">
                     Bring more rhythm into your day
                 </h2>
