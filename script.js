@@ -1100,3 +1100,70 @@ document.addEventListener('DOMContentLoaded', () => {
         applyLanguage(savedLang);
     }
 });
+
+/* ============================================================
+   PostHog Custom CTA Tracking
+   ============================================================ */
+document.addEventListener('DOMContentLoaded', function() {
+  if (typeof posthog === 'undefined') return;
+
+  // Track "Start for free" buttons
+  const ctaButtons = [
+    { id: 'nav-start-btn', location: 'navbar' },
+    { id: 'hero-start-btn', location: 'hero' },
+    { id: 'footer-cta-btn', location: 'footer_section' },
+    { id: 'help-feedback-btn', location: 'help_page_feedback' },
+    { id: 'help-bug-btn', location: 'help_page_bug' },
+    { id: 'help-assist-btn', location: 'help_page_assist' }
+  ];
+
+  ctaButtons.forEach(btn => {
+    const el = document.getElementById(btn.id);
+    if (el) {
+      el.addEventListener('click', function() {
+        posthog.capture('clicked_signup_button', {
+          button_location: btn.location,
+          button_id: btn.id
+        });
+      });
+    }
+  });
+
+  // Track Social Links
+  const socialLinks = [
+    { id: 'social-ig-link', platform: 'instagram' },
+    { id: 'social-x-link', platform: 'x_twitter' },
+    { id: 'social-tiktok-link', platform: 'tiktok' }
+  ];
+
+  socialLinks.forEach(link => {
+    const el = document.getElementById(link.id);
+    if (el) {
+      el.addEventListener('click', function() {
+        posthog.capture('clicked_social_link', {
+          platform: link.platform,
+          link_id: link.id
+        });
+      });
+    }
+  });
+
+  // Track Footer Links
+  const footerLinks = [
+    { id: 'footer-help-link', type: 'help_feedback' },
+    { id: 'footer-privacy-link', type: 'privacy_policy' },
+    { id: 'footer-terms-link', type: 'terms_of_service' }
+  ];
+
+  footerLinks.forEach(link => {
+    const el = document.getElementById(link.id);
+    if (el) {
+      el.addEventListener('click', function() {
+        posthog.capture('clicked_footer_link', {
+          link_type: link.type,
+          link_id: link.id
+        });
+      });
+    }
+  });
+});

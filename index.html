@@ -11,6 +11,14 @@
 
       gtag('config', 'G-KMW1HJQLET');
     </script>
+    <!-- PostHog -->
+    <script>
+        !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group identify setPersonProperties setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags resetGroups onFeatureFlags addFeatureFlagsHandler onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+        posthog.init('phc_FxHhDfCw5QE3AiHTyvoYQCpEq2PBfmVpr5LTyIZGLQw', {
+            api_host: 'https://us.i.posthog.com',
+            person_profiles: 'identified_only'
+        })
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IntoDay - A clearer rhythm for your day</title>
@@ -253,7 +261,7 @@
                             data-lang="th">ภาษาไทย</button>
                     </div>
                 </div>
-                <a href="https://app.intoday.cc" data-i18n="nav_cta"
+                <a href="https://app.intoday.cc" data-i18n="nav_cta" id="nav-start-btn"
                     class="start-btn bg-brand-text dark:bg-dark-text text-white dark:text-dark-bg px-4 md:px-5 py-2.5 rounded-full text-sm font-medium hover:bg-black dark:hover:bg-white transition-colors whitespace-nowrap">
                     Start for free
                 </a>
@@ -273,7 +281,7 @@
                 data-reveal="animate-fade-up-delay-1" data-i18n="hero_sub">
                 Keep small things from getting lost in notes, reminders, and to-do lists
             </p>
-            <a href="https://app.intoday.cc" data-i18n="hero_cta"
+            <a href="https://app.intoday.cc" data-i18n="hero_cta" id="hero-start-btn"
                 class="start-btn mt-8 bg-brand-text dark:text-dark-bg text-white dark:bg-dark-text px-8 py-4 text-base md:px-[1.4rem] md:py-[0.7rem] md:text-[0.7rem] rounded-full font-medium hover:bg-black transition-colors inline-block opacity-0"
                 data-reveal="animate-fade-up-delay-2">
                 Start for free
@@ -475,7 +483,7 @@
                     data-reveal="animate-fade-up" data-i18n="cta_title">
                     Bring more rhythm into your day
                 </h2>
-                <a href="https://app.intoday.cc" data-i18n="cta_btn"
+                <a href="https://app.intoday.cc" data-i18n="cta_btn" id="footer-cta-btn"
                     class="start-btn bg-brand-text dark:bg-dark-text text-white dark:text-dark-bg px-8 py-4 rounded-full text-base font-medium hover:bg-black dark:hover:bg-white transition-colors shrink-0 whitespace-nowrap italic shadow-md opacity-0"
                     data-reveal="animate-fade-up-delay-1">
                     Start for free
@@ -495,24 +503,24 @@
         </a>
         <div
             class="flex flex-wrap justify-center gap-x-10 gap-y-4 text-sm font-medium text-brand-muted dark:text-dark-muted">
-            <a href="help.html" data-i18n="footer_help"
+            <a href="help.html" data-i18n="footer_help" id="footer-help-link"
                 class="hover:text-brand-text dark:hover:text-dark-text transition-colors">Help / Feedback</a>
-            <a href="privacy.html" data-i18n="footer_privacy"
+            <a href="privacy.html" data-i18n="footer_privacy" id="footer-privacy-link"
                 class="hover:text-brand-text dark:hover:text-dark-text transition-colors">Privacy Policy</a>
-            <a href="terms.html" data-i18n="footer_terms"
+            <a href="terms.html" data-i18n="footer_terms" id="footer-terms-link"
                 class="hover:text-brand-text dark:hover:text-dark-text transition-colors">Terms of Service</a>
         </div>
         <div class="flex items-center gap-10">
             <a href="https://www.instagram.com/intoday.official?igsh=dGJiNTFwNGI3ZXZ4&utm_source=qr" target="_blank"
-                class="opacity-60 hover:opacity-100 transition-opacity">
+                id="social-ig-link" class="opacity-60 hover:opacity-100 transition-opacity">
                 <img src="assets/ig.png" alt="Instagram" class="w-[37px] h-[37px] dark:invert">
             </a>
             <a href="https://x.com/intoday225493?s=21" target="_blank"
-                class="opacity-60 hover:opacity-100 transition-opacity">
+                id="social-x-link" class="opacity-60 hover:opacity-100 transition-opacity">
                 <img src="assets/x.png" alt="X" class="w-[32px] h-[32px] dark:invert">
             </a>
             <a href="https://www.tiktok.com/@intoday.official?_r=1&_t=ZS-94eOq8624ds" target="_blank"
-                class="opacity-60 hover:opacity-100 transition-opacity">
+                id="social-tiktok-link" class="opacity-60 hover:opacity-100 transition-opacity">
                 <img src="assets/tiktok.png" alt="TikTok" class="w-[37px] h-[37px] dark:invert">
             </a>
         </div>
