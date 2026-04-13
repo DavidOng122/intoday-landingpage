@@ -1,415 +1,203 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IntoDay - A clearer rhythm for your day</title>
-    <meta name="description" content="Keep small things from getting lost in notes, reminders, and to-do lists. IntoDay helps you organize your day by time.">
-    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
-                        serif: ['Newsreader', 'Georgia', 'serif'],
-                    },
-                    colors: {
-                        brand: {
-                            bg: '#FCFBFA',
-                            text: '#1A1A1A',
-                            muted: '#7A7874',
-                            accent: '#8C877E',
-                            surface: '#FFFFFF',
-                            card: '#F7F5F2',
-                            border: '#E5E3DF',
-                            placeholder: '#F2F0ED',
-                        },
-                        dark: {
-                            bg: '#111110',      /* page */
-                            text: '#EDEAE3',    /* heading */
-                            muted: '#8C8880',   /* muted text */
-                            accent: '#A89070',  /* accent */
-                            surface: '#1A1A18', /* surface */
-                            card: '#161614',    /* alt */
-                            border: '#2A2A27',  /* bordercol */
-                            placeholder: '#232320', /* mockfill */
-                            mainText: '#D4D0C8' /* main content text */
-                        }
-                    },
-                    animation: {
-                        'fade-up': 'fadeUp 0.6s ease-out forwards',
-                        'fade-up-delay-1': 'fadeUp 0.6s ease-out 0.15s forwards',
-                        'fade-up-delay-2': 'fadeUp 0.6s ease-out 0.3s forwards',
-                        'settle': 'settle 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.6s forwards',
-                        'float': 'float 4s ease-in-out infinite',
-                        'reveal-note': 'fadeIn 0.8s ease-out 1.2s forwards',
-                    },
-                    keyframes: {
-                        fadeUp: {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        body {
-            background-color: #FCFBFA;
-            color: #1A1A1A;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            transition: background-color 0.3s ease, color 0.3s ease;
-            overflow-x: hidden;
-        }
-        .dark body {
-            background-color: #111110;
-            color: #D4D0C8;
-        }
-        .design-grid {
-            background-size: 40px 40px;
-            background-image: 
-                linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
-        }
-        .dark .design-grid {
-            background-image: 
-                linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-        }
-        ::selection {
-            background-color: #E5E3DF;
-            color: #1A1A18;
-        }
-        .phone-mockup-inner {
-            background: linear-gradient(180deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.0) 100%);
-        }
-        .dark .phone-mockup-inner {
-            background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.0) 100%);
-        }
-
-        /* Language specific spacing overrides */
-        html[lang="zh"] h1, html[lang="zh"] h2, html[lang="zh"] h3,
-        html[lang="ja"] h1, html[lang="ja"] h2, html[lang="ja"] h3 {
-            line-height: 1.27 !important;
-            letter-spacing: 0.06em !important;
-        }
-        html[lang="ja"] h2 {
-            font-size: 1.75rem !important; /* Smaller than 3xl (1.875rem) */
-        }
-        @media (min-width: 768px) {
-            html[lang="ja"] h2 {
-                font-size: 2.75rem !important; /* Smaller than 5xl (3rem) */
-            }
-        }
-        html[lang="zh"] p, html[lang="ja"] p {
-            letter-spacing: 0.03em !important;
-        }
-
-        /* Language switcher */
-        #lang-menu {
-            display: none;
-        }
-        #lang-menu.open {
-            display: block;
-        }
-        #lang-btn {
-            cursor: pointer;
-            user-select: none;
-        }
-
-        /* Dark Mode Switcher */
-        .dark-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: 1px solid var(--tw-prose-body);
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        .dark-btn img {
-            width: 18px;
-            height: 18px;
-            opacity: 0.7;
-            transition: opacity 0.2s ease, filter 0.2s ease;
-        }
-        .dark .dark-btn img {
-            filter: invert(1);
-            opacity: 0.9;
-        }
-        .dark-btn:hover img {
-            opacity: 1;
-        }
-
-        .logo-brand {
-            font-family: 'Avenir', 'Avenir Next', 'Trebuchet MS', sans-serif;
-            -webkit-text-stroke: 0.2px #1A1A18;
-            paint-order: stroke fill;
-            letter-spacing: 1px;
-        }
-        .dark .logo-brand {
-            -webkit-text-stroke: 0.2px #EDEAE3;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IntoDay</title>
+  <meta name="description" content="IntoDay landing page">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="min-h-screen flex flex-col font-sans bg-brand-bg dark:bg-dark-bg text-brand-text dark:text-dark-text transition-colors duration-300 design-grid">
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="IntoDay home">
+        <span class="brand-name" data-i18n="brand">IntoDay</span>
+      </a>
 
-    <!-- ══ NAVBAR ══ -->
-    <header class="sticky top-0 w-full z-50 bg-brand-bg/80 dark:bg-dark-bg/80 backdrop-blur-md border-b border-transparent transition-all duration-300">
-        <nav class="max-w-7xl mx-auto px-4 md:px-12 py-4 md:py-6 flex justify-between items-center">
-            <a href="#" class="flex items-center gap-2 group">
-                <img src="assets/logoreal.png" alt="IntoDay Logo" class="w-7 h-auto">
-                <span class="logo-brand font-semibold text-xl tracking-tight dark:text-dark-text">IntoDay</span>
-            </a>
-            <div class="flex items-center gap-1.5 md:gap-3">
-                <!-- Dark Mode Toggle -->
-                <button id="theme-btn" class="p-2.5 rounded-full hover:bg-brand-card dark:hover:bg-dark-card transition-colors flex items-center justify-center cursor-pointer" aria-label="Toggle Dark Mode">
-                    <img id="theme-icon" src="assets/moon.png" alt="Toggle Theme" class="w-4 h-4 opacity-80 hover:opacity-100 transition-opacity">
-                </button>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="#how-it-works" data-i18n="navHow">How it works</a>
+        <a href="#features" data-i18n="navFeatures">Features</a>
+        <a href="#demo" data-i18n="navDemo">Demo</a>
+      </nav>
 
-                <!-- Language Switcher -->
-                <div class="relative" id="lang-dropdown">
-                    <button id="lang-btn"
-                        class="flex items-center gap-1 px-2 md:px-3 py-2.5 rounded-full text-sm font-medium text-brand-text dark:text-dark-text hover:bg-brand-card dark:hover:bg-dark-card transition-colors"
-                        aria-haspopup="true" aria-expanded="false">
-                        <span id="lang-label">EN</span>
-                        <svg class="w-3.5 h-3.5 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
-                    </button>
-                    <div id="lang-menu"
-                        class="absolute right-0 mt-2 w-32 bg-white dark:bg-dark-surface rounded-2xl shadow-lg border border-brand-border dark:border-dark-border overflow-hidden z-50">
-                        <button class="lang-option w-full text-left px-4 py-2.5 text-sm hover:bg-brand-card dark:hover:bg-dark-card dark:text-dark-text transition-colors flex items-center gap-2" data-lang="en">English</button>
-                        <button class="lang-option w-full text-left px-4 py-2.5 text-sm hover:bg-brand-card dark:hover:bg-dark-card dark:text-dark-text transition-colors flex items-center gap-2" data-lang="zh">中文</button>
-                        <button class="lang-option w-full text-left px-4 py-2.5 text-sm hover:bg-brand-card dark:hover:bg-dark-card dark:text-dark-text transition-colors flex items-center gap-2" data-lang="ms">Melayu</button>
-                        <button class="lang-option w-full text-left px-4 py-2.5 text-sm hover:bg-brand-card dark:hover:bg-dark-card dark:text-dark-text transition-colors flex items-center gap-2" data-lang="ja">日本語</button>
-                        <button class="lang-option w-full text-left px-4 py-2.5 text-sm hover:bg-brand-card dark:hover:bg-dark-card dark:text-dark-text transition-colors flex items-center gap-2" data-lang="th">ภาษาไทย</button>
-                    </div>
-                </div>
-                <a href="#" data-i18n="nav_cta" class="bg-brand-text dark:bg-dark-text text-white dark:text-dark-bg px-4 md:px-5 py-2.5 rounded-full text-sm font-medium hover:bg-black dark:hover:bg-white transition-colors whitespace-nowrap">
-                    Start for free
-                </a>
-            </div>
-        </nav>
+      <div class="header-actions">
+        <details class="language-menu">
+          <summary class="language-summary">EN</summary>
+          <div class="language-list" aria-label="Languages">
+            <button type="button" lang="en" data-lang="en">EN</button>
+            <button type="button" lang="ja" data-lang="ja">&#26085;&#26412;&#35486;</button>
+            <button type="button" lang="zh" data-lang="zh">&#20013;&#25991;</button>
+          </div>
+        </details>
+        <a class="start-link" href="https://app.intoday.cc" data-i18n="startFree">Start free</a>
+      </div>
     </header>
 
-    <main class="flex-1">
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <h1 id="hero-title" class="hero-title">
+          <span class="hero-title-main" data-i18n="heroTitleMain">Bring scattered project context</span>
+          <span class="hero-title-accent" data-i18n="heroTitleAccent">into one place</span>
+        </h1>
+        <p class="hero-copy" data-i18n="heroCopy">
+          helps teams and individuals collect notes, links, files, and references,
+          then organize them into reusable packs for AI workflows.
+        </p>
 
-        <!-- ══ HERO ══ -->
-        <section class="pt-16 pb-32 px-6 md:px-12 flex flex-col items-center text-center max-w-7xl mx-auto">
-            <h1 class="text-[3rem] md:text-[3.15rem] lg:text-[3.5rem] font-semibold tracking-tight text-brand-text dark:text-dark-text leading-[1.15] opacity-0" data-reveal="animate-fade-up" data-i18n="hero_title">
-                A clearer<br>rhythm for your day
-            </h1>
-            <p class="mt-6 text-[1.125rem] md:text-[0.875rem] text-brand-muted dark:text-dark-mainText max-w-xl font-normal leading-relaxed opacity-0" data-reveal="animate-fade-up-delay-1" data-i18n="hero_sub">
-                Keep small things from getting lost in notes, reminders, and to-do lists
+        <div class="hero-actions">
+          <a class="button button-primary" href="https://app.intoday.cc" data-i18n="tryDemo">Start for free</a>
+        </div>
+      </section>
+
+      <section class="preview-panel" aria-label="Product preview">
+        <div class="preview-grid"></div>
+        <div class="preview-card preview-card-left">
+          <span class="chip">PDF</span>
+          <span class="chip chip-size">2.4MB</span>
+          <h3 data-i18n="previewLeftTitle">Competitor_Report.pdf</h3>
+          <p data-i18n="previewLeftBody">Captured into the workspace and pinned as reusable context.</p>
+        </div>
+
+        <div class="preview-orbit" aria-hidden="true"></div>
+
+        <div class="preview-card preview-card-right">
+          <span class="chip">LINK</span>
+          <span class="chip chip-domain">BLOOMBERG.COM</span>
+          <h3 data-i18n="previewRightTitle">Market context, saved once.</h3>
+          <p data-i18n="previewRightBody">Notes, sources, and links stay grouped instead of scattered across tabs.</p>
+        </div>
+      </section>
+
+      <div class="post-hero-scale">
+        <section class="problem-section" aria-labelledby="problem-title">
+          <div class="problem-copy">
+            <p class="section-label" data-i18n="problemLabel">THE PROBLEM</p>
+            <h2 id="problem-title" class="problem-title" data-i18n="problemTitle">The "Context Gap" is the new workflow bottleneck.</h2>
+            <p class="problem-body" data-i18n="problemBody">
+              We waste 30% of our AI interactions just trying to paste the right links,
+              upload the right files, and explain the background. Information is
+              scattered across bookmarks, local files, and Slack threads.
             </p>
-            <a href="#" data-i18n="hero_cta" class="mt-8 bg-brand-text dark:text-dark-bg text-white dark:bg-dark-text px-8 py-4 text-base md:px-[1.4rem] md:py-[0.7rem] md:text-[0.7rem] rounded-full font-medium hover:bg-black transition-colors inline-block opacity-0" data-reveal="animate-fade-up-delay-2">
-                Start for free
-            </a>
+            <div class="problem-divider"></div>
+            <p class="problem-footnote" data-i18n="problemFootnote">When you start with messy context, you get generic results.</p>
+          </div>
 
-            <!-- Phone mockup (Mobile only) -->
-            <div class="mt-16 w-full max-w-[280px] md:hidden flex justify-center">
-                <video src="assets/Figmaphone.mp4" autoplay muted loop playsinline class="w-full h-auto rounded-[2.7rem] shadow-[0_24px_60px_-15px_rgba(0,0,0,0.1)]"></video>
+          <div class="problem-card" aria-label="Context flow diagram">
+            <div class="asset-row">
+              <div class="asset-icon" aria-hidden="true"></div>
+              <div class="asset-copy">
+                <h3 data-i18n="assetTitle">Scattered Assets</h3>
+                <p data-i18n="assetBody">Links, PDFs, Snippets, Notes</p>
+              </div>
             </div>
 
-            <!-- Video (Desktop only) -->
-            <div class="mt-16 w-full max-w-6xl hidden md:block rounded-lg overflow-hidden border border-brand-border dark:border-dark-border shadow-[0_24px_60px_-15px_rgba(0,0,0,0.05)] bg-black">
-                <video src="assets/computerlandingpage.mp4" autoplay muted loop playsinline class="w-full h-auto block"></video>
-            </div>
+            <div class="flow-arrow" aria-hidden="true">&#8595;</div>
+
+            <div class="problem-stage" data-i18n="problemStage">PRIMING AGENT...</div>
+
+            <div class="flow-arrow" aria-hidden="true">&#8595;</div>
+
+            <p class="problem-outcome" data-i18n="problemOutcome">Optimal AI Performance</p>
+          </div>
         </section>
 
-        <!-- ══ FEATURE 1: Organize by time of day ══ -->
-        <section class="py-16 md:py-32 px-6 md:px-12 max-w-7xl mx-auto rounded-2xl dark:bg-dark-card mt-12">
-            <div class="flex flex-col md:grid md:grid-cols-2 gap-10 md:gap-24 items-center">
-                <div class="w-full max-w-md md:pr-8 text-left">
-                    <span class="uppercase text-xs md:text-sm tracking-[0.15em] font-semibold text-[#ED1F1F] dark:text-dark-accent mb-4 md:mb-5 block opacity-0" data-reveal="animate-fade-up" data-i18n="f1_label">
-                        Organize by time of day
-                    </span>
-                    <h2 class="text-3xl md:text-5xl font-semibold tracking-tight text-brand-text dark:text-dark-text mb-4 md:mb-6 leading-[1.15] opacity-0" data-reveal="animate-fade-up-delay-1" data-i18n="f1_title">
-                        Place things where they belong
-                    </h2>
-                    <p class="text-base md:text-xl text-brand-muted dark:text-dark-mainText leading-relaxed opacity-0" data-reveal="animate-fade-up-delay-2" data-i18n="f1_desc">
-                        No need to figure out the exact time, just place it into your day.
-                    </p>
-                </div>
-                <div class="w-full max-w-[400px] md:max-w-[650px] mx-auto rounded-xl md:border md:border-brand-border md:dark:border-[6px] md:dark:border-[rgba(46,46,42,1)] md:shadow-sm overflow-hidden md:bg-brand-placeholder md:dark:bg-dark-placeholder flex justify-center">
-                    <!-- Desktop Video -->
-                    <video src="assets/add.mp4" autoplay muted loop playsinline class="hidden md:block w-full h-auto object-contain"></video>
-                    <!-- Mobile Video (Scaled down and centered) -->
-                    <video src="assets/Figmainteraction2.mp4" autoplay muted loop playsinline class="block md:hidden w-full max-w-[240px] h-auto object-contain rounded-[2.7rem]"></video>
-                </div>
-            </div>
+        <section class="how-section" id="how-it-works" aria-labelledby="how-title">
+          <p id="how-title" class="section-label section-label-next" data-i18n="howLabel">HOW IT WORKS</p>
+
+          <div class="how-grid">
+            <article class="how-step">
+              <p class="how-number">01</p>
+              <h3 class="how-step-title" data-i18n="howStep1Title">Collect</h3>
+              <p class="how-step-body" data-i18n="howStep1Body">Save notes, links, files, screenshots, and references in one workspace.</p>
+            </article>
+
+            <article class="how-step">
+              <p class="how-number">02</p>
+              <h3 class="how-step-title" data-i18n="howStep2Title">Group</h3>
+              <p class="how-step-body" data-i18n="howStep2Body">Organize related items into packs so your working context stays together and easy to reuse.</p>
+            </article>
+
+            <article class="how-step">
+              <p class="how-number">03</p>
+              <h3 class="how-step-title" data-i18n="howStep3Title">Copy or Export</h3>
+              <p class="how-step-body" data-i18n="howStep3Body">Send your pack into ChatGPT, Claude, or your preferred AI workflow with less setup friction.</p>
+            </article>
+          </div>
         </section>
 
-        <!-- ══ FEATURE 2: Adapt as you go ══ -->
-        <section class="py-16 md:py-32 px-6 md:px-12 max-w-7xl mx-auto dark:bg-dark-bg mt-12 rounded-2xl">
-            <div class="flex flex-col md:grid md:grid-cols-2 gap-10 md:gap-24 items-center">
-                <!-- Text Block (Always First on Mobile, Second on Desktop) -->
-                <div class="w-full max-w-md md:pl-8 text-left order-first md:order-last">
-                    <span class="uppercase text-xs md:text-sm tracking-[0.15em] font-semibold text-[#ED1F1F] dark:text-dark-accent mb-4 md:mb-5 block opacity-0" data-reveal="animate-fade-up" data-i18n="f2_label">
-                        Adapt as you go
-                    </span>
-                    <h2 class="text-3xl md:text-5xl font-semibold tracking-tight text-brand-text dark:text-dark-text mb-4 md:mb-6 leading-[1.15] opacity-0" data-reveal="animate-fade-up-delay-1" data-i18n="f2_title">
-                        Flexible by design
-                    </h2>
-                    <p class="text-base md:text-xl text-brand-muted dark:text-dark-mainText leading-relaxed opacity-0" data-reveal="animate-fade-up-delay-2" data-i18n="f2_desc">
-                        When your plans change, just move things and keep going.
-                    </p>
-                </div>
-                <!-- Image Block (Always Second on Mobile, First on Desktop) -->
-                <div class="w-full max-w-[320px] md:max-w-[550px] mx-auto flex flex-col overflow-hidden order-last md:order-first">
-                    <img src="assets/instantacess.png" alt="Instant Access" class="w-full h-auto object-contain md:hidden">
-                    <img src="assets/instantacesscomputer.png" alt="Instant Access" class="w-full h-auto object-contain hidden md:block">
-                </div>
-            </div>
+        <section class="features-section" id="features" aria-labelledby="features-title">
+          <p class="section-label" data-i18n="featuresLabel">FEATURES</p>
+          <h2 id="features-title" class="features-title" data-i18n="featuresTitle">Built for context before AI</h2>
+
+          <div class="features-grid">
+            <article class="feature-card">
+              <div class="feature-icon feature-icon-canvas" aria-hidden="true"></div>
+              <h3 class="feature-card-title" data-i18n="feature1Title">Visual Canvas</h3>
+              <p class="feature-card-body" data-i18n="feature1Body">A spatial workspace for arranging notes, files, links, and references before they go into AI.</p>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-icon feature-icon-bundles" aria-hidden="true"></div>
+              <h3 class="feature-card-title" data-i18n="feature2Title">Pack Bundles</h3>
+              <p class="feature-card-body" data-i18n="feature2Body">Group related items into one reusable context pack and keep them ready for reuse or export.</p>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-icon feature-icon-export" aria-hidden="true"></div>
+              <h3 class="feature-card-title" data-i18n="feature3Title">AI-ready Export</h3>
+              <p class="feature-card-body" data-i18n="feature3Body">Copy or export your packs into formats that work better with ChatGPT, Claude, and other AI tools.</p>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-icon feature-icon-local" aria-hidden="true"></div>
+              <h3 class="feature-card-title" data-i18n="feature4Title">Local-first</h3>
+              <p class="feature-card-body" data-i18n="feature4Body">Your files and research stay in your workspace until you choose to copy or export them.</p>
+            </article>
+          </div>
         </section>
 
-        <!-- ══ FEATURE 3: Keep it simple ══ -->
-        <section class="py-16 md:py-32 px-6 md:px-12 max-w-7xl mx-auto rounded-2xl dark:bg-dark-card mt-12 mb-24">
-            <div class="flex flex-col md:grid md:grid-cols-2 gap-10 md:gap-24 items-center">
-                <div class="w-full max-w-md md:pr-8 text-left">
-                    <span class="uppercase text-xs md:text-sm tracking-[0.15em] font-semibold text-[#ED1F1F] dark:text-dark-accent mb-4 md:mb-5 block opacity-0" data-reveal="animate-fade-up" data-i18n="f3_label">
-                        Keep it simple
-                    </span>
-                    <h2 class="text-3xl md:text-5xl font-semibold tracking-tight text-brand-text dark:text-dark-text mb-4 md:mb-6 leading-[1.15] opacity-0" data-reveal="animate-fade-up-delay-1" data-i18n="f3_title">
-                        One page for your day
-                    </h2>
-                    <p class="text-base md:text-xl text-brand-muted dark:text-dark-mainText leading-relaxed opacity-0" data-reveal="animate-fade-up-delay-2" data-i18n="f3_desc">
-                        Your day stays in one place, easy to see, adjust, and move on.
-                    </p>
-                </div>
-                <div class="w-full max-w-[400px] md:max-w-[650px] mx-auto rounded-xl md:border md:border-brand-border md:dark:border-[6px] md:dark:border-[rgba(46,46,42,1)] md:shadow-sm overflow-hidden md:bg-brand-placeholder md:dark:bg-dark-placeholder flex justify-center">
-                    <!-- Desktop Video -->
-                    <video src="assets/last.mp4" autoplay muted loop playsinline class="hidden md:block w-full h-auto object-contain"></video>
-                    <!-- Mobile Video (Scaled to match Feature 1, no background, cropped top) -->
-                    <div class="block md:hidden w-full max-w-[240px] overflow-hidden rounded-[2.7rem]">
-                        <video src="assets/Figmainteraction3.mp4" autoplay muted loop playsinline class="w-full h-auto object-contain -mt-1"></video>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ══ USE CASE LIST ══ -->
-        <section class="py-32 px-6 md:px-12 max-w-7xl mx-auto border-t border-brand-border/50 dark:border-transparent">
-            <div class="grid md:grid-cols-3 gap-8 md:gap-12">
-
-                <div class="flex flex-col gap-5 p-8 md:p-10 rounded-2xl bg-brand-surface dark:bg-dark-surface border border-brand-border/60 dark:border-dark-border/50 shadow-[0_4px_20px_rgb(0,0,0,0.02)]">
-                    <div class="w-12 h-12 flex items-center justify-center mb-2">
-                        <svg class="w-7 h-7 text-[#ED1F1F]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold tracking-tight text-brand-text dark:text-dark-text opacity-0" data-reveal="animate-fade-up" data-i18n="uc1_title">
-                        For work follow-ups
-                    </h3>
-                    <p class="text-brand-muted dark:text-dark-mainText leading-relaxed text-base opacity-0" data-reveal="animate-fade-up-delay-1" data-i18n="uc1_desc">
-                        Keep handoffs and follow-ups in one clear place – instead of leaving them in notes or chat.
-                    </p>
-                </div>
-
-                <div class="flex flex-col gap-5 p-8 md:p-10 rounded-xl bg-brand-surface dark:bg-dark-surface border border-brand-border/60 dark:border-dark-border/50 shadow-[0_4px_20px_rgb(0,0,0,0.02)]">
-                    <div class="w-12 h-12 flex items-center justify-center mb-2">
-                        <svg class="w-7 h-7 text-[#ED1F1F]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold tracking-tight text-brand-text dark:text-dark-text opacity-0" data-reveal="animate-fade-up" data-i18n="uc2_title">
-                        For plans without exact times
-                    </h3>
-                    <p class="text-brand-muted dark:text-dark-mainText leading-relaxed text-base opacity-0" data-reveal="animate-fade-up-delay-1" data-i18n="uc2_desc">
-                        Buying groceries, going to a shop... you know you need to do, but don't have an exact time for yet.
-                    </p>
-                </div>
-
-                <div class="flex flex-col gap-5 p-8 md:p-10 rounded-xl bg-brand-surface dark:bg-dark-surface border border-brand-border/60 dark:border-dark-border/50 shadow-[0_4px_20px_rgb(0,0,0,0.02)]">
-                    <div class="w-12 h-12 flex items-center justify-center mb-2">
-                        <svg class="w-7 h-7 text-[#ED1F1F]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold tracking-tight text-brand-text dark:text-dark-text opacity-0" data-reveal="animate-fade-up" data-i18n="uc3_title">
-                        For days that keep changing
-                    </h3>
-                    <p class="text-brand-muted dark:text-dark-mainText leading-relaxed text-base opacity-0" data-reveal="animate-fade-up-delay-1" data-i18n="uc3_desc">
-                        Trips, city walks, and busy days with changing plans and timing - keep things visible and easy to move.
-                    </p>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- ══ QUOTE ══ -->
-        <section class="py-48 md:py-64 px-6 flex flex-col items-center text-center max-w-4xl mx-auto">
-            <div class="flex items-center justify-center mb-12 opacity-80">
-                <img src="assets/stonereal.png" alt="IntoDay Icon" class="w-32 h-auto">
-            </div>
-            <blockquote class="font-serif text-4xl md:text-5xl lg:text-6xl leading-[1.2] tracking-tight text-brand-text dark:text-dark-text italic opacity-0" data-reveal="animate-fade-up" data-i18n="quote">
-                "Your day isn't a list of chores.<br class="hidden md:block"> It's a rhythm of moments."
-            </blockquote>
-            <p class="mt-8 text-xs md:text-sm font-semibold tracking-[0.2em] uppercase text-brand-muted dark:text-[#8C8879] opacity-0" data-reveal="animate-fade-up-delay-1" data-i18n="quote_author">
-                The IntoDay Philosophy
+        <section class="cta-section" aria-labelledby="cta-title">
+          <div class="cta-panel">
+            <p class="section-label cta-label" data-i18n="ctaLabel">GET STARTED</p>
+            <h2 id="cta-title" class="cta-title">
+              <span data-i18n="ctaTitleMain">Your context,</span>
+              <em data-i18n="ctaTitleAccent">distilled.</em>
+            </h2>
+            <p class="cta-copy" data-i18n="ctaCopy">
+              Join 12,000+ researchers, engineers, and designers who spend
+              less time copy-pasting and more time creating.
             </p>
-        </section>
 
-        <!-- ══ CTA ══ -->
-        <section class="py-24 px-6 md:px-12 max-w-7xl mx-auto">
-            <div class="w-full rounded-2xl py-20 px-8 md:px-24 flex flex-col md:flex-row items-center justify-between gap-12 border border-brand-border/40 dark:border-transparent dark:bg-dark-surface shadow-sm dark:shadow-none bg-gradient-to-b from-[#C8D1E8] to-[#E8D8B8] dark:from-[#1E1C18] dark:to-[#1E1C18]">
-                <h2 class="font-serif text-4xl md:text-[2.75rem] italic text-brand-text dark:text-dark-text tracking-tight text-center md:text-left leading-tight max-w-lg opacity-0" data-reveal="animate-fade-up" data-i18n="cta_title">
-                    Bring more rhythm into your day
-                </h2>
-                <a href="#" data-i18n="cta_btn" class="bg-brand-text dark:bg-dark-text text-white dark:text-dark-bg px-8 py-4 rounded-full text-base font-medium hover:bg-black dark:hover:bg-white transition-colors shrink-0 whitespace-nowrap italic shadow-md opacity-0" data-reveal="animate-fade-up-delay-1">
-                    Start for free
-                </a>
+            <div class="cta-actions">
+              <a class="cta-panel-primary" href="https://app.intoday.cc" data-i18n="ctaPrimary">Get Started for Free</a>
+              <a class="cta-panel-secondary" href="#enterprise" data-i18n="ctaSecondary">Request Enterprise</a>
             </div>
+          </div>
         </section>
-
+      </div>
     </main>
 
-    <!-- ══ FOOTER ══ -->
-    <footer class="py-16 md:py-20 border-t border-brand-border/50 dark:border-transparent flex flex-col items-center justify-center gap-12 pb-32 dark:bg-[#0E0E0D]">
-        <a href="#" class="flex items-center gap-3 group opacity-80 hover:opacity-100 transition-opacity">
-            <img src="assets/logoreal.png" alt="IntoDay Logo" class="w-9 h-auto">
-            <span class="logo-brand font-semibold text-[1.75rem] tracking-tight text-brand-text dark:text-dark-text">IntoDay</span>
-        </a>
-        <div class="flex flex-wrap justify-center gap-x-10 gap-y-4 text-sm font-medium text-brand-muted dark:text-dark-muted">
-            <a href="help.html" data-i18n="footer_help" class="hover:text-brand-text dark:hover:text-dark-text transition-colors">Help / Feedback</a>
-            <a href="privacy.html" data-i18n="footer_privacy" class="hover:text-brand-text dark:hover:text-dark-text transition-colors">Privacy Policy</a>
-            <a href="terms.html" data-i18n="footer_terms" class="hover:text-brand-text dark:hover:text-dark-text transition-colors">Terms of Service</a>
+    <div class="post-hero-scale post-hero-scale-footer">
+      <footer class="site-footer">
+        <div class="footer-brand">
+          <span class="footer-name" data-i18n="brand">IntoDay</span>
         </div>
-        <div class="flex items-center gap-10">
-            <a href="https://www.instagram.com/intoday.official?igsh=dGJiNTFwNGI3ZXZ4&utm_source=qr" target="_blank" class="opacity-60 hover:opacity-100 transition-opacity">
-                <img src="assets/ig.png" alt="Instagram" class="w-[37px] h-[37px] dark:invert">
-            </a>
-            <a href="https://x.com/intoday225493?s=21" target="_blank" class="opacity-60 hover:opacity-100 transition-opacity">
-                <img src="assets/x.png" alt="X" class="w-[32px] h-[32px] dark:invert">
-            </a>
-            <a href="https://www.tiktok.com/@intoday.official?_r=1&_t=ZS-94eOq8624ds" target="_blank" class="opacity-60 hover:opacity-100 transition-opacity">
-                <img src="assets/tiktok.png" alt="TikTok" class="w-[37px] h-[37px] dark:invert">
-            </a>
-        </div>
-        <p class="text-[10px] text-brand-accent dark:text-dark-muted opacity-60" data-i18n="footer_copy">
-            © 2026 IntoDay. All rights reserved.
-        </p>
-    </footer>
 
-    <script src="script.js"></script>
-    <script>
-        function replayNavbarLogo(event) {
-            if (event) event.preventDefault();
-            const topLayer = document.getElementById('navbar-logo-top');
-            if (!topLayer) return;
-            topLayer.classList.remove('animate-settle');
-            void topLayer.offsetWidth; // trigger reflow
-            topLayer.classList.add('animate-settle');
-        }
-        window.addEventListener('load', () => setTimeout(() => replayNavbarLogo(), 150));
-    </script>
+        <div class="footer-meta">
+          <nav class="footer-nav" aria-label="Footer">
+            <a href="help.html" data-i18n="footerHelp">Help / Feedback</a>
+            <a href="privacy.html" data-i18n="footerPrivacy">Privacy Policy</a>
+            <a href="terms.html" data-i18n="footerTerms">Terms of Service</a>
+          </nav>
+
+          <p class="footer-copy" data-i18n="footerCopyright">&copy; 2026 IntoDay. All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>

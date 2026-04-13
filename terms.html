@@ -1,282 +1,250 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms of Service - IntoDay</title>
-    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
-                        serif: ['Newsreader', 'Georgia', 'serif'],
-                    },
-                    colors: {
-                        brand: {
-                            bg: '#FCFBFA',
-                            text: '#1A1A1A',
-                            muted: '#7A7874',
-                            accent: '#8C877E',
-                            surface: '#FFFFFF',
-                            card: '#F7F5F2',
-                            border: '#E5E3DF',
-                        },
-                        dark: {
-                            bg: '#111110',
-                            text: '#EDEAE3',
-                            muted: '#8C8880',
-                            accent: '#A89070',
-                            surface: '#1A1A18',
-                            card: '#161614',
-                            border: '#2A2A27',
-                            mainText: '#D4D0C8'
-                        }
-                    },
-                    animation: {
-                        'fade-up': 'fadeUp 0.6s ease-out forwards',
-                        'fade-up-delay-1': 'fadeUp 0.6s ease-out 0.15s forwards',
-                        'fade-up-delay-2': 'fadeUp 0.6s ease-out 0.3s forwards',
-                        'settle': 'settle 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.6s forwards',
-                        'float': 'float 4s ease-in-out infinite',
-                        'reveal-note': 'fadeIn 0.8s ease-out 1.2s forwards',
-                    },
-                    keyframes: {
-                        fadeUp: {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        body {
-            background-color: #FCFBFA;
-            color: #1A1A1A;
-            -webkit-font-smoothing: antialiased;
-            transition: background-color 0.3s ease, color 0.3s ease;
-            overflow-x: hidden;
-        }
-        .dark body {
-            background-color: #111110;
-            color: #D4D0C8;
-        }
-        .design-grid {
-            background-size: 40px 40px;
-            background-image: 
-                linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
-        }
-        .dark .design-grid {
-            background-image: 
-                linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-        }
-        
-        /* Language specific spacing overrides */
-        html[lang="zh"] h1, html[lang="zh"] h2, html[lang="zh"] h3,
-        html[lang="ja"] h1, html[lang="ja"] h2, html[lang="ja"] h3 {
-            line-height: 1.27 !important;
-            letter-spacing: 0.06em !important;
-        }
-        
-        #lang-menu { display: none; }
-        #lang-menu.open { display: block; }
-        
-        .terms-content h2 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-top: 2.5rem;
-            margin-bottom: 1rem;
-            color: #1A1A18;
-        }
-        .dark .terms-content h2 {
-            color: #EDEAE3;
-        }
-        .terms-content h3 {
-            font-size: 1.15rem;
-            font-weight: 600;
-            margin-top: 1.5rem;
-            margin-bottom: 0.75rem;
-            color: #1A1A18;
-        }
-        .dark .terms-content h3 {
-            color: #EDEAE3;
-        }
-        .terms-content p, .terms-content ul {
-            margin-bottom: 1.25rem;
-            line-height: 1.7;
-            color: #6B6A65;
-        }
-        .dark .terms-content p, .dark .terms-content ul {
-            color: #D4D0C8;
-        }
-        .terms-content ul {
-            list-style-type: disc;
-            padding-left: 1.5rem;
-        }
-        .terms-content li {
-            margin-bottom: 0.5rem;
-        }
-        .terms-content .effective-date {
-            font-size: 0.875rem;
-            color: #8C877E;
-            margin-bottom: 2rem;
-        }
-
-        .logo-brand {
-            font-family: 'Avenir', 'Avenir Next', 'Trebuchet MS', sans-serif;
-            -webkit-text-stroke: 0.2px #1A1A18;
-            paint-order: stroke fill;
-            letter-spacing: 1px;
-        }
-        .dark .logo-brand {
-            -webkit-text-stroke: 0.2px #EDEAE3;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms of Service - IntoDay</title>
+  <meta name="description" content="Terms of Service for IntoDay.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="min-h-screen flex flex-col font-sans bg-brand-bg dark:bg-dark-bg text-brand-text dark:text-dark-text transition-colors duration-300 design-grid">
-
+<body>
     <!-- ══ NAVBAR ══ -->
-    <header class="sticky top-0 w-full z-50 bg-brand-bg/80 dark:bg-dark-bg/80 backdrop-blur-md border-b border-transparent">
-        <nav class="max-w-7xl mx-auto px-6 md:px-12 py-4 md:py-6 flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-2 group">
-                <img src="assets/logoreal.png" alt="IntoDay Logo" class="w-7 h-auto">
-                <span class="logo-brand font-semibold text-xl tracking-tight dark:text-dark-text">IntoDay</span>
-            </a>
-            <div class="flex items-center gap-3">
-                <button id="theme-btn" class="p-2.5 rounded-full hover:bg-brand-card dark:hover:bg-dark-card transition-colors flex items-center justify-center cursor-pointer" aria-label="Toggle Dark Mode">
-                    <img id="theme-icon" src="assets/moon.png" alt="Toggle Theme" class="w-4 h-4 opacity-80 hover:opacity-100 transition-opacity">
-                </button>
+    <header class="site-header" style="max-width: 1720px; width: 100%; margin: 0 auto; padding: 28px 22px;">
+      <a class="brand" href="/" aria-label="IntoDay home">
+        <span class="brand-name" data-i18n="brand">IntoDay</span>
+      </a>
 
-                <div class="relative" id="lang-dropdown">
-                    <button id="lang-btn" class="flex items-center gap-1.5 px-3 py-2.5 rounded-full text-sm font-medium hover:bg-brand-card dark:hover:bg-dark-card transition-colors">
-                        <span id="lang-label">EN</span>
-                        <svg class="w-3.5 h-3.5 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
-                    </button>
-                    <div id="lang-menu" class="absolute right-0 mt-2 w-32 bg-white dark:bg-dark-surface rounded-2xl shadow-lg border border-brand-border dark:border-dark-border overflow-hidden z-50">
-                        <button class="lang-option w-full text-left px-4 py-2.5 text-sm hover:bg-brand-card dark:hover:bg-dark-card dark:text-dark-text transition-colors flex items-center gap-2" data-lang="en">English</button>
-                        <button class="lang-option w-full text-left px-4 py-2.5 text-sm hover:bg-brand-card dark:hover:bg-dark-card dark:text-dark-text transition-colors flex items-center gap-2" data-lang="zh">中文</button>
-                        <button class="lang-option w-full text-left px-4 py-2.5 text-sm hover:bg-brand-card dark:hover:bg-dark-card dark:text-dark-text transition-colors flex items-center gap-2" data-lang="ms">Melayu</button>
-                        <button class="lang-option w-full text-left px-4 py-2.5 text-sm hover:bg-brand-card dark:hover:bg-dark-card dark:text-dark-text transition-colors flex items-center gap-2" data-lang="ja">日本語</button>
-                        <button class="lang-option w-full text-left px-4 py-2.5 text-sm hover:bg-brand-card dark:hover:bg-dark-card dark:text-dark-text transition-colors flex items-center gap-2" data-lang="th">ภาษาไทย</button>
-                    </div>
-                </div>
-                <a href="index.html" data-i18n="nav_cta" class="bg-brand-text dark:bg-dark-text text-white dark:text-dark-bg px-5 py-2.5 rounded-full text-sm font-medium hover:bg-black dark:hover:bg-white transition-colors">
-                    Start for free
-                </a>
-            </div>
-        </nav>
+      <div></div>
+
+      <div class="header-actions">
+        <details class="language-menu">
+          <summary class="language-summary">EN</summary>
+          <div class="language-list" aria-label="Languages">
+            <button type="button" lang="en" data-lang="en">EN</button>
+            <button type="button" lang="ja" data-lang="ja">&#26085;&#26412;&#35486;</button>
+            <button type="button" lang="zh" data-lang="zh">&#20013;&#25991;</button>
+          </div>
+        </details>
+        <a class="start-link" href="https://app.intoday.cc" data-i18n="startFree">Start free</a>
+      </div>
     </header>
+  <main class="legal-page">
 
-    <main class="flex-1 max-w-3xl mx-auto px-6 py-24">
-        <div class="terms-content">
-            <h1 class="text-4xl md:text-5xl font-semibold tracking-tight mb-4 opacity-0 animate-fade-up" data-i18n="ts_title">Terms of Service of IntoDay</h1>
-            <p class="effective-date" data-i18n="ts_effective">Effective Date: @2026/3/12</p>
-            
-            <p class="opacity-0 animate-fade-up-delay-2" data-i18n="ts_intro">These Terms of Service (“Terms”) govern your access to and use of IntoDay (“IntoDay,” “we,” “us,” or “our”).</p>
-            <p class="opacity-0 animate-fade-up-delay-2" data-i18n="ts_agree">By accessing or using IntoDay, you agree to these Terms. If you do not agree, please do not use IntoDay.</p>
+    <section class="legal-panel">
 
-            <h2 class="opacity-0 animate-fade-up" data-i18n="ts_s1_title">1. About IntoDay</h2>
-            <p data-i18n="ts_s1_desc">IntoDay is a tool for organizing tasks, reminders, follow-ups, and small plans into time blocks throughout the day. IntoDay is currently provided as an early-stage product / beta service. Some features may change, be updated, or be removed over time.</p>
+      <!-- ── ENGLISH ── -->
+      <div data-lang-content="en">
+        <h1 class="legal-title">Terms of Service</h1>
+        <p class="legal-lead">These terms explain how you may use IntoDay and what to expect when using the product, website, and related services.</p>
+        <p class="legal-updated">Last updated: April 13, 2026</p>
 
-            <h2 class="opacity-0 animate-fade-up" data-i18n="ts_s2_title">2. Eligibility</h2>
-            <p data-i18n="ts_s2_desc">You may use IntoDay only if you can legally enter into a binding agreement under the laws that apply to you.</p>
+        <div class="legal-sections">
+          <section class="legal-section">
+            <h2>1. Acceptance</h2>
+            <p>By accessing or using IntoDay, you agree to these Terms of Service. If you do not agree, please do not use the service.</p>
+          </section>
 
-            <h2 class="opacity-0 animate-fade-up" data-i18n="ts_s3_title">3. Your Account</h2>
-            <p data-i18n="ts_s3_intro">You may sign in to IntoDay using Google authentication. You are responsible for:</p>
-            <ul data-i18n="ts_s3_list">
-                <li>maintaining the security of your account</li>
-                <li>keeping your login credentials safe</li>
-                <li>all activity that occurs under your account</li>
+          <section class="legal-section">
+            <h2>2. Using IntoDay</h2>
+            <p>You may use IntoDay only in compliance with applicable laws and in a way that does not harm the safety, availability, or integrity of the service.</p>
+          </section>
+
+          <section class="legal-section">
+            <h2>3. Your Content</h2>
+            <p>You are responsible for the notes, links, files, references, and other materials you add to IntoDay. You confirm that you have the necessary rights to use, store, and share that content through your workflows.</p>
+          </section>
+
+          <section class="legal-section">
+            <h2>4. Product Changes and Availability</h2>
+            <p>IntoDay is an evolving product. We may add, change, pause, or remove features over time. We do not guarantee that every feature will always be available.</p>
+          </section>
+
+          <section class="legal-section">
+            <h2>5. Acceptable Use</h2>
+            <p>You agree not to:</p>
+            <ul>
+              <li>misuse the service or attempt unauthorized access</li>
+              <li>upload unlawful, infringing, or harmful content</li>
+              <li>interfere with the service, other users, or related systems</li>
             </ul>
-            <p data-i18n="ts_s3_contact">If you believe your account has been accessed without authorization, please contact us at: <a href="mailto:contact.intoday@gmail.com" class="underline">contact.intoday@gmail.com</a></p>
+          </section>
 
-            <h2 class="opacity-0 animate-fade-up" data-i18n="ts_s4_title">4. Your Content</h2>
-            <p data-i18n="ts_s4_desc">You may add content to IntoDay, including tasks, reminders, notes, links, locations, file-related references, and other text. You retain ownership of the content you submit to IntoDay. You grant us a limited right to store, process, and display your content only as necessary to operate and provide the service. You are responsible for the content you add and for ensuring that you have the right to use and submit it.</p>
+          <section class="legal-section">
+            <h2>6. Intellectual Property</h2>
+            <p>IntoDay and its website, interface, branding, and related materials remain the property of IntoDay or its licensors, except for content that you own and provide.</p>
+          </section>
 
-            <h2 class="opacity-0 animate-fade-up" data-i18n="ts_s5_title">5. Acceptable Use</h2>
-            <p data-i18n="ts_s5_intro">You agree not to:</p>
-            <ul data-i18n="ts_s5_list">
-                <li>use IntoDay for unlawful purposes</li>
-                <li>upload or submit harmful, abusive, infringing, or misleading content</li>
-                <li>interfere with the security or operation of the service</li>
-                <li>attempt to access data that does not belong to you</li>
-                <li>reverse engineer, copy, or misuse the service beyond normal permitted use</li>
+          <section class="legal-section">
+            <h2>7. Disclaimer</h2>
+            <p>IntoDay is provided on an "as available" basis. To the fullest extent permitted by law, we do not guarantee uninterrupted availability or error-free operation.</p>
+          </section>
+
+          <section class="legal-section">
+            <h2>8. Limitation of Liability</h2>
+            <p>To the fullest extent permitted by law, IntoDay will not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of the service.</p>
+          </section>
+
+          <section class="legal-section">
+            <h2>9. Changes to These Terms</h2>
+            <p>We may update these Terms from time to time. If we do, the updated version will be posted here with a revised date. By continuing to use IntoDay after the updated Terms take effect, you agree to the revised Terms.</p>
+          </section>
+
+          <section class="legal-section">
+            <h2>10. Contact</h2>
+            <p>If you have questions about these Terms, please contact us through the Help / Feedback page.</p>
+          </section>
+        </div>
+      </div>
+
+      <!-- ── 中文 ── -->
+      <div data-lang-content="zh">
+        <h1 class="legal-title">服务条款</h1>
+        <p class="legal-lead">本条款解释了您如何使用 IntoDay，以及使用本产品、网站及相关服务时的注意事项。</p>
+        <p class="legal-updated">最后更新于：2026年4月13日</p>
+
+        <div class="legal-sections">
+          <section class="legal-section">
+            <h2>1. 接受条款</h2>
+            <p>通过访问或使用 IntoDay，即表示您同意本服务条款。如果您不同意，请勿使用本服务。</p>
+          </section>
+
+          <section class="legal-section">
+            <h2>2. 使用 IntoDay</h2>
+            <p>您必须在遵守适用法律的前提下使用 IntoDay，且不得以损害本服务的安全性、可用性或完整性的方式使用本服务。</p>
+          </section>
+
+          <section class="legal-section">
+            <h2>3. 您的内容</h2>
+            <p>您对添加到 IntoDay 的笔记、链接、文件、参考文献和其他材料全权负责。您确认您拥有在工作流中使用、存储及分享这些内容的必要权利。</p>
+          </section>
+
+          <section class="legal-section">
+            <h2>4. 产品变更与可用性</h2>
+            <p>IntoDay 是一款不断发展的产品。我们可能会不时增加、更改、暂停或移除个别功能。我们不保证所有功能都会始终可用。</p>
+          </section>
+
+          <section class="legal-section">
+            <h2>5. 可接受的使用方式</h2>
+            <p>您同意不从事以下行为：</p>
+            <ul>
+              <li>滥用本服务或尝试未经授权的访问</li>
+              <li>上传违法、侵权或有害的内容</li>
+              <li>干扰本服务、其他用户或相关的系统运行</li>
             </ul>
-            <p data-i18n="ts_s5_footer">We may suspend or terminate access if we reasonably believe you have violated these Terms.</p>
+          </section>
 
-            <h2 class="opacity-0 animate-fade-up" data-i18n="ts_s6_title">6. Service Availability</h2>
-            <p data-i18n="ts_s6_desc">IntoDay is provided on an “as is” and “as available” basis. We may update, change, suspend, or discontinue parts of the service at any time, especially during the beta stage. We do not guarantee that IntoDay will always be available, error-free, or uninterrupted.</p>
+          <section class="legal-section">
+            <h2>6. 知识产权</h2>
+            <p>IntoDay 及其网站、用户界面、品牌特征及相关材料均为 IntoDay 或其许可方的资产，但您提供并拥有所有权的内容除外。</p>
+          </section>
 
-            <h2 class="opacity-0 animate-fade-up" data-i18n="ts_s7_title">7. Beta Status</h2>
-            <p data-i18n="ts_s7_desc">Because IntoDay is in an early stage, features may change frequently. You understand that some features may be incomplete, bugs or interruptions may occur, and product behavior may change over time. We appreciate feedback, but we are not obligated to implement any suggestions.</p>
+          <section class="legal-section">
+            <h2>7. 免责声明</h2>
+            <p>IntoDay 按"按原样并基于可用性"提供。在法律允许的最大范围内，我们不保证服务不会中断或绝对没有错误。</p>
+          </section>
 
-            <h2 class="opacity-0 animate-fade-up" data-i18n="ts_s8_title">8. Privacy</h2>
-            <p data-i18n="ts_s8_desc">Your use of IntoDay is also governed by our Privacy Policy. Please review the Privacy Policy to understand how we collect, use, and handle your information.</p>
+          <section class="legal-section">
+            <h2>8. 责任限制</h2>
+            <p>在法律允许的最大范围内，因您使用本服务而引起的任何间接、偶然、特殊、后果性或惩罚性损害，IntoDay 概不负责。</p>
+          </section>
 
-            <h2 class="opacity-0 animate-fade-up" data-i18n="ts_s9_title">9. Termination</h2>
-            <p data-i18n="ts_s9_desc">You may stop using IntoDay at any time. We may suspend or terminate your access to IntoDay at any time if you violate these Terms, if we need to protect the service, users, or our systems, or if we decide to discontinue the beta or service.</p>
+          <section class="legal-section">
+            <h2>9. 条款修改</h2>
+            <p>我们可能会不时更新本条款。如果我们做出更改，新版条款将在此处发布并更新日期。在更新的条款生效后继续使用 IntoDay，即视为您同意修订后的条款。</p>
+          </section>
 
-            <h2 class="opacity-0 animate-fade-up" data-i18n="ts_s10_title">10. Disclaimers</h2>
-            <p data-i18n="ts_s10_desc">IntoDay is a productivity tool only. It does not provide legal, medical, financial, or professional advice. We are not responsible for missed tasks, lost data, scheduling outcomes, or decisions made based on the use of IntoDay.</p>
-
-            <h2 class="opacity-0 animate-fade-up" data-i18n="ts_s11_title">11. Limitation of Liability</h2>
-            <p data-i18n="ts_s11_desc">To the maximum extent permitted by law, IntoDay and its operators will not be liable for any indirect, incidental, special, consequential, or punitive damages, or for any loss of data, profits, or business opportunities resulting from your use of or inability to use the service.</p>
-
-            <h2 class="opacity-0 animate-fade-up" data-i18n="ts_s12_title">12. Changes to These Terms</h2>
-            <p data-i18n="ts_s12_desc">We may update these Terms from time to time. If we make material changes, we will update the Effective Date above. Your continued use of IntoDay after the updated Terms take effect means you agree to the revised Terms.</p>
-
-            <h2 class="opacity-0 animate-fade-up" data-i18n="ts_s13_title">13. Contact</h2>
-            <p data-i18n="ts_s13_desc">If you have questions about these Terms, you can contact us at: <a href="mailto:contact.intoday@gmail.com" class="underline">contact.intoday@gmail.com</a></p>
+          <section class="legal-section">
+            <h2>10. 联系我们</h2>
+            <p>如果您对本条款有任何疑问，请通过"帮助/反馈"页面与我们联系。</p>
+          </section>
         </div>
-    </main>
+      </div>
 
-    <!-- ══ FOOTER ══ -->
-    <footer class="py-16 md:py-20 border-t border-brand-border/50 dark:border-transparent flex flex-col items-center justify-center gap-12 pb-32 dark:bg-[#0E0E0D]">
-        <a href="index.html" class="flex items-center gap-3 group opacity-80 hover:opacity-100 transition-opacity">
-            <img src="assets/logoreal.png" alt="IntoDay Logo" class="w-9 h-auto">
-            <span class="logo-brand font-semibold text-[1.75rem] tracking-tight text-brand-text dark:text-dark-text">IntoDay</span>
-        </a>
-        <div class="flex flex-wrap justify-center gap-x-10 gap-y-4 text-sm font-medium text-brand-muted dark:text-dark-muted">
-            <a href="help.html" data-i18n="footer_help" class="hover:text-brand-text dark:hover:text-dark-text transition-colors">Help / Feedback</a>
-            <a href="privacy.html" data-i18n="footer_privacy" class="hover:text-brand-text dark:hover:text-dark-text transition-colors">Privacy Policy</a>
-            <a href="terms.html" data-i18n="footer_terms" class="hover:text-brand-text dark:hover:text-dark-text transition-colors">Terms of Service</a>
-        </div>
-        <div class="flex items-center gap-10">
-            <a href="https://www.instagram.com/intoday.official?igsh=dGJiNTFwNGI3ZXZ4&utm_source=qr" target="_blank" class="opacity-60 hover:opacity-100 transition-opacity">
-                <img src="assets/ig.png" alt="Instagram" class="w-[37px] h-[37px] dark:invert">
-            </a>
-            <a href="https://x.com/intoday225493?s=21" target="_blank" class="opacity-60 hover:opacity-100 transition-opacity">
-                <img src="assets/x.png" alt="X" class="w-[32px] h-[32px] dark:invert">
-            </a>
-            <a href="https://www.tiktok.com/@intoday.official?_r=1&_t=ZS-94eOq8624ds" target="_blank" class="opacity-60 hover:opacity-100 transition-opacity">
-                <img src="assets/tiktok.png" alt="TikTok" class="w-[37px] h-[37px] dark:invert">
-            </a>
-        </div>
-        <p class="text-[10px] text-brand-accent dark:text-dark-muted opacity-60" data-i18n="footer_copy">
-            © 2026 IntoDay. All rights reserved.
-        </p>
-    </footer>
+      <!-- ── 日本語 ── -->
+      <div data-lang-content="ja">
+        <h1 class="legal-title">利用規約</h1>
+        <p class="legal-lead">本規約は、IntoDay の利用方法および本製品、ウェブサイト、関連サービスを利用する際の注意事項について説明するものです。</p>
+        <p class="legal-updated">最終更新日：2026年4月13日</p>
 
-    <script src="script.js"></script>
-    <script>
-        function replayNavbarLogo(event) {
-            if (event) event.preventDefault();
-            const topLayer = document.getElementById('navbar-logo-top');
-            if (!topLayer) return;
-            topLayer.classList.remove('animate-settle');
-            void topLayer.offsetWidth; // trigger reflow
-            topLayer.classList.add('animate-settle');
-        }
-        window.addEventListener('load', () => setTimeout(() => replayNavbarLogo(), 150));
-    </script>
+        <div class="legal-sections">
+          <section class="legal-section">
+            <h2>1. 同意</h2>
+            <p>IntoDay にアクセスし使用することにより、本利用規約に同意したものとみなされます。同意しない場合は、本サービスの利用をご遠慮ください。</p>
+          </section>
+
+          <section class="legal-section">
+            <h2>2. IntoDay の利用</h2>
+            <p>適用される法令を遵守し、サービスの安全性、可用性、完全性を損なわない方法でのみ IntoDay をご利用いただけます。</p>
+          </section>
+
+          <section class="legal-section">
+            <h2>3. お客様のコンテンツ</h2>
+            <p>IntoDay に追加したノート、リンク、ファイル、参考資料、その他のコンテンツの責任はお客様にあります。お客様は、ワークフローにおいてそれらのコンテンツを使用、保存、共有するために必要な権利を保持していることを保証します。</p>
+          </section>
+
+          <section class="legal-section">
+            <h2>4. 製品の変更と可用性</h2>
+            <p>IntoDay は進化し続ける製品です。機能の追加、変更、一時停止、または削除を随時行う可能性があります。また、すべての機能が常に利用できることを保証するものではありません。</p>
+          </section>
+
+          <section class="legal-section">
+            <h2>5. 禁止事項</h2>
+            <p>以下の行為を行わないことにお客様は同意するものとします。</p>
+            <ul>
+              <li>サービスの不正使用や不正アクセスを試みること</li>
+              <li>違法なコンテンツ、権利を侵害する、または有害なコンテンツをアップロードすること</li>
+              <li>サービス、他のユーザー、または関連システムを妨害すること</li>
+            </ul>
+          </section>
+
+          <section class="legal-section">
+            <h2>6. 知的財産権</h2>
+            <p>IntoDay およびそのウェブサイト、インターフェース、ブランド、関連資料は、お客様が所有・提供するコンテンツを除き、IntoDay またはそのライセンサーの財産です。</p>
+          </section>
+
+          <section class="legal-section">
+            <h2>7. 免責事項</h2>
+            <p>IntoDay は「現状有姿」かつ「提供可能な範囲」で提供されます。法律で認められる最大限の範囲において、サービスの中断やエラーがないことを保証するものではありません。</p>
+          </section>
+
+          <section class="legal-section">
+            <h2>8. 責任の制限</h2>
+            <p>法律で認められる最大限の範囲において、IntoDay は本サービスの利用に起因する間接的、偶発的、特別、結果的、または懲罰的損害について責任を負いません。</p>
+          </section>
+
+          <section class="legal-section">
+            <h2>9. 規約の変更</h2>
+            <p>本規約は随時更新される可能性があります。変更があった場合は、更新日を含めてこちらに掲載します。更新された規約が有効になった後も IntoDay を継続して利用した場合、改訂された規約に同意したものとみなされます。</p>
+          </section>
+
+          <section class="legal-section">
+            <h2>10. お問い合わせ</h2>
+            <p>本規約に関するご質問がある場合は、「ヘルプ / フィードバック」ページからお問い合わせください。</p>
+          </section>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-brand">
+      <span class="footer-name" data-i18n="brand">IntoDay</span>
+    </div>
+
+    <div class="footer-meta">
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="help.html" data-i18n="footerHelp">Help / Feedback</a>
+        <a href="privacy.html" data-i18n="footerPrivacy">Privacy Policy</a>
+        <a href="terms.html" data-i18n="footerTerms">Terms of Service</a>
+      </nav>
+
+      <p class="footer-copy" data-i18n="footerCopyright">&copy; 2026 IntoDay. All rights reserved.</p>
+    </div>
+  </footer>
+  <script src="script.js"></script>
 </body>
 </html>

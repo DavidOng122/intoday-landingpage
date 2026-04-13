@@ -1,20 +1,45 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KMW1HJQLET"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-KMW1HJQLET');
+    </script>
+    <!-- PostHog -->
+    <script>
+        !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group identify setPersonProperties setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags resetGroups onFeatureFlags addFeatureFlagsHandler onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+        posthog.init('phc_FxHhDfCw5QE3AiHTyvoYQCpEq2PBfmVpr5LTyIZGLQw', {
+            api_host: 'https://us.i.posthog.com',
+            person_profiles: 'identified_only'
+        })
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy - IntoDay</title>
+    <link rel="icon" type="image/png" href="assets/logoreal.png">
+    <link rel="apple-touch-icon" href="assets/logoreal.png">
+    <script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
     <script src="https://cdn.tailwindcss.com/3.4.17"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        sans: ['Manrope', 'system-ui', 'sans-serif'],
                         serif: ['Newsreader', 'Georgia', 'serif'],
                     },
                     colors: {
@@ -64,32 +89,44 @@
             transition: background-color 0.3s ease, color 0.3s ease;
             overflow-x: hidden;
         }
+
         .dark body {
             background-color: #111110;
             color: #D4D0C8;
         }
+
         .design-grid {
             background-size: 40px 40px;
-            background-image: 
+            background-image:
                 linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
                 linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
         }
+
         .dark .design-grid {
-            background-image: 
+            background-image:
                 linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
                 linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
         }
-        
+
         /* Language specific spacing overrides */
-        html[lang="zh"] h1, html[lang="zh"] h2, html[lang="zh"] h3,
-        html[lang="ja"] h1, html[lang="ja"] h2, html[lang="ja"] h3 {
+        html[lang="zh"] h1,
+        html[lang="zh"] h2,
+        html[lang="zh"] h3,
+        html[lang="ja"] h1,
+        html[lang="ja"] h2,
+        html[lang="ja"] h3 {
             line-height: 1.27 !important;
             letter-spacing: 0.06em !important;
         }
-        
-        #lang-menu { display: none; }
-        #lang-menu.open { display: block; }
-        
+
+        #lang-menu {
+            display: none;
+        }
+
+        #lang-menu.open {
+            display: block;
+        }
+
         .privacy-content h2 {
             font-size: 1.5rem;
             font-weight: 600;
@@ -97,9 +134,11 @@
             margin-bottom: 1rem;
             color: #1A1A18;
         }
+
         .dark .privacy-content h2 {
             color: #EDEAE3;
         }
+
         .privacy-content h3 {
             font-size: 1.15rem;
             font-weight: 600;
@@ -107,24 +146,32 @@
             margin-bottom: 0.75rem;
             color: #1A1A18;
         }
+
         .dark .privacy-content h3 {
             color: #EDEAE3;
         }
-        .privacy-content p, .privacy-content ul {
+
+        .privacy-content p,
+        .privacy-content ul {
             margin-bottom: 1.25rem;
             line-height: 1.7;
             color: #6B6A65;
         }
-        .dark .privacy-content p, .dark .privacy-content ul {
+
+        .dark .privacy-content p,
+        .dark .privacy-content ul {
             color: #D4D0C8;
         }
+
         .privacy-content ul {
             list-style-type: disc;
             padding-left: 1.5rem;
         }
+
         .privacy-content li {
             margin-bottom: 0.5rem;
         }
+
         .privacy-content .effective-date {
             font-size: 0.875rem;
             color: #8C877E;
@@ -137,146 +184,276 @@
             paint-order: stroke fill;
             letter-spacing: 1px;
         }
+
         .dark .logo-brand {
             -webkit-text-stroke: 0.2px #EDEAE3;
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col font-sans bg-brand-bg dark:bg-dark-bg text-brand-text dark:text-dark-text transition-colors duration-300 design-grid">
+
+<body
+    class="min-h-screen flex flex-col font-sans bg-white text-brand-text transition-colors duration-300">
 
     <!-- ══ NAVBAR ══ -->
-    <header class="sticky top-0 w-full z-50 bg-brand-bg/80 dark:bg-dark-bg/80 backdrop-blur-md border-b border-transparent">
-        <nav class="max-w-7xl mx-auto px-6 md:px-12 py-4 md:py-6 flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-2 group">
-                <img src="assets/logoreal.png" alt="IntoDay Logo" class="w-7 h-auto">
-                <span class="logo-brand font-semibold text-xl tracking-tight dark:text-dark-text">IntoDay</span>
-            </a>
-            <div class="flex items-center gap-3">
-                <button id="theme-btn" class="p-2.5 rounded-full hover:bg-brand-card dark:hover:bg-dark-card transition-colors flex items-center justify-center cursor-pointer" aria-label="Toggle Dark Mode">
-                    <img id="theme-icon" src="assets/moon.png" alt="Toggle Theme" class="w-4 h-4 opacity-80 hover:opacity-100 transition-opacity">
-                </button>
+    <header class="site-header" style="max-width: 1720px; width: 100%; margin: 0 auto; padding: 28px 22px;">
+      <a class="brand" href="/" aria-label="IntoDay home">
+        <span class="brand-name" data-i18n="brand">IntoDay</span>
+      </a>
 
-                <div class="relative" id="lang-dropdown">
-                    <button id="lang-btn" class="flex items-center gap-1.5 px-3 py-2.5 rounded-full text-sm font-medium hover:bg-brand-card dark:hover:bg-dark-card transition-colors">
-                        <span id="lang-label">EN</span>
-                        <svg class="w-3.5 h-3.5 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
-                    </button>
-                    <div id="lang-menu" class="absolute right-0 mt-2 w-32 bg-white dark:bg-dark-surface rounded-2xl shadow-lg border border-brand-border dark:border-dark-border overflow-hidden z-50">
-                        <button class="lang-option w-full text-left px-4 py-2.5 text-sm hover:bg-brand-card dark:hover:bg-dark-card dark:text-dark-text transition-colors flex items-center gap-2" data-lang="en">English</button>
-                        <button class="lang-option w-full text-left px-4 py-2.5 text-sm hover:bg-brand-card dark:hover:bg-dark-card dark:text-dark-text transition-colors flex items-center gap-2" data-lang="zh">中文</button>
-                        <button class="lang-option w-full text-left px-4 py-2.5 text-sm hover:bg-brand-card dark:hover:bg-dark-card dark:text-dark-text transition-colors flex items-center gap-2" data-lang="ms">Melayu</button>
-                        <button class="lang-option w-full text-left px-4 py-2.5 text-sm hover:bg-brand-card dark:hover:bg-dark-card dark:text-dark-text transition-colors flex items-center gap-2" data-lang="ja">日本語</button>
-                        <button class="lang-option w-full text-left px-4 py-2.5 text-sm hover:bg-brand-card dark:hover:bg-dark-card dark:text-dark-text transition-colors flex items-center gap-2" data-lang="th">ภาษาไทย</button>
-                    </div>
-                </div>
-                <a href="index.html" data-i18n="nav_cta" class="bg-brand-text dark:bg-dark-text text-white dark:text-dark-bg px-5 py-2.5 rounded-full text-sm font-medium hover:bg-black dark:hover:bg-white transition-colors">
-                    Start for free
-                </a>
-            </div>
-        </nav>
+      <div></div>
+
+      <div class="header-actions">
+        <details class="language-menu">
+          <summary class="language-summary">EN</summary>
+          <div class="language-list" aria-label="Languages">
+            <button type="button" lang="en" data-lang="en">EN</button>
+            <button type="button" lang="ja" data-lang="ja">&#26085;&#26412;&#35486;</button>
+            <button type="button" lang="zh" data-lang="zh">&#20013;&#25991;</button>
+          </div>
+        </details>
+        <a class="start-link" href="https://app.intoday.cc" data-i18n="startFree">Start free</a>
+      </div>
     </header>
 
-    <main class="flex-1 max-w-3xl mx-auto px-6 py-24">
-        <div class="privacy-content">
-            <h1 class="text-4xl md:text-5xl font-semibold tracking-tight mb-4 opacity-0 animate-fade-up" data-i18n="pp_title">Privacy Policy of IntoDay</h1>
-            <p class="effective-date" data-i18n="pp_effective">Effective Date: @2026/3/12</p>
-            
-            <p class="opacity-0 animate-fade-up-delay-2" data-i18n="pp_intro">IntoDay (“we,” “us,” or “our”) respects your privacy. This Privacy Policy explains what information we collect, how we use it, and what choices you have when using IntoDay.</p>
-            <p class="opacity-0 animate-fade-up-delay-2" data-i18n="pp_desc">IntoDay is a tool for organizing tasks, reminders, follow-ups, and small plans into time blocks throughout the day.</p>
-            <p class="opacity-0 animate-fade-up-delay-2" data-i18n="pp_contact_intro">If you have any questions about this Privacy Policy, you can contact us at: <a href="mailto:contact.intoday@gmail.com" class="underline">contact.intoday@gmail.com</a></p>
+  <main class="legal-page">
+    <section class="legal-panel">
 
-            <h2 class="opacity-0 animate-fade-up" data-i18n="pp_s1_title">1. Who We Are</h2>
-            <p data-i18n="pp_s1_desc">IntoDay is the provider of the IntoDay app and related website. If you have questions about privacy or data handling, you can contact us at: <a href="mailto:contact.intoday@gmail.com" class="underline">contact.intoday@gmail.com</a></p>
+      <!-- ── ENGLISH ── -->
+      <div data-lang-content="en">
+        <h1 class="legal-title">Privacy Policy</h1>
+        <p class="legal-lead">This Privacy Policy explains what information we collect, how we use it, and what choices you have when using IntoDay.</p>
+        <p class="legal-updated">Effective Date: April 13, 2026</p>
 
-            <h2 class="opacity-0 animate-fade-up" data-i18n="pp_s2_title">2. Information We Collect</h2>
-            <p data-i18n="pp_s2_desc">We collect only the information necessary to provide and improve IntoDay.</p>
+        <div class="legal-sections">
+          <section class="legal-section">
+            <h2>1. Who We Are</h2>
+            <p>IntoDay is the provider of the IntoDay app and related website. If you have questions about privacy or data handling, you can contact us at: <a href="mailto:contact.intoday@gmail.com">contact.intoday@gmail.com</a></p>
+          </section>
 
-            <h3 class="opacity-0 animate-fade-up" data-i18n="pp_s2_1_title">2.1 Account Information</h3>
-            <p data-i18n="pp_s2_1_desc">If you sign in with Google, we may receive basic account information such as:</p>
-            <ul data-i18n="pp_s2_1_list">
-                <li>your email address</li>
-                <li>your Google account identifier</li>
-                <li>your name or profile image, if provided through your login permissions</li>
+          <section class="legal-section">
+            <h2>2. Information We Collect</h2>
+            <p>We collect only the information necessary to provide and improve IntoDay.</p>
+            <p><strong>Account Information:</strong> If you sign in with Google, we may receive basic account information such as your email address, your Google account identifier, and your name or profile image, if provided through your login permissions.</p>
+            <p><strong>Content You Add to IntoDay:</strong> When you use IntoDay, we may store the content you choose to add, such as notes, links, files, references, and other materials you enter into the app to organize into reusable packs for your AI workflows.</p>
+            <p><strong>Technical and Usage Data:</strong> When you use IntoDay, we may automatically collect certain technical information, such as device and browser information, IP address, log data, and usage analytics.</p>
+          </section>
+
+          <section class="legal-section">
+            <h2>3. How We Use Your Information</h2>
+            <p>We use your information to provide and maintain IntoDay, enable secure login, store and display your notes and content, support syncing, monitor stability and security, and improve the app over time.</p>
+          </section>
+
+          <section class="legal-section">
+            <h2>4. Third-Party Services We Use</h2>
+            <p>We use trusted third-party service providers to operate IntoDay.</p>
+            <ul>
+              <li><strong>Supabase:</strong> We use Supabase for authentication, database, and backend-related services. Supabase may store your account data and the content you add to IntoDay as needed to provide the service.</li>
+              <li><strong>Google Sign-In:</strong> If you choose to log in with Google, Google provides the authentication process and may share basic account information with us.</li>
+              <li><strong>Vercel:</strong> We use Vercel to host and deliver the IntoDay website and web app. Vercel may process technical information such as IP address and request logs for hosting and security purposes.</li>
             </ul>
-            <p data-i18n="pp_s2_1_meta">We use this information to create and manage your account and let you sign in securely.</p>
+          </section>
 
-            <h3 class="opacity-0 animate-fade-up" data-i18n="pp_s2_2_title">2.2 Content You Add to IntoDay</h3>
-            <p data-i18n="pp_s2_2_desc">When you use IntoDay, we may store the content you choose to add, such as tasks, reminders, notes, links, locations, file-related references, and other task-related text you enter into the app.</p>
-            <p data-i18n="pp_s2_2_meta">We use this information to provide the core functionality of IntoDay, including displaying, organizing, and syncing your content.</p>
+          <section class="legal-section">
+            <h2>5. How We Share Information</h2>
+            <p>We do not sell your personal information. We may share your information only with service providers that help us operate IntoDay, when required by law, or when necessary to protect the security, rights, or integrity of IntoDay and its users.</p>
+          </section>
 
-            <h3 class="opacity-0 animate-fade-up" data-i18n="pp_s2_3_title">2.3 Technical and Usage Data</h3>
-            <p data-i18n="pp_s2_3_desc">When you use IntoDay, we may automatically collect certain technical information, such as:</p>
-            <ul data-i18n="pp_s2_3_list">
-                <li>device and browser information</li>
-                <li>IP address</li>
-                <li>log data</li>
-                <li>usage analytics and product interaction data</li>
-            </ul>
-            <p data-i18n="pp_s2_3_meta">We use this information to keep the service running securely, understand app performance, fix bugs, and improve the product experience.</p>
+          <section class="legal-section">
+            <h2>6. Data Retention</h2>
+            <p>We keep your information only for as long as needed to provide IntoDay and operate the service. If you delete your account or request deletion, we will make reasonable efforts to delete your personal data within a reasonable period, unless we are required to keep certain information for legal, security, or operational reasons.</p>
+          </section>
 
-            <h2 class="opacity-0 animate-fade-up" data-i18n="pp_s3_title">3. How We Use Your Information</h2>
-            <p data-i18n="pp_s3_desc">We use your information to provide and maintain IntoDay, enable secure login, store and display your tasks and content, support syncing and account-related functions, monitor stability, performance, and security, and improve the app over time.</p>
+          <section class="legal-section">
+            <h2>7. Data Security</h2>
+            <p>We take reasonable technical and organizational measures to protect your information from unauthorized access, loss, misuse, or disclosure. However, no system is completely secure, and we cannot guarantee absolute security.</p>
+          </section>
 
-            <h2 class="opacity-0 animate-fade-up" data-i18n="pp_s4_title">4. Third-Party Services We Use</h2>
-            <p data-i18n="pp_s4_desc">We use trusted third-party service providers to operate IntoDay.</p>
+          <section class="legal-section">
+            <h2>8. Your Choices and Rights</h2>
+            <p>Depending on your location, you may have rights regarding your personal data, including the right to access, correct, or request deletion of your data. To make a request, contact us at:<br>
+            <a href="mailto:contact.intoday@gmail.com">contact.intoday@gmail.com</a></p>
+          </section>
 
-            <h3 class="opacity-0 animate-fade-up" data-i18n="pp_s4_1_title">4.1 Supabase</h3>
-            <p data-i18n="pp_s4_1_desc">We use Supabase for authentication, database, and backend-related services. Supabase may store your account data and the content you add to IntoDay as needed to provide the service.</p>
+          <section class="legal-section">
+            <h2>9. Children's Privacy</h2>
+            <p>IntoDay is not intended for children under the age required by applicable law to use such services without parental consent. We do not knowingly collect personal information from children in violation of applicable law.</p>
+          </section>
 
-            <h3 class="opacity-0 animate-fade-up" data-i18n="pp_s4_2_title">4.2 Google Sign-In</h3>
-            <p data-i18n="pp_s4_2_desc">If you choose to log in with Google, Google provides the authentication process and may share basic account information with us, depending on the permissions you grant.</p>
+          <section class="legal-section">
+            <h2>10. Changes to This Privacy Policy</h2>
+            <p>We may update this Privacy Policy from time to time. If we make material changes, we will update the "Effective Date" at the top of this page and, where appropriate, provide additional notice.</p>
+          </section>
 
-            <h3 class="opacity-0 animate-fade-up" data-i18n="pp_s4_3_title">4.3 Vercel</h3>
-            <p data-i18n="pp_s4_3_desc">We use Vercel to host and deliver the IntoDay website and web app. Vercel may process technical information such as IP address, browser/device details, and request logs for hosting, delivery, and security purposes.</p>
-
-            <h2 class="opacity-0 animate-fade-up" data-i18n="pp_s5_title">5. How We Share Information</h2>
-            <p data-i18n="pp_s5_desc">We do not sell your personal information. We may share your information only with service providers that help us operate IntoDay, when required by law, or when necessary to protect the security, rights, or integrity of IntoDay and its users.</p>
-
-            <h2 class="opacity-0 animate-fade-up" data-i18n="pp_s6_title">6. Data Retention</h2>
-            <p data-i18n="pp_s6_desc">We keep your information only for as long as it is needed to provide IntoDay and operate the service. If you delete your account or request deletion, we will make reasonable efforts to delete your personal data within a reasonable period, unless we are required to keep certain information for legal, security, or operational reasons.</p>
-
-            <h2 class="opacity-0 animate-fade-up" data-i18n="pp_s7_title">7. Data Security</h2>
-            <p data-i18n="pp_s7_desc">We take reasonable technical and organizational measures to protect your information from unauthorized access, loss, misuse, or disclosure. However, no system is completely secure, and we cannot guarantee absolute security.</p>
-
-            <h2 class="opacity-0 animate-fade-up" data-i18n="pp_s8_title">8. Your Choices and Rights</h2>
-            <p data-i18n="pp_s8_desc">Depending on your location, you may have rights regarding your personal data, including the right to access, correct, or request deletion of your data. To make a request, contact us at: <a href="mailto:contact.intoday@gmail.com" class="underline">contact.intoday@gmail.com</a></p>
-
-            <h2 class="opacity-0 animate-fade-up" data-i18n="pp_s9_title">9. Children’s Privacy</h2>
-            <p data-i18n="pp_s9_desc">IntoDay is not intended for children under the age required by applicable law to use such services without parental consent. We do not knowingly collect personal information from children in violation of applicable law.</p>
-
-            <h2 class="opacity-0 animate-fade-up" data-i18n="pp_s10_title">10. Changes to This Privacy Policy</h2>
-            <p data-i18n="pp_s10_desc">We may update this Privacy Policy from time to time. If we make material changes, we will update the “Effective Date” at the top of this page and, where appropriate, provide additional notice.</p>
-
-            <h2 class="opacity-0 animate-fade-up" data-i18n="pp_s11_title">11. Contact</h2>
-            <p data-i18n="pp_s11_desc">If you have any questions, feedback, or privacy-related requests, you can contact us at: <a href="mailto:contact.intoday@gmail.com" class="underline">contact.intoday@gmail.com</a></p>
+          <section class="legal-section">
+            <h2>11. Contact</h2>
+            <p>If you have any questions, feedback, or privacy-related requests, you can contact us at:<br>
+            <a href="mailto:contact.intoday@gmail.com">contact.intoday@gmail.com</a></p>
+          </section>
         </div>
-    </main>
+      </div>
+
+      <!-- ── 中文 ── -->
+      <div data-lang-content="zh">
+        <h1 class="legal-title">隐私政策</h1>
+        <p class="legal-lead">本隐私政策解释了我们收集哪些信息、如何使用这些信息以及您在使用 IntoDay 时拥有的选择权。</p>
+        <p class="legal-updated">生效日期：2026年4月13日</p>
+
+        <div class="legal-sections">
+          <section class="legal-section">
+            <h2>1. 我们是谁</h2>
+            <p>IntoDay 是 IntoDay 应用程序及相关网站的提供商。如果您对隐私或数据处理有任何疑问，可通过以下方式联系我们：<a href="mailto:contact.intoday@gmail.com">contact.intoday@gmail.com</a></p>
+          </section>
+
+          <section class="legal-section">
+            <h2>2. 我们收集的信息</h2>
+            <p>我们仅收集提供和改进 IntoDay 必不可少的信息。</p>
+            <p><strong>账户信息：</strong>如果您使用 Google 登录，我们可能会接收基本的账户信息，如您的电子邮件地址、Google 账户标识符，以及您的姓名或头像（如果您通过登录权限提供）。</p>
+            <p><strong>您添加到 IntoDay 的内容：</strong>当您使用 IntoDay 时，我们可能会存储您选择添加的内容，例如笔记、链接、文件、参考资料及其他您输入应用内的材料，以便组织成您的 AI 工作流上下文包。</p>
+            <p><strong>技术与使用数据：</strong>当您使用 IntoDay 时，我们可能会自动收集部分技术信息，比如设备和浏览器信息、IP 地址、日志数据以及使用情况分析。</p>
+          </section>
+
+          <section class="legal-section">
+            <h2>3. 我们如何使用您的信息</h2>
+            <p>我们使用您的信息来提供与维护 IntoDay，实现安全登录，存储并显示您的笔记及内容，支持同步，监控系统的稳定性与安全性，并持续改进应用的体验。</p>
+          </section>
+
+          <section class="legal-section">
+            <h2>4. 我们使用的第三方服务</h2>
+            <p>我们使用可信的第三方服务提供商来运营 IntoDay。</p>
+            <ul>
+              <li><strong>Supabase：</strong>我们使用 Supabase 进行身份验证、数据库及后端服务。为提供服务，Supabase 可能会存储您的账户数据和您添加到 IntoDay 的内容。</li>
+              <li><strong>Google Sign-In：</strong>若您选择通过 Google 登录，Google 将提供身份验证流程并可能与我们共享您的基本账户信息。</li>
+              <li><strong>Vercel：</strong>我们使用 Vercel 来托管和分发 IntoDay 的网站与 Web 应用。Vercel 可能会处理您的 IP 地址和请求日志等技术信息，以用于托管与安全防御。</li>
+            </ul>
+          </section>
+
+          <section class="legal-section">
+            <h2>5. 我们如何分享信息</h2>
+            <p>我们不会出售您的个人信息。仅在运营 IntoDay 必须借助服务提供商、法律强制要求，或者需要保护 IntoDay 及用户的安全、权力和利益免受侵害时，我们才会共享您的信息。</p>
+          </section>
+
+          <section class="legal-section">
+            <h2>6. 数据保留</h2>
+            <p>我们仅在提供 IntoDay 服务和运营产品所必需的时间内保留您的信息。如果您注销账户或请求删除数据，我们将尽合理努力在合理期限内删除您的个人数据，除非出于法律、安全或运营合规的原因我们需要保留部分信息。</p>
+          </section>
+
+          <section class="legal-section">
+            <h2>7. 数据安全</h2>
+            <p>我们采取了合理的技术与组织措施来保护您的信息免遭未经授权的访问、丢失、滥用或披露。然而任何系统都无法做到百分之百安全，因此我们无法保证绝对的安全性。</p>
+          </section>
+
+          <section class="legal-section">
+            <h2>8. 您的选择与权利</h2>
+            <p>根据您所在的地区，您可能对个人数据享有包括访问、要求更正或删除等权利。如需提出请求，请联系我们：<br><a href="mailto:contact.intoday@gmail.com">contact.intoday@gmail.com</a></p>
+          </section>
+
+          <section class="legal-section">
+            <h2>9. 未成年人隐私</h2>
+            <p>IntoDay 不适于适用法律规定在无监护人同意下禁止使用此类服务的未成年人。我们绝不故意违反法律收集未成年人的个人信息。</p>
+          </section>
+
+          <section class="legal-section">
+            <h2>10. 本隐私政策的变更</h2>
+            <p>我们可能会不时更新本隐私政策。如果发生重大变更，我们将在页面顶部的"生效日期"处进行更新，并在适当情况下提供额外通知。</p>
+          </section>
+
+          <section class="legal-section">
+            <h2>11. 联系方式</h2>
+            <p>如您有任何关于隐私的问题、反馈或请求，欢迎随时通过此邮箱联系我们：<br><a href="mailto:contact.intoday@gmail.com">contact.intoday@gmail.com</a></p>
+          </section>
+        </div>
+      </div>
+
+      <!-- ── 日本語 ── -->
+      <div data-lang-content="ja">
+        <h1 class="legal-title">プライバシーポリシー</h1>
+        <p class="legal-lead">本プライバシーポリシーでは、私たちが収集する情報、その使用方法、および IntoDay を利用する際のお客様の選択肢について説明します。</p>
+        <p class="legal-updated">発効日：2026年4月13日</p>
+
+        <div class="legal-sections">
+          <section class="legal-section">
+            <h2>1. 私たちについて</h2>
+            <p>IntoDay は、アプリおよび関連ウェブサイトの提供者です。プライバシーやデータ取り扱いに関するご質問は、こちらへお問い合わせください：<a href="mailto:contact.intoday@gmail.com">contact.intoday@gmail.com</a></p>
+          </section>
+
+          <section class="legal-section">
+            <h2>2. 収集する情報</h2>
+            <p>私たちは、IntoDay を提供および改善するために必要な情報のみを収集します。</p>
+            <p><strong>アカウント情報：</strong>Google でサインインした場合、お客様のメールアドレス、Google アカウント識別子、およびサインイン時の許可に基づいて提供される氏名やプロフィールアイコンなどの基本的なアカウント情報を受け取る場合があります。</p>
+            <p><strong>IntoDay に追加されたコンテンツ：</strong>IntoDay を利用する際、お客様が AI ワークフロー用のパックとして整理するために入力したノート、リンク、ファイル、参考資料、その他のコンテンツを保存する場合があります。</p>
+            <p><strong>技術データおよび利用データ：</strong>IntoDay を利用する際、デバイスとブラウザの情報、IP アドレス、ログデータ、利用状況分析などの技術情報が自動的に収集される場合があります。</p>
+          </section>
+
+          <section class="legal-section">
+            <h2>3. 収集情報の使用方法</h2>
+            <p>私たちは収集した情報を、IntoDay の提供および維持、セキュリティを確保したログイン、ノートやコンテンツの保存と表示、同期のサポート、安定性およびセキュリティの監視、そしてアプリケーションの継続的な改善のために使用します。</p>
+          </section>
+
+          <section class="legal-section">
+            <h2>4. 利用するサードパーティサービス</h2>
+            <p>IntoDay を運営するために、信頼できるサードパーティサービスを利用しています。</p>
+            <ul>
+              <li><strong>Supabase：</strong>認証、データベース、バックエンドサービスに Supabase を使用しています。Supabase は、サービス提供に必要な範囲でお客様のアカウントデータや IntoDay に追加されたコンテンツを保存する場合があります。</li>
+              <li><strong>Google Sign-In：</strong>Google サインインを選択した場合、Google が認証プロセスを提供し、基本的なアカウント情報が私たちと共有される場合があります。</li>
+              <li><strong>Vercel：</strong>IntoDay サイトおよびウェブアプリのホスティングと配信には Vercel を使用しています。Vercel は、ホスティングおよびセキュリティ保護の目的で、IP アドレスやリクエストログなどの技術情報を処理する場合があります。</li>
+            </ul>
+          </section>
+
+          <section class="legal-section">
+            <h2>5. 情報の共有について</h2>
+            <p>私たちは、お客様の個人情報を販売することはありません。IntoDay の運営をサポートするサービスプロバイダー、法的要請があった場合、または IntoDay やユーザーの権利、整合性、安全性を保護するために必要な場合にのみ情報を共有します。</p>
+          </section>
+
+          <section class="legal-section">
+            <h2>6. データ保持</h2>
+            <p>私たちはお客様の情報を、IntoDay の提供およびサービスの運営に必要とされる期間においてのみ保持します。アカウントの削除やデータ削除のリクエストがあった場合、法的、セキュリティ、または運用上の理由で保持が必要な情報を除き、合理的な期間内に個人データを削除するための合理的な努力を行います。</p>
+          </section>
+
+          <section class="legal-section">
+            <h2>7. データセキュリティ</h2>
+            <p>私たちは、不正アクセス、損失、悪用、または開示からお客様の情報を保護するために、合理的な技術的および組織的措置を講じます。ただし、いかなるシステムも完全に安全なものはなく、絶対的なセキュリティを保証するものではありません。</p>
+          </section>
+
+          <section class="legal-section">
+            <h2>8. お客様の選択と権利</h2>
+            <p>居住される地域によっては、お客様はご自身の個人データに関してアクセス、訂正、削除を要求する権利を有する場合があります。リクエストを行う場合は、こちらまでご連絡ください：<br><a href="mailto:contact.intoday@gmail.com">contact.intoday@gmail.com</a></p>
+          </section>
+
+          <section class="legal-section">
+            <h2>9. 未成年者のプライバシー</h2>
+            <p>IntoDay は、親の同意なしにかかるサービスを利用することが法的に認められていない未成年者を対象としていません。適用法に違反して未成年者から意図的に個人情報を収集することはありません。</p>
+          </section>
+
+          <section class="legal-section">
+            <h2>10. プライバシーポリシーの変更</h2>
+            <p>このプライバシーポリシーは、随時更新される場合があります。重大な変更が行われる場合は、このページ上部の「発効日」を更新し、必要に応じて追加の通知を行います。</p>
+          </section>
+
+          <section class="legal-section">
+            <h2>11. お問い合わせ</h2>
+            <p>ご質問、フィードバック、またはプライバシーに関するリクエストがある場合は、以下のメールアドレスまでご連絡ください：<br><a href="mailto:contact.intoday@gmail.com">contact.intoday@gmail.com</a></p>
+          </section>
+        </div>
+      </div>
+
+    </section>
+  </main>
 
     <!-- ══ FOOTER ══ -->
-    <footer class="py-16 md:py-20 border-t border-brand-border/50 dark:border-transparent flex flex-col items-center justify-center gap-12 pb-32 dark:bg-[#0E0E0D]">
-        <a href="index.html" class="flex items-center gap-3 group opacity-80 hover:opacity-100 transition-opacity">
-            <img src="assets/logoreal.png" alt="IntoDay Logo" class="w-9 h-auto">
-            <span class="logo-brand font-semibold text-[1.75rem] tracking-tight text-brand-text dark:text-dark-text">IntoDay</span>
-        </a>
-        <div class="flex flex-wrap justify-center gap-x-10 gap-y-4 text-sm font-medium text-brand-muted dark:text-dark-muted">
-            <a href="help.html" data-i18n="footer_help" class="hover:text-brand-text dark:hover:text-dark-text transition-colors">Help / Feedback</a>
-            <a href="privacy.html" data-i18n="footer_privacy" class="hover:text-brand-text dark:hover:text-dark-text transition-colors">Privacy Policy</a>
-            <a href="terms.html" data-i18n="footer_terms" class="hover:text-brand-text dark:hover:text-dark-text transition-colors">Terms of Service</a>
-        </div>
-        <div class="flex items-center gap-10">
-            <a href="https://www.instagram.com/intoday.official?igsh=dGJiNTFwNGI3ZXZ4&utm_source=qr" target="_blank" class="opacity-60 hover:opacity-100 transition-opacity">
-                <img src="assets/ig.png" alt="Instagram" class="w-[37px] h-[37px] dark:invert">
-            </a>
-            <a href="https://x.com/intoday225493?s=21" target="_blank" class="opacity-60 hover:opacity-100 transition-opacity">
-                <img src="assets/x.png" alt="X" class="w-[32px] h-[32px] dark:invert">
-            </a>
-            <a href="https://www.tiktok.com/@intoday.official?_r=1&_t=ZS-94eOq8624ds" target="_blank" class="opacity-60 hover:opacity-100 transition-opacity">
-                <img src="assets/tiktok.png" alt="TikTok" class="w-[37px] h-[37px] dark:invert">
-            </a>
-        </div>
-        <p class="text-[10px] text-brand-accent dark:text-dark-muted opacity-60" data-i18n="footer_copy">
-            © 2026 IntoDay. All rights reserved.
-        </p>
+    <footer class="site-footer">
+      <div class="footer-brand">
+        <span class="footer-name" data-i18n="brand">IntoDay</span>
+      </div>
+
+      <div class="footer-meta">
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="help.html" data-i18n="footerHelp">Help / Feedback</a>
+          <a href="privacy.html" data-i18n="footerPrivacy">Privacy Policy</a>
+          <a href="terms.html" data-i18n="footerTerms">Terms of Service</a>
+        </nav>
+
+        <p class="footer-copy" data-i18n="footerCopyright">&copy; 2026 IntoDay. All rights reserved.</p>
+      </div>
     </footer>
 
     <script src="script.js"></script>
@@ -292,4 +469,5 @@
         window.addEventListener('load', () => setTimeout(() => replayNavbarLogo(), 150));
     </script>
 </body>
+
 </html>
