@@ -10,8 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
       heroTitleAccent: "into one place",
       heroCopy:
         "helps teams and individuals collect notes, links, files, and references, then organize them into reusable packs for AI workflows.",
-      pageTitle: "IntoDay — Organize context for better AI work",
-      pageDescription: "Turn scattered notes, links, and ideas into clear AI-ready context. Organize everything in one place and export it when you need it.",
       tryDemo: "Start for free",
       previewLeftTitle: "Competitor_Report.pdf",
       previewLeftBody: "Captured into the workspace and pinned as reusable context.",
@@ -65,8 +63,6 @@ document.addEventListener("DOMContentLoaded", () => {
       heroTitleAccent: "\u6574\u7406\u5230\u4e00\u4e2a\u5730\u65b9",
       heroCopy:
         "\u5e2e\u52a9\u56e2\u961f\u548c\u4e2a\u4eba\u6536\u96c6\u7b14\u8bb0\u3001\u94fe\u63a5\u3001\u6587\u4ef6\u4e0e\u53c2\u8003\u8d44\u6599\uff0c\u518d\u628a\u5b83\u4eec\u6574\u7406\u6210\u53ef\u590d\u7528\u7684 AI \u5de5\u4f5c\u6d41\u4e0a\u4e0b\u6587\u5305\u3002",
-      pageTitle: "IntoDay \u2014 \u4e3a AI \u5de5\u4f5c\u6574\u7406\u4e0a\u4e0b\u6587",
-      pageDescription: "\u5c06\u96f6\u6563\u7684\u7b14\u8bb0\u3001\u94fe\u63a5\u548c\u60f3\u6cd5\u8f6c\u5316\u4e3a\u6e05\u6670\u7684 AI \u5c31\u7d22\u4e0a\u4e0b\u6587\u3002\u5728\u4e00\u5904\u7ba1\u7406\u6240\u6709\u5185\u5bb9\uff0c\u5e76\u5728\u9700\u8981\u65f6\u5bfc\u51fa\u3002",
       tryDemo: "\u514d\u8d39\u5f00\u59cb",
       previewLeftTitle: "Competitor_Report.pdf",
       previewLeftBody:
@@ -130,8 +126,6 @@ document.addEventListener("DOMContentLoaded", () => {
       heroTitleAccent: "\u3072\u3068\u3064\u306b\u307e\u3068\u3081\u308b",
       heroCopy:
         "\u30ce\u30fc\u30c8\u3001\u30ea\u30f3\u30af\u3001\u30d5\u30a1\u30a4\u30eb\u3001\u53c2\u8003\u60c5\u5831\u3092\u96c6\u3081\u3001AI \u30ef\u30fc\u30af\u30d5\u30ed\u30fc\u3067\u518d\u5229\u7528\u3057\u3084\u3059\u3044\u30b3\u30f3\u30c6\u30ad\u30b9\u30c8\u30d1\u30c3\u30af\u3068\u3057\u3066\u6574\u7406\u3067\u304d\u307e\u3059\u3002",
-      pageTitle: "IntoDay \u2014 AI \u30ef\u30fc\u30af\u306e\u305f\u3081\u306e\u6587\u8108\u6574\u7406",
-      pageDescription: "\u6563\u3089\u3070\u3063\u305f\u30ce\u30fc\u30c8\u3001\u30ea\u30f3\u30af\u3001\u30a2\u30a4\u30c7\u30a2\u3092 AI \u30d5\u30ec\u30f3\u30c9\u30ea\u30fc\u306a\u6587\u8108\u306b\u5909\u63db\u3002\u3059\u3079\u3066\u3092 1 \u30ab\u6240\u306b\u307e\u3068\u3081\u3001\u5fc5\u8981\u306a\u6642\u306b\u30a8\u30af\u30b9\u30dd\u30fc\u30c8\u3002",
       tryDemo: "\u7121\u6599\u3067\u59cb\u3081\u308b",
       previewLeftTitle: "Competitor_Report.pdf",
       previewLeftBody:
@@ -213,22 +207,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     document.documentElement.lang = nextLanguage;
-    document.title = copy.pageTitle || copy.brand;
+    document.title = copy.brand;
 
     if (description) {
-      description.setAttribute("content", copy.pageDescription || copy.heroCopy);
+      description.setAttribute("content", copy.heroCopy);
     }
-
-    // Update OG/Twitter tags dynamically for SPA-like feel
-    const ogTitle = document.querySelector('meta[property="og:title"]');
-    const ogDesc = document.querySelector('meta[property="og:description"]');
-    const twitterTitle = document.querySelector('meta[name="twitter:title"]');
-    const twitterDesc = document.querySelector('meta[name="twitter:description"]');
-
-    if (ogTitle) ogTitle.setAttribute("content", copy.pageTitle || copy.brand);
-    if (ogDesc) ogDesc.setAttribute("content", copy.pageDescription || copy.heroCopy);
-    if (twitterTitle) twitterTitle.setAttribute("content", copy.pageTitle || copy.brand);
-    if (twitterDesc) twitterDesc.setAttribute("content", copy.pageDescription || copy.heroCopy);
 
     if (summary) {
       summary.textContent = labels[nextLanguage];
